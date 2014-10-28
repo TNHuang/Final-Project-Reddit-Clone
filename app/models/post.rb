@@ -1,8 +1,6 @@
 class Post < ActiveRecord::Base
   validates :title, :author_id, presence: true
 
-
-
   belongs_to :author,
   class_name: "User",
   foreign_key: :author_id
@@ -13,4 +11,8 @@ class Post < ActiveRecord::Base
 
   has_many :subs, through: :postings, source: :sub
   #cross posting only
+
+  has_many :comments,
+  class_name: "Comment",
+  foreign_key: :post_id
 end

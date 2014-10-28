@@ -46,6 +46,7 @@ class PostsController < ApplicationController
 
 
   def destroy
+    #dont destroy the actual post destroy the posting only instead
     @post = Post.find(params[:id]);
     @post.destroy
     redirect_to sub_url(params[:sub_id])

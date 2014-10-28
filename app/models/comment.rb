@@ -1,5 +1,5 @@
 class Comment < ActiveRecord::Base
-  valdiates :author_id, :body, presence: true
+  validates :author_id, :post_id ,:body, presence: true
 
   belongs_to :author,
   class_name: "User",
@@ -9,7 +9,11 @@ class Comment < ActiveRecord::Base
   class_name: "Comment",
   foreign_key: :parent_comment_id
 
-  has_many :comments,
+  has_many :child_comments,
   class_name: "Comment",
   foreign_key: :parent_comment_id
+
+  belongs_to :post,
+  class_name: "Post",
+  foreign_key: :post_id
 end
