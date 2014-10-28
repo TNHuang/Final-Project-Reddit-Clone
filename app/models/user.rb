@@ -3,13 +3,21 @@ class User < ActiveRecord::Base
 
   after_initialize :ensure_session_token
 
-  validates :name, :session_token, presence: true
+  validates :name, :session_token, :password_digest, presence: true
   validates :name, :session_token, uniqueness: true
   validates :password, length: { minimum: 6, allow_nil: true}
-  validates :password_token, presence: { message: "Password can't be blank"}
 
+  has_many :subscriptions,
+  class_name: "Subscription",
+  foreign_key: :subscriber_id
 
+  has_many :subs, through: :subscriptions, source: :sub
 
+  has_many :moddings,
+  class_name: "Modding",
+  foreign_key: :moderator_id
+
+  has_many :subs, through: :moddings, source: :sub
 
   #perfect pig
 
@@ -18,14 +26,13 @@ class User < ActiveRecord::Base
     user && user.is_password?(password) ? user : nil
   end
 
-
   def password=(password)
-    @passowrd = password
-    self.password_token = BCrypt::Password.create(password);
+    @password = password
+    self.password_digest = BCrypt::Password.create(password)
   end
 
   def is_password?(password)
-    BCrypt::Password.new(self.password_token).is_password?(password);
+    BCrypt::Password.new(self.password_digest).is_password?(password);
   end
 
   def generate_session_token
