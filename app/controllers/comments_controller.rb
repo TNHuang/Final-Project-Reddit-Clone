@@ -24,21 +24,21 @@ class CommentsController < ApplicationController
   #   @comment = Comment.find(params[:id])
   # end
 
-  def update
-    @comment = Comment.find(params[:id])
-    @comment.author_id = current_user.id
-    if @comment.update(comment_params)
-      redirect_to comment_url(@comment)
-    else
-      flash[:errors] = @comment.errors.full_messages
-      render :edit
-    end
-  end
-
-  def show
-    @comment = Comment.find(params[:id]);
-    @author = User.find(@comment.author_id);
-  end
+  # def update
+  #   @comment = Comment.find(params[:id])
+  #   @comment.author_id = current_user.id
+  #   if @comment.update(comment_params)
+  #     redirect_to comment_url(@comment)
+  #   else
+  #     flash[:errors] = @comment.errors.full_messages
+  #     render :edit
+  #   end
+  # end
+  #
+  # def show
+  #   @comment = Comment.find(params[:id]);
+  #   @author = User.find(@comment.author_id);
+  # end
 
 
   def destroy

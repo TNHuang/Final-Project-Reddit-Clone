@@ -5,6 +5,13 @@
   <p>content: <%= @post.body %></p>
 </ul>
 
+<h3>Comments</h3>
+<form action="" method="POST">
+  <textarea name="comment[body]"></textarea>
+  <input type="submit" value="save">
+</form>
+<br>
+
 <h3>x-posted in the following subs</h3>
 <ol>
   <% @post.subs.each do |sub| %>

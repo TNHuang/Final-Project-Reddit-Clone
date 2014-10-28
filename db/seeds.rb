@@ -97,51 +97,11 @@ Modding.create({moderator_id: 3, sub_id: 3});
 Modding.create({moderator_id: 3, sub_id: 4});
 Modding.create({moderator_id: 3, sub_id: 5});
 
-Subscription.create({subscriber_id: 1, sub_id: 1})
-Subscription.create({subscriber_id: 2, sub_id: 1})
-Subscription.create({subscriber_id: 3, sub_id: 1})
-Subscription.create({subscriber_id: 4, sub_id: 1})
-Subscription.create({subscriber_id: 5, sub_id: 1})
-Subscription.create({subscriber_id: 6, sub_id: 1})
-Subscription.create({subscriber_id: 7, sub_id: 1})
-Subscription.create({subscriber_id: 8, sub_id: 1})
-Subscription.create({subscriber_id: 9, sub_id: 1})
-Subscription.create({subscriber_id: 10, sub_id: 1})
-Subscription.create({subscriber_id: 11, sub_id: 1})
-Subscription.create({subscriber_id: 12, sub_id: 1})
-Subscription.create({subscriber_id: 13, sub_id: 1})
-Subscription.create({subscriber_id: 14, sub_id: 1})
-
-Subscription.create({subscriber_id: 1, sub_id: 2})
-Subscription.create({subscriber_id: 2, sub_id: 2})
-Subscription.create({subscriber_id: 3, sub_id: 2})
-Subscription.create({subscriber_id: 4, sub_id: 2})
-Subscription.create({subscriber_id: 5, sub_id: 2})
-Subscription.create({subscriber_id: 6, sub_id: 2})
-Subscription.create({subscriber_id: 7, sub_id: 2})
-Subscription.create({subscriber_id: 8, sub_id: 2})
-Subscription.create({subscriber_id: 9, sub_id: 2})
-Subscription.create({subscriber_id: 10, sub_id: 2})
-Subscription.create({subscriber_id: 11, sub_id: 2})
-Subscription.create({subscriber_id: 12, sub_id: 2})
-Subscription.create({subscriber_id: 13, sub_id: 2})
-Subscription.create({subscriber_id: 14, sub_id: 2})
-
-Subscription.create({subscriber_id: 1, sub_id: 3})
-Subscription.create({subscriber_id: 2, sub_id: 3})
-Subscription.create({subscriber_id: 3, sub_id: 3})
-Subscription.create({subscriber_id: 4, sub_id: 3})
-Subscription.create({subscriber_id: 5, sub_id: 3})
-Subscription.create({subscriber_id: 6, sub_id: 3})
-Subscription.create({subscriber_id: 7, sub_id: 3})
-Subscription.create({subscriber_id: 8, sub_id: 3})
-Subscription.create({subscriber_id: 9, sub_id: 3})
-Subscription.create({subscriber_id: 10, sub_id: 3})
-Subscription.create({subscriber_id: 11, sub_id: 3})
-Subscription.create({subscriber_id: 12, sub_id: 3})
-Subscription.create({subscriber_id: 13, sub_id: 3})
-Subscription.create({subscriber_id: 14, sub_id: 3})
-
+Sub.all.each do |sub|
+  User.all.each do |user|
+    Subscription.create({subscriber_id: user.id, sub_id: sub.id})
+  end
+end
 
 
 
