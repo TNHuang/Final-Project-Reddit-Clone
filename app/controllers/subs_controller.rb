@@ -13,7 +13,7 @@ class SubsController < ApplicationController
     @sub = Sub.new(subs_params)
 
     if @sub.save
-      redirect_to subs_url
+      redirect_to sub_url(@sub)
     else
       flash.now[:errors] = @sub.errors.full_messages
       render :new
@@ -30,7 +30,7 @@ class SubsController < ApplicationController
 
   def update
     @sub = Sub.find(params[:id])
-    if @sub.update(Subs_params)
+    if @sub.update(subs_params)
       redirect_to sub_url(@sub)
     else
       flash[:errors] = @sub.errors.full_messages

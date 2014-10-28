@@ -1,6 +1,6 @@
 <h3>all subreddits</h3>
 <ul>
-<% @sub.each do |sub| %>
+<% @subs.each do |sub| %>
   <li><a href="<%= sub_url(sub) %>"><%= sub.name %></a><%= button_to "delete sub", sub_url(sub) ,method: :delete %></li>
 <% end %>
 

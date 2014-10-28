@@ -2,6 +2,8 @@
 
 <form action="<%= sub_url(@sub) %>" method="POST">
 <%= form_auth %>
+<%= form_patch %>
+
 <label for="name">name</label>
 <input type="text" name="sub[name]" value="<%= @sub.name %>">
 <br>

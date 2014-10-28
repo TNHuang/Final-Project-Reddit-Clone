@@ -1,0 +1,20 @@
+<h3>Edit Post</h3>
+
+<form action="<%= post_url(@post) %>" method="POST">
+<%= form_auth %>
+<%= form_patch %>
+<label for="title">name</label>
+<input type="text" name="post[title]" value="<%= @post.title %>">
+<br>
+
+<label for="url">title</label>
+<input type="text" name="post[url]" value="<%= @post.url %>">
+<br>
+
+<label for="body">body</label>
+<textarea name="post[body]" ><%= @post.body %></textarea>
+
+<br>
+
+<button>Update Post!</button>
+</form>
