@@ -1,0 +1,19 @@
+<h3>Eidt New Sub</h3>
+
+<form action="<%= subs_url %>" method="POST">
+<%= form_auth %>
+<label for="name">name</label>
+<input type="text" name="sub[name]" value="<%= @sub.name %>">
+<br>
+
+<label for="title">title</label>
+<input type="text" name="sub[title]" value="<%= @sub.title %>">
+<br>
+
+<label for="description">description</label>
+<textarea name="sub[description]" ><%= @sub.name %></textarea>
+
+<br>
+
+<button>Update Sub!</button>
+</form>

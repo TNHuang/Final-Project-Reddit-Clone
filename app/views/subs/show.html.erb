@@ -1,0 +1,24 @@
+<h3>Subs show page</h3>
+<br>
+<ul>
+  <li>name: <%= @sub.name %></li>
+  <li>title: <%= @sub.title %></li>
+  <p>description: <%= @sub.description %></p>
+  <ul>
+    <li>Moderators</li>
+    <% @sub.moderators.each do |mod| %>
+      <li><%= mod.name %></li>
+    <% end %>
+  </ul>
+  <li><%= @sub.subscribers.count %> subscribers</li>
+</ul>
+
+
+<!--make posts later -->
+
+
+<br>
+<%= link_to "edit sub", edit_sub_url(@sub) %>
+<%= button_to "delete sub", sub_url(@sub) ,method: :delete %>
+<%= link_to "back to sub index", subs_url %>
+<br>

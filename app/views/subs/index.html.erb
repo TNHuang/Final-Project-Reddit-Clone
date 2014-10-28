@@ -1,0 +1,12 @@
+<h3>all subreddits</h3>
+<ul>
+<% @sub.each do |sub| %>
+  <li><a href="<%= sub_url(sub) %>"><%= sub.name %></a><%= button_to "delete sub", sub_url(sub) ,method: :delete %></li>
+<% end %>
+
+</ul>
+<!--how to modify subscribtion and modding? -->
+
+<%= link_to "back to create new sub", new_sub_url%>
+<br>
+<%= link_to "subs index page", subs_url %>
