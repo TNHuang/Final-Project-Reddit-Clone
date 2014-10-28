@@ -1,6 +1,6 @@
 <h3>Eidt New Sub</h3>
 
-<form action="<%= subs_url %>" method="POST">
+<form action="<%= sub_url(@sub) %>" method="POST">
 <%= form_auth %>
 <label for="name">name</label>
 <input type="text" name="sub[name]" value="<%= @sub.name %>">
@@ -11,7 +11,7 @@
 <br>
 
 <label for="description">description</label>
-<textarea name="sub[description]" ><%= @sub.name %></textarea>
+<textarea name="sub[description]" ><%= @sub.description %></textarea>
 
 <br>
 

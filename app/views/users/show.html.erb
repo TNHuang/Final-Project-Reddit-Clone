@@ -1,6 +1,7 @@
 <h3>user show page</h3>
 <br>
 <%= @user.name %>
+<%= @user.email %>
 <br>
 <%= link_to "edit user", edit_user_url(@user) %>
 <%= button_to "delete user", user_url(@user) ,method: :delete %>

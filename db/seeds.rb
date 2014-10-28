@@ -21,4 +21,22 @@ User.create({ name: "Billy" , password: "password", email: "TotallyNotFinn@Billy
 User.create({ name: "Lady Raincorn" , password: "password", email: "Rainicorn@raindow.com"});
 User.create({ name: "Ice King" , password: "password", email: "Ice@Gunter.com"});
 
+Sub.create({name: "yellow_submarine", title: "yellow submarine", description: "finding nemo never been easier"});
+Sub.create({name: "wizard_battle", title: "Wizard Battlez", description: "No science and weapon allow!"});
+Sub.create({name: "business_time", title: "business time", description: "you know what time it is?"});
+Sub.create({name: "something_big", title: "something big", description: "Attack on something big"});
+Sub.create({name: "furniture_and_meat", title: "furniture and meat", description: "one for food, the other for foot"});
+Sub.create({name: "food_chain", title: "food chain", description: "learn about food chain by becoming food chain"});
+
+
+
+
+
+
+
+
+
+
+
+
 
