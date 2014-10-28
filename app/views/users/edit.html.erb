@@ -1,0 +1,11 @@
+<h3>Update User</h3>
+
+<form action="<%= user_url(@user) %>" method="POST">
+<%= form_auth %>
+<%= form_patch %>
+<label for="name">name</label>
+<input type="text" name="user[name]" value="<%= @user.name %>">
+<br>
+
+<input type="submit" value="Update">
+</form>
