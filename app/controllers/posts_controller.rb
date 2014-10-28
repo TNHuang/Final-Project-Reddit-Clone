@@ -14,7 +14,6 @@ class PostsController < ApplicationController
     @post.url = "http://" + url unless (url[0..6] == "http://") || (url[0..7] == "https://")
 
     if @post.save
-
       Posting.create({sub_id: params[:sub_id], post_id: @post.id})
       redirect_to post_url(@post)
     else

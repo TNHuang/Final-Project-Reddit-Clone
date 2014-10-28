@@ -1,6 +1,6 @@
 <h3>Subs show page</h3>
 
-<%= link_to "make a new post", new_post_url({sub_id: @sub.id}) %>
+<a href="<%= new_post_url({sub_id: @sub.id}) %>">New Post</a>
 <br>
 <% if @sub.moderators.include?(current_user) %>
   <%= link_to "edit sub", edit_sub_url(@sub) %>
