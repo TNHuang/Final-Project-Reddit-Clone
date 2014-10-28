@@ -4,7 +4,8 @@ class Sub < ActiveRecord::Base
 
   has_many :moddings,
   class_name: "Modding",
-  foreign_key: :sub_id
+  foreign_key: :sub_id,
+  dependent: :destroy
 
   has_many :moderators, through: :moddings, source: :moderator
 
@@ -13,5 +14,12 @@ class Sub < ActiveRecord::Base
   foreign_key: :sub_id
 
   has_many :subscribers, through: :subscriptions, source: :subscriber
+
+  has_many :postings,
+  class_name: "Posting",
+  foreign_key: :sub_id,
+  dependent: :destroy
+
+  has_many :posts, through: :postings, source: :post
 
 end

@@ -1,11 +1,15 @@
-<h3>all users created so far</h3>
+<h3>All Users</h3>
 <ul>
 <% @user.each do |user| %>
-  <li><a href="<%= user_url(user) %>"><%= user.name %></a><%= button_to "delete user", user_url(user) ,method: :delete %></li>
+  <li><a href="<%= user_url(user) %>"><%= user.name %></a>
+    <% if current_user == user %>
+      <%= button_to "delete user", user_url(user) ,method: :delete %>
+    <% end %>
+  </li>
 <% end %>
 
 </ul>
 
-<%= link_to "back to create new user", new_user_url%>
+<!-- <%#= link_to "back to create new user", new_user_url%> -->
 <br>
 <%= link_to "subs index page", subs_url %>

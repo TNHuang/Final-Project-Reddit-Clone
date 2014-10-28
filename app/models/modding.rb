@@ -1,6 +1,6 @@
 class Modding < ActiveRecord::Base
   validates :moderator_id, :sub_id, presence: true
-  validates_uniqueness_of :moderator_id, :sub_id
+  validates_uniqueness_of :moderator_id, :scope =>[ :sub_id]
 
   belongs_to :sub,
   class_name: "Sub",

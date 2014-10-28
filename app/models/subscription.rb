@@ -1,6 +1,6 @@
 class Subscription < ActiveRecord::Base
   validates :subscriber_id, :sub_id, presence: true
-  validates_uniqueness_of :subscriber_id, :sub_id
+  validates_uniqueness_of :subscriber_id, :scope => [:sub_id]
 
   belongs_to :sub,
   class_name: "Sub",

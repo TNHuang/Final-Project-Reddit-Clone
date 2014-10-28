@@ -1,7 +1,11 @@
 <h3>all subreddits</h3>
 <ul>
 <% @subs.each do |sub| %>
-  <li><a href="<%= sub_url(sub) %>"><%= sub.name %></a><%= button_to "delete sub", sub_url(sub) ,method: :delete %></li>
+  <li><a href="<%= sub_url(sub) %>"><%= sub.name %></a>: <%= sub.subscribers.count %> subscribers
+  <% if sub.moderators.include?(current_user) %>
+    <%= button_to "delete sub", sub_url(sub) ,method: :delete %>
+  <% end %>
+  </li>
 <% end %>
 
 </ul>

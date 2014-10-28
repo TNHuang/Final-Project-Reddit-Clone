@@ -1,24 +1,46 @@
 <h3>Subs show page</h3>
+
+<%= link_to "make a new post", new_post_url({sub_id: @sub.id}) %>
 <br>
+<% if @sub.moderators.include?(current_user) %>
+  <%= link_to "edit sub", edit_sub_url(@sub) %>
+  <br>
+  <%= button_to "delete sub", sub_url(@sub) ,method: :delete %>
+<% end %>
+
+<%= link_to "back to sub index", subs_url %>
+<br>
+
 <ul>
   <li>name: <%= @sub.name %></li>
   <li>title: <%= @sub.title %></li>
   <p>description: <%= @sub.description %></p>
+  <h3>Moderators</h3>
   <ul>
-    <li>Moderators</li>
     <% @sub.moderators.each do |mod| %>
-      <li><%= mod.name %></li>
+      <li><a href="<%= user_url(mod) %>"><%= mod.name %></a></li>
     <% end %>
-  </ul>
-  <li><%= @sub.subscribers.count %> subscribers</li>
+  </ul><br>
+  <%= @sub.subscribers.count %> subscribers
 </ul>
 
-
+<ol>
+  <% @sub.posts.each do |post| %>
+    <li>
+      <span>upvote and downvote</span>
+      <div>
+        <a href="<%= post.url %>"><%= post.title %></a>
+        <span> by <a href="<%= user_url(post.author) %>"><%= post.author.name %></a></span>
+        <br>
+        <a href="<%= post_url(post) %>">comment</a>
+        <% if current_user == post.author %>
+          <%= button_to "delele post", post_url({id: post.id, sub: @sub.id}), method: :delete %>
+        <% end %>
+<!--need to have edit feature -->
+      </div>
+    </li>
+  <% end %>
+</ol>
 <!--make posts later -->
 
 
-<br>
-<%= link_to "edit sub", edit_sub_url(@sub) %>
-<%= button_to "delete sub", sub_url(@sub) ,method: :delete %>
-<%= link_to "back to sub index", subs_url %>
-<br>

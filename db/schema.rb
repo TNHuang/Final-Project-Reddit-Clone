@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141028051857) do
+ActiveRecord::Schema.define(version: 20141028141735) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,15 @@ ActiveRecord::Schema.define(version: 20141028051857) do
   end
 
   add_index "moddings", ["moderator_id", "sub_id"], name: "index_moddings_on_moderator_id_and_sub_id", unique: true, using: :btree
+
+  create_table "postings", force: true do |t|
+    t.integer  "sub_id",     null: false
+    t.integer  "post_id",    null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "postings", ["post_id", "sub_id"], name: "index_postings_on_post_id_and_sub_id", unique: true, using: :btree
 
   create_table "posts", force: true do |t|
     t.string   "title",      null: false
@@ -77,7 +86,7 @@ ActiveRecord::Schema.define(version: 20141028051857) do
     t.string   "email"
   end
 
-  add_index "users", ["name"], name: "index_users_on_name", using: :btree
+  add_index "users", ["name"], name: "index_users_on_name", unique: true, using: :btree
   add_index "users", ["session_token"], name: "index_users_on_session_token", unique: true, using: :btree
 
 end

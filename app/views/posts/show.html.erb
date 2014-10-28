@@ -1,17 +1,23 @@
 <h3>Post show page</h3>
-<br>
+
 <ul>
-  <li>title: <a href="<%= @post.url %>"><%= @post.title %></a></li>
-  <li>author: <%= User.find(@post.author_id).name %></li>
+  <li>title: <a href="<%= @post.url %>"><%= @post.title %></a> by author: <a href="<%= user_url(@author) %>"><%= @author.name %></a></li>
   <p>content: <%= @post.body %></p>
 </ul>
 
+<h3>x-posted in the following subs</h3>
+<ol>
+  <% @post.subs.each do |sub| %>
+    <li><a href="<%= sub_url(sub) %>"><%= sub.title %></a></li>
+  <% end %>
+</ol>
 
 <!--make comments later -->
+<% if current_user == @post.author %>
+  <br>
+    <%= link_to "edit post", edit_post_url(@post) %>
+  <br>
+<% end %>
 
 
-<br>
-<%= link_to "edit sub", edit_sub_url(@post) %>
-<%= button_to "delete sub", sub_url(@post) ,method: :delete %>
-<%= link_to "back to sub index", subs_url %>
-<br>
+

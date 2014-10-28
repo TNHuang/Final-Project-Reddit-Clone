@@ -1,13 +1,12 @@
 Rails.application.routes.draw do
-  root to: "users#new"
+  root to: "session#new"
   resources :users
   resource :session, only: [:new, :create, :destroy]
 
-  resources :subs do
-    resources :posts, only: [:new, :create, :edit, :update, :index]
-  end
+  resources :subs
 
-  resources :posts, only: [:delete]
+  resources :posts
+
   #
   # resources :posts do
   #   resources :comments, only: [:new, :create, :edit, :update]

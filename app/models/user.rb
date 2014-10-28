@@ -17,7 +17,11 @@ class User < ActiveRecord::Base
   class_name: "Modding",
   foreign_key: :moderator_id
 
-  has_many :subs, through: :moddings, source: :sub
+  has_many :mod_subs, through: :moddings, source: :sub
+
+  has_many :posts,
+  class_name: "Post",
+  foreign_key: :author_id
 
   #perfect pig
 

@@ -2,10 +2,6 @@ class PostsController < ApplicationController
 
   before_action :required_sign_in
 
-  def index
-    @posts = Post.all
-  end
-
   def new
     @sub = Sub.find(params[:sub_id]);
     @post = Post.new
@@ -13,10 +9,14 @@ class PostsController < ApplicationController
 
   def create
     #need to link to subs tomorrow
-    @post = @sub.Post.new(post_params)
-    @post.author_id = current_user.id
+    @post = current_user.posts.new(post_params)
+    url = @post.url
+    @post.url = "http://" + url unless (url[0..6] == "http://") || (url[0..7] == "https://")
+
     if @post.save
-      redirect_to post_url(@post) #change to the correct url once you finish posting
+
+      Posting.create({sub_id: params[:sub_id], post_id: @post.id})
+      redirect_to post_url(@post)
     else
       flash.now[:errors] = @post.errors.full_messages
       render :new
@@ -40,13 +40,15 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id]);
+    @author = User.find(@post.author_id);
   end
 
 
   def destroy
     @post = Post.find(params[:id]);
+
     @post.destroy
-    redirect_to sub_url(@post.sub_id)
+    redirect_to sub_url(params[:sub])
   end
 
 

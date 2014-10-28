@@ -27,6 +27,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 
 # Use ActiveModel has_secure_password
+gem 'ejs'
 gem 'bcrypt', '~> 3.1.7'
 group :development do
   gem 'better_errors'
@@ -35,10 +36,13 @@ group :development do
   gem 'quiet_assets'
 end
 
+group :test, :development do
+  gem 'rspec-rails', '~> 3.0'
+end
 
 group :test do
-  gem 'rspec-rails', '~> 3.0'
   gem 'capybara'
+  gem 'guard-rspec'
 end
 # Use unicorn as the app server
 # gem 'unicorn'
