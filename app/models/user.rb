@@ -23,6 +23,10 @@ class User < ActiveRecord::Base
   class_name: "Post",
   foreign_key: :author_id
 
+  has_many :comments,
+  class_name: "Comment",
+  foreign_key: :author_id
+
   #perfect pig
 
   def self.find_by_credentials(name, password)

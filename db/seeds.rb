@@ -39,14 +39,6 @@ Post.create({title: "banana man doing the split", url: "http://adventuretime.wik
 Post.create({title: "There is not enough boom boom stickhole sticks in the stickhole! Gahh", url: "http://adventuretime.wikia.com/wiki/File:Banana_Man%27s_House.png" , body: "Need more boom boom in the poom poom" , author_id: 2})
 Post.create({title: "Fixing truck", body: "truck fixing all around" , author_id: 2})
 
-Post.create({title: "BMO does weird junk when no one is around", url: "http://adventuretime.wikia.com/wiki/BMO" , body: "" , author_id: 1})
-Post.create({title: "Banana Man", url: "http://adventuretime.wikia.com/wiki/Banana_Man" , body: "To the final froniter" , author_id: 2})
-Post.create({title: "Not enough dynamite", body: "need more fire for the rocketship" , author_id: 2})
-Post.create({title: "I just want borrow some sugar!", body: "more sugar than a doughnut shop" , author_id: 2})
-Post.create({title: "banana man doing the split", url: "http://adventuretime.wikia.com/wiki/File:Banana_Man_splits.png" , author_id: 2})
-Post.create({title: "There is not enough boom boom stickhole sticks in the stickhole! Gahh", url: "http://adventuretime.wikia.com/wiki/File:Banana_Man%27s_House.png" , body: "Need more boom boom in the poom poom" , author_id: 2})
-Post.create({title: "Fixing truck", body: "truck fixing all around" , author_id: 2})
-
 Post.create({title: "Mushroom war", url: "http://adventuretime.wikia.com/wiki/Mushroom_War" , author_id: 2})
 Post.create({title: "that lich guy", body: "don't you wish he never existed" , author_id: 6})
 Post.create({title: "one thousand years", body: "any one remember that good old time" , author_id: 7})
