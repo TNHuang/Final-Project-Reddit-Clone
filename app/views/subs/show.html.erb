@@ -33,8 +33,11 @@
         <span> by <a href="<%= user_url(post.author) %>"><%= post.author.name %></a></span>
         <br>
         <a href="<%= post_url(post) %>">comment</a>
-        <% if current_user == post.author %>
-          <%= button_to "delele post", post_url({id: post.id, sub: @sub.id}), method: :delete %>
+          <% if current_user == post.author %>
+          <form action="<%= post_url({id: post.id, sub_id: @sub.id}) %>" method="POST">
+            <%= form_auth %><%= form_delete %>
+            <input type="submit" value="delet post">
+          </form>
         <% end %>
 <!--need to have edit feature -->
       </div>

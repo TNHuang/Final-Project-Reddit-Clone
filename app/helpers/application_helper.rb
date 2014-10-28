@@ -7,11 +7,17 @@ module ApplicationHelper
      HTML
    end
 
-
    def form_patch
      <<-HTML.html_safe
      <input type="hidden" name="_method"
      value="PATCH">
+     HTML
+   end
+
+   def form_delete
+     <<-HTML.html_safe
+     <input type="hidden" name="_method"
+     value="DELETE">
      HTML
    end
 

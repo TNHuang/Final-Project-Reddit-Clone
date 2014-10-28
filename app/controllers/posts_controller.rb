@@ -18,6 +18,7 @@ class PostsController < ApplicationController
       Posting.create({sub_id: params[:sub_id], post_id: @post.id})
       redirect_to post_url(@post)
     else
+      @sub = Sub.find(params[:sub_id])
       flash.now[:errors] = @post.errors.full_messages
       render :new
     end
@@ -46,9 +47,8 @@ class PostsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:id]);
-
     @post.destroy
-    redirect_to sub_url(params[:sub])
+    redirect_to sub_url(params[:sub_id])
   end
 
 
