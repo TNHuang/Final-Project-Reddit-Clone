@@ -31,16 +31,8 @@ li {
 }
 .vote-wrapper > * {
   display:block; 
-  text-align: center;
+  margin: 0 auto;
 }
-
-.hidden {
-  clear:both;
-  display: block;
-}
-/*.reply:hover ~ .hidden {
-  display: block;
-}*/
 
 
 

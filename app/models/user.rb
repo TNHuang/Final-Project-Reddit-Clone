@@ -32,6 +32,18 @@ class User < ActiveRecord::Base
   foreign_key: :user_id
   
   #perfect pig
+  def get_karma
+    post_karma, comment_karma= 0, 0
+
+    self.user_votes.each do |user_vote|
+      user_vote.votable_type == "Post" ?  post_karma += user_vote.value : comment_karma += user_vote.value
+    end
+    {post_karma: post_karma, comment_karma: comment_karma }
+  end
+
+  def votes
+    self.user_votes.sum(:value)
+  end
 
   def self.find_by_credentials(name, password)
     user = User.find_by_name(name);

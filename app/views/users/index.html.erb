@@ -3,7 +3,8 @@
 <%= link_to "subs index page", subs_url %>
 <ul>
 <% @user.each do |user| %>
-  <li><a href="<%= user_url(user) %>"><%= user.name %></a>
+  <% karmas = user.get_karma %>
+  <li><a href="<%= user_url(user) %>"><%= user.name %></a> post karma: <%= karmas[:post_karma] %> comment karma: <%= karmas[:comment_karma] %>
     <% if current_user == user %>
       <%= button_to "delete user", user_url(user) ,method: :delete %>
     <% end %>

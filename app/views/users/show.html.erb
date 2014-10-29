@@ -1,11 +1,12 @@
 <%= link_to "back to users index", users_url %>
 <br>
 <%= link_to "back to all subs", subs_url %>
+
 <h3>user show page</h3>
 
 <p>username: <%= @user.name %></p>
 <p>email: <%= @user.email %></p>
-
+<%= karmas = @user.get_karma %>
 <h3>moderators of:</h3>
 <ul>
   <% @user.mod_subs.each do |mod_sub| %>
