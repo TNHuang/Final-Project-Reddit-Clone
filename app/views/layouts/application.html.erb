@@ -9,7 +9,7 @@
 <% if sign_in? %>
   Welcome!
   <a href="<%= user_url(current_user) %>"><%= current_user.name %></a>
-  ♫ ~Adventure Time, C'mon grab your friends, We'll go to very disntat lands~ ♫
+  ♫ ~Adventure Time, C'mon grab your friends, We'll go to very distant lands~ ♫
   <br>
   <form action="<%= session_url %>" method="POST">
     <%= form_auth %><%= form_delete %>
