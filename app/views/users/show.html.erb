@@ -6,7 +6,9 @@
 
 <p>username: <%= @user.name %></p>
 <p>email: <%= @user.email %></p>
-<%= karmas = @user.get_karma %>
+<% karmas = @user.get_karma %>
+post karma: <%= karmas[:post_karma] %>
+<br>comment karma: <%= karmas[:comment_karma] %>
 <h3>moderators of:</h3>
 <ul>
   <% @user.mod_subs.each do |mod_sub| %>
