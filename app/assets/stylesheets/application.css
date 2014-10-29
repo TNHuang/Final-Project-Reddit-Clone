@@ -13,3 +13,35 @@
  *= require_tree .
  *= require_self
  */
+<style>
+ul, ol, li{
+  list-style: none;
+  margin-bottom: 10px;
+}
+
+li {
+  border: 1px solid block;
+  display: block;
+}
+
+.vote-wrapper {
+  border: 1px solid orange;
+  display: block; float: left;
+  width: 70px;
+}
+.vote-wrapper > * {
+  display:block; 
+  text-align: center;
+}
+
+.hidden {
+  clear:both;
+  display: block;
+}
+/*.reply:hover ~ .hidden {
+  display: block;
+}*/
+
+
+
+</style>

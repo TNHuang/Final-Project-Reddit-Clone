@@ -68,7 +68,7 @@ class PostsController < ApplicationController
     else
       @post.user_votes.create!(user_id: current_user.id, value: dir)  
     end
-    redirect_to post_url(@post)
+    redirect_to :back
   end
 
   private

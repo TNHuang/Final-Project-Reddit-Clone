@@ -1,11 +1,9 @@
 <h3>Post show page</h3>
 
-<ul>
-  <%= button_to "Upvote", upvote_post_url(@post) %><%= @post.votes %>
-  <%= button_to "Downvote", downvote_post_url(@post) %>
-  <li>title: <a href="<%= @post.url %>"><%= @post.title %></a> by author: <a href="<%= user_url(@author) %>"><%= @author.name %></a></li>
-  <p>content: <%= @post.body %></p>
-</ul>
+
+<li>title: <a href="<%= @post.url %>"><%= @post.title %></a> by author: <a href="<%= user_url(@author) %>"><%= @author.name %></a></li>
+<p>content: <%= @post.body %></p>
+
 <br>
 
 <h3>Subs</h3>
@@ -15,7 +13,10 @@
   <% end %>
 </ol>
 
+
+
 <h3>Comments</h3>
+<%= render "comments/new", comment: current_user.comments.new({post_id: @post.id}) %>
   <% comments_by_parent = @post.comments_by_parent %>
   <ul class="comments-wrapper">
     <% comments_by_parent[nil].each do |zenith_comment| %>

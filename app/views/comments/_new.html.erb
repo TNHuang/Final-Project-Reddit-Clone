@@ -1,0 +1,14 @@
+<% if comment.parent_comment_id == nil %>
+  <% if Comment.exists?(comment)  %>
+    <% action = "Edit" %>
+  <% else %>
+    <% action = "comment on this post" %>
+  <% end %>
+<% elsif Comment.exists?(comment) %>
+  <% action = "Edit" %>
+<% else %>
+  <% action = "Reply" %>
+<% end %>
+
+<h3><%= action %></h3>
+<%= render "comments/form", {comment: comment}  %>

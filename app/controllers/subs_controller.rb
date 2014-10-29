@@ -2,7 +2,6 @@ class SubsController < ApplicationController
   before_action :required_sign_in
 
   def index
-    # @subs_with_count = Sub.subscribers_count_by_sub
     @subs = Sub.all
   end
 
@@ -45,7 +44,7 @@ class SubsController < ApplicationController
     @sub.destroy
     redirect_to subs_url
   end
-  
+
   def downvote
     vote(-1);
   end
@@ -63,7 +62,7 @@ class SubsController < ApplicationController
     else
       @sub.user_votes.create!(user_id: current_user.id, value: dir)  
     end
-    redirect_to sub_url(@sub)
+    redirect_to subs_url
   end
   
   private
