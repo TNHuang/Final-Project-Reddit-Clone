@@ -14,6 +14,7 @@
   <form action="<%= sign_out_all_sessions_url %>" method="POST">
     <%= form_auth %><%= form_delete %>
     <input type="submit" value="Sign Out All Sessions">
+  </form>
   <br>
   <form action="<%= sign_in_url(current_sign_in) %>" method="POST">
     <%= form_auth %><%= form_delete %>
