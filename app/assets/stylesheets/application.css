@@ -13,7 +13,7 @@
  *= require_tree .
  *= require_self
  */
-<style>
+
 ul, ol, li{
   list-style: none;
   margin-bottom: 10px;
@@ -36,4 +36,3 @@ li {
 
 
 
-</style>
