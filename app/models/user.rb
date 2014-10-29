@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   attr_reader :password
 
-  after_initialize :ensure_session_token
+  # after_initialize :ensure_session_token
 
   validates :name, :session_token, :password_digest, presence: true
   validates :name, :session_token, uniqueness: true
@@ -27,6 +27,7 @@ class User < ActiveRecord::Base
   class_name: "Comment",
   foreign_key: :author_id
 
+  has_many :sign_ins, inverse_of: :user
   #perfect pig
 
   def self.find_by_credentials(name, password)
@@ -42,19 +43,19 @@ class User < ActiveRecord::Base
   def is_password?(password)
     BCrypt::Password.new(self.password_digest).is_password?(password);
   end
-
-  def generate_session_token
-    SecureRandom.base64(16);
-  end
-
-  def reset_session_token
-    self.session_token = generate_session_token
-    self.save!
-    self.session_token
-  end
-
-  def ensure_session_token
-    self.session_token ||= generate_session_token
-  end
+  #
+  # def generate_session_token
+  #   SecureRandom.base64(16);
+  # end
+  #
+  # def reset_session_token
+  #   self.session_token = generate_session_token
+  #   self.save!
+  #   self.session_token
+  # end
+  #
+  # def ensure_session_token
+  #   self.session_token ||= generate_session_token
+  # end
 
 end

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :require_no_user, only: [:create, :new]
-  before_action :required_sign_in, only: [:edit, :index ,:show]
+  # before_action :required_sign_in, only: [:edit, :index ,:show]
   def index
     @user = User.all
   end
@@ -44,7 +44,6 @@ class UsersController < ApplicationController
     @user.destroy
     redirect_to users_url
   end
-
 
   private
   def user_params

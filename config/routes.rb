@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
-  root to: "sessions#new"
+  root to: "sign_ins#new"
   resources :users
-  resource :session, only: [:new, :create, :destroy]
-
+    
+  resources :sign_ins, only: [:new, :create, :destroy]
+  delete "sign_out_all_sessions" => "application#sign_out_all_sessions", as: "sign_out_all_sessions"
+      
   resources :subs
 
   resources :posts do
