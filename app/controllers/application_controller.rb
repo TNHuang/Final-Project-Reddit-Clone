@@ -32,7 +32,7 @@ class ApplicationController < ActionController::Base
   end
  
   def required_sign_in
-    redirect_to new_session_url unless sign_in?
+    redirect_to new_sign_in_url unless sign_in?
   end
 
   def require_no_user

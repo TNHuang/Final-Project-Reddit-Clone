@@ -1,0 +1,13 @@
+<div class="vote-wrapper"><%= button_to "Upvote", upvote_comment_url(comment) %><span><%= comment.votes %></span>
+<%= button_to "Downvote", downvote_comment_url(comment) %>
+</div>
+<%= comment.body %> by <%= comment.author.name %>
+<p>comment_id: <%= comment.id %></p>
+
+<ul>
+  <% comments_by_parent[comment.id].each do |child_comment| %>
+    <li>
+      <%= render "comments/comment", comment: child_comment, comments_by_parent: comments_by_parent %>
+    </li>
+  <% end %>
+</ul>

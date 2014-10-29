@@ -1,5 +1,7 @@
 class Comment < ActiveRecord::Base
-  validates :author_id, :post_id ,:body, presence: true
+  include Votable
+  
+  validates :author_id, :post ,:body, presence: true
 
   belongs_to :author,
   class_name: "User",
@@ -13,7 +15,13 @@ class Comment < ActiveRecord::Base
   class_name: "Comment",
   foreign_key: :parent_comment_id
 
-  belongs_to :post,
-  class_name: "Post",
-  foreign_key: :post_id
+  belongs_to :post, inverse_of: :comments
+  
+  has_many :user_votes, as: :votable,
+  class_name: "UserVote",
+  dependent: :destroy
+  
+  def votes
+    self.user_votes.sum(:value)
+  end
 end

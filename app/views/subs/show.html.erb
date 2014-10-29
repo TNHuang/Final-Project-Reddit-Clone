@@ -1,8 +1,10 @@
 <h3>Subs show page</h3>
-
+<% @mods = @sub.moderators %>
+<% @count = @sub.subscribers.count %>
+<% @posts = @sub.posts %>
 <a href="<%= new_post_url({sub_id: @sub.id}) %>">New Post</a>
 <br>
-<% if @sub.moderators.include?(current_user) %>
+<% if @mods.exists?(current_user) %>
   <%= link_to "edit sub", edit_sub_url(@sub) %>
   <br>
   <%= button_to "delete sub", sub_url(@sub) ,method: :delete %>
@@ -12,20 +14,23 @@
 <br>
 
 <ul>
+  <%= button_to "Upvote", upvote_sub_url(@sub) %><%= @sub.votes %>
+  <%= button_to "Downvote", downvote_sub_url(@sub) %>
+
   <li>name: <%= @sub.name %></li>
   <li>title: <%= @sub.title %></li>
   <p>description: <%= @sub.description %></p>
   <h3>Moderators</h3>
   <ul>
-    <% @sub.moderators.each do |mod| %>
+    <% @mods.each do |mod| %>
       <li><a href="<%= user_url(mod) %>"><%= mod.name %></a></li>
     <% end %>
   </ul><br>
-  <%= @sub.subscribers.count %> subscribers
+  <%= @count %> subscribers
 </ul>
 
 <ol>
-  <% @sub.posts.each do |post| %>
+  <% @posts.each do |post| %>
     <li>
       <span>upvote and downvote</span>
       <div>

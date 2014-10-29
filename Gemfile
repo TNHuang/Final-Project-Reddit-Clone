@@ -28,6 +28,7 @@ gem 'spring',        group: :development
 
 # Use ActiveModel has_secure_password
 gem 'ejs'
+gem 'concern'
 gem 'bcrypt', '~> 3.1.7'
 group :development do
   gem 'better_errors'

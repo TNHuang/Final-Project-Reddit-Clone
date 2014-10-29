@@ -1,23 +1,32 @@
 <h3>Post show page</h3>
 
 <ul>
+  <%= button_to "Upvote", upvote_post_url(@post) %><%= @post.votes %>
+  <%= button_to "Downvote", downvote_post_url(@post) %>
   <li>title: <a href="<%= @post.url %>"><%= @post.title %></a> by author: <a href="<%= user_url(@author) %>"><%= @author.name %></a></li>
   <p>content: <%= @post.body %></p>
 </ul>
-
-<h3>Comments</h3>
-<form action="<%= post_comments_url(@post) %>" method="POST">
-  <textarea name="comment[body]"></textarea>
-  <input type="submit" value="save">
-</form>
 <br>
 
-<h3>x-posted in the following subs</h3>
+<h3>Subs</h3>
 <ol>
   <% @post.subs.each do |sub| %>
     <li><a href="<%= sub_url(sub) %>"><%= sub.title %></a></li>
   <% end %>
 </ol>
+
+<h3>Comments</h3>
+  <% comments_by_parent = @post.comments_by_parent %>
+  <ul class="comments-wrapper">
+    <% comments_by_parent[nil].each do |zenith_comment| %>
+      <li>
+        <%= render "comments/comment",
+                   comment: zenith_comment, 
+                   comments_by_parent: comments_by_parent%>
+      </li>
+    <% end %>
+  </ul>
+<br>
 
 <!--make comments later -->
 <% if current_user == @post.author %>

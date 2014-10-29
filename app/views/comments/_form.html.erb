@@ -1,0 +1,12 @@
+<% action_url = Comment.exists?(comment) ? post_comment_url(@post) : post_comments_url %>
+<% method_fun = Comment.exists?(comment) ? form_patch : "" %>
+<% button_name = Comment.exists?(comment) ? "Edit" : "Reply"  %>
+
+<form action="<%= action_url %>" method="POST">
+<%= form_auth %><%= method_fun %>
+<input type="hidden" name="comment[post_id]" value="<%= @post.id %>">
+<label for="body">body</label><input type="text" name="comment[body]" value="" id="body"><br>
+
+<input type="submit" value="<%= button_name %>">
+
+</form>

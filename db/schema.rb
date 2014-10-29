@@ -11,22 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141029130354) do
+ActiveRecord::Schema.define(version: 20141029145356) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "comment_karmas", force: true do |t|
-    t.integer  "author_id",  null: false
-    t.integer  "comment_id", null: false
-    t.integer  "value",      null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "comment_karmas", ["author_id"], name: "index_comment_karmas_on_author_id", using: :btree
-  add_index "comment_karmas", ["comment_id", "author_id"], name: "index_comment_karmas_on_comment_id_and_author_id", unique: true, using: :btree
-  add_index "comment_karmas", ["comment_id"], name: "index_comment_karmas_on_comment_id", using: :btree
 
   create_table "comments", force: true do |t|
     t.integer  "author_id",         null: false
@@ -40,18 +28,6 @@ ActiveRecord::Schema.define(version: 20141029130354) do
   add_index "comments", ["author_id"], name: "index_comments_on_author_id", using: :btree
   add_index "comments", ["parent_comment_id"], name: "index_comments_on_parent_comment_id", using: :btree
   add_index "comments", ["post_id"], name: "index_comments_on_post_id", using: :btree
-
-  create_table "link_karmas", force: true do |t|
-    t.integer  "author_id",  null: false
-    t.integer  "link_id",    null: false
-    t.integer  "value",      null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "link_karmas", ["author_id"], name: "index_link_karmas_on_author_id", using: :btree
-  add_index "link_karmas", ["link_id", "author_id"], name: "index_link_karmas_on_link_id_and_author_id", unique: true, using: :btree
-  add_index "link_karmas", ["link_id"], name: "index_link_karmas_on_link_id", using: :btree
 
   create_table "moddings", force: true do |t|
     t.integer  "moderator_id", null: false
@@ -112,6 +88,18 @@ ActiveRecord::Schema.define(version: 20141029130354) do
   end
 
   add_index "subscriptions", ["subscriber_id", "sub_id"], name: "index_subscriptions_on_subscriber_id_and_sub_id", unique: true, using: :btree
+
+  create_table "user_votes", force: true do |t|
+    t.integer  "user_id",      null: false
+    t.integer  "votable_id",   null: false
+    t.string   "votable_type", null: false
+    t.integer  "value",        null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "user_votes", ["votable_id", "votable_type", "user_id"], name: "index_user_votes_on_votable_id_and_votable_type_and_user_id", unique: true, using: :btree
+  add_index "user_votes", ["votable_id", "votable_type"], name: "index_user_votes_on_votable_id_and_votable_type", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "name",            null: false
