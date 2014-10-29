@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
 
   def sign_in(user)
     sign_in = user.sign_ins.create!
-    session[:session_token] = sign_in.session_token
+    session[:token] = sign_in.session_token
   end
 
   def current_user
@@ -18,8 +18,8 @@ class ApplicationController < ActionController::Base
   end
 
   def current_sign_in
-    return nil if !session[:session_token]
-    SignIn.find_by_session_token(session[:session_token])
+    return nil if !session[:token]
+    SignIn.find_by_session_token(session[:token])
   end
 
   def sign_in?
@@ -27,7 +27,7 @@ class ApplicationController < ActionController::Base
   end
 
   def sign_out(sign_in)
-    session[:session_token] = nil if sign_in == current_sign_in
+    session_token = nil if sign_in == current_sign_in
     current_sign_in.destroy!
   end
  
