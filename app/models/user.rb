@@ -1,8 +1,8 @@
 class User < ActiveRecord::Base
   attr_reader :password
 
-  validates :name, :session_token, :password_digest, presence: true
-  validates :name, :session_token, uniqueness: true
+  validates :name, :password_digest, presence: true
+  validates :name, uniqueness: true
   validates :password, length: { minimum: 6, allow_nil: true}
 
   has_many :subscriptions,
