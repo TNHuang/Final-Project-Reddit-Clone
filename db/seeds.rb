@@ -22,14 +22,91 @@ User.create({ name: "Billy" , password: "password", email: "TotallyNotFinn@Billy
 User.create({ name: "Lady Raincorn" , password: "password", email: "Rainicorn@raindow.com"});
 User.create({ name: "Ice King" , password: "password", email: "2Kool4Skool@IceKing.com"});
 User.create({ name: "Earl of Lemongrab" , password: "password", email: "Unacceptable@lemon.com"});
+User.create({ name: "Flame King" , password: "password", email: "Finn@CandyKindom.com"});
+User.create({ name: "Fuzzing king" , password: "password", email: "Banana@Banana.com"});
+User.create({ name: "Fire ghost" , password: "password", email: "MagicDog@Dog.com"});
+User.create({ name: "Dr Ice Cream" , password: "password", email: "MyR@boto.com"});
+User.create({ name: "Party God" , password: "password", email: "4ever@twilight.com"});
+User.create({ name: "Martin" , password: "password", email: "Bubble@trouble.com"});
+User.create({ name: "Cobbler" , password: "password", email: "Undead@zombie.com"});
+User.create({ name: "Phil" , password: "password", email: "Chest@Nut.com"});
+User.create({ name: "Old Swans" , password: "password", email: "Battle@Cube.com"});
+User.create({ name: "Ant" , password: "password", email: "Omg@Lsp.com"});
+User.create({ name: "Ballon" , password: "password", email: "Flame@On.com"});
+User.create({ name: "Skeleton butterfly" , password: "password", email: "TotallyNotFinn@Billy.com"});
+User.create({ name: "Penny" , password: "password", email: "Rainicorn@raindow.com"});
+User.create({ name: "soft people" , password: "password", email: "2Kool4Skool@IceKing.com"});
+User.create({ name: "wee wee zee" , password: "password", email: "Unacceptable@lemon.com"});
+User.create({ name: "Lump space king" , password: "password", email: "Finn@CandyKindom.com"});
+User.create({ name: "My cup cake" , password: "password", email: "Banana@Banana.com"});
+User.create({ name: "Fear Feaster" , password: "password", email: "MagicDog@Dog.com"});
+User.create({ name: "Fine" , password: "password", email: "MyR@boto.com"});
+User.create({ name: "Gmnoe" , password: "password", email: "4ever@twilight.com"});
+User.create({ name: "wall of flesh" , password: "password", email: "Bubble@trouble.com"});
+User.create({ name: "Toad" , password: "password", email: "Undead@zombie.com"});
+User.create({ name: "Snow Monster" , password: "password", email: "Chest@Nut.com"});
+User.create({ name: "Gork" , password: "password", email: "Battle@Cube.com"});
+User.create({ name: "Witch" , password: "password", email: "Omg@Lsp.com"});
+User.create({ name: "Gunter" , password: "password", email: "Flame@On.com"});
+User.create({ name: "Mountain men" , password: "password", email: "TotallyNotFinn@Billy.com"});
+User.create({ name: "Orge" , password: "password", email: "Rainicorn@raindow.com"});
+User.create({ name: "Science Cat" , password: "password", email: "2Kool4Skool@IceKing.com"});
+User.create({ name: "Stonesy" , password: "password", email: "Unacceptable@lemon.com"});
 
-Sub.create({name: "BMO", title: "BMO", description: "A sub about the most adorable half-Macintosh half-gameboy color"});
-Sub.create({name: "News", title: "News of Ooo", description: "News about the land of Ooo"});
-Sub.create({name: "wizard_battle", title: "Wizard Battle", description: "No science and weapon allow!"});
-Sub.create({name: "history", title: "history", description: "History of Ooo"});
-Sub.create({name: "something_big", title: "something big", description: "Attack on something big"});
-Sub.create({name: "furniture_and_meat", title: "furniture and meat", description: "one for food, the other for foot"});
-Sub.create({name: "food_chain", title: "food chain", description: "learn about food chain by becoming food chain"});
+subnames = ["Internetisbeautiful", "funny", "pics", "science", "music", "documentaries", "TIL", "sport", "Iama", "explainlikeImfive", "worldnews", "videos", "space"]
+
+des = ["Single purpose websites", "You may only post if you are funny.",
+  "A place to share photographs and pictures. Feel free to post your own, but please read the rules first (see below), and note that we are not a catch-all for general images (of screenshots, comics, etc.)",
+  "\/r\/science is a moderated subreddit, please review the Rules for Submissions before submitting to \/r\/science, and Rules for Comments before commenting.
+Submissions and Comments that violate the rules will be removed, as will all replies to inappropriate comments. Please report violations.",
+"The musical community of reddit.", "td:dw", "today I learn", "The central hub for all things sports on reddit.", 
+"IAmA stands for \"I am a\", and AMA means \"Ask me Anything\". This is the home to interviews, from the extraordinary to the mundane. We have several scheduled celeb AMAs, as well as a near-constant stream of AMAs from regular redditors, just like you!",
+"Explain Like I'm Five is the best forum and archive on the internet for layman-friendly Q&A. donn\'t Panic", "A place for major news from around the world, excluding US-internal news.",
+"A great place for video content of all kinds. Direct links to major video sites are preferred (e.g. YouTube, Vimeo, etc.)",
+"/r/space is dedicated to the insightful and thoughtful discussion of outer space.","/r/space is dedicated to the insightful and thoughtful discussion of outer space.","/r/space is dedicated to the insightful and thoughtful discussion of outer space."]
+
+subnames.each_with_index do |name, index|
+  next unless Sub.create({name: name, title: name, description: des[index]});
+end
+
+
+# Sub.create({name: "BMO", title: "BMO", description: "A sub about the most adorable half-Macintosh half-gameboy color"});
+# Sub.create({name: "News", title: "News of Ooo", description: "News about the land of Ooo"});
+# Sub.create({name: "wizard_battle", title: "Wizard Battle", description: "No science and weapon allow!"});
+# Sub.create({name: "history", title: "history", description: "History of Ooo"});
+# Sub.create({name: "something_big", title: "something big", description: "Attack on something big"});
+# Sub.create({name: "furniture_and_meat", title: "furniture and meat", description: "one for food, the other for foot"});
+# Sub.create({name: "food_chain", title: "food chain", description: "learn about food chain by becoming food chain"});
+
+t = [ "Rosetta just sent new images taken from about 7.8 km from the surface of comet 67P/C-G.",
+  "My Eyewitness Footage of the Orbital Antares Rocket Failure at the Press Site - 2.2 Miles From Launchpad",
+  "Antares launch failed, rocket exploded ~10s after liftoff",
+  "Antares rocket explosion: The question of un the land of communism and Sputnik.\"",
+  "Antares explosion - NASA/Joel Kowsky [pic 4,416×2,947]",
+  "Found an original Rand McNally Official map of the moon",
+  "Antares rocket explodes 6 seconds after liftoff.",
+  "Extraordinary shot of moon's far side and Earth, from Chang'e | Science Wire | EarthSky",
+  "Gemini 8 Astronauts David B. Scott and Neil A. Armstrong Water Egress Training",
+  "Are there any pictures of the pad and surrounding area yet?",
+  "The ISS tracing a line above the Antares rocket",
+  "Vortex Star Trail Polar Panorama","Russian rocket manufacturer insists it is not to blame for Antares crash"
+]
+u = [
+  "http://imgur.com/gallery/zvM7V/new",
+  "https://www.youtube.com/watch?v=3jCystkiIBs",
+  "https://www.reddit.com/r/space/comments/2km5vp/antares_launch_failed_rocket_exploded_10s_after/",
+  "Antares rocket explosion: The tale of the engines that propelled the Antares rocket, which exploded in a spectacular ball 
+  unism and Sputnik.\"",
+  "http://i.imgur.com/qfgoTNf.jpg",
+  "http://i.imgur.com/2WnFuk9.jpg",
+  "http://i.imgur.com/ZQfwU0F.png",
+  "Extraordinary shot of moon's far side and Earth, from Chang'e | Science Wire | EarthSky",
+  "http://i.imgur.com/ak3rGrx.jpg",
+  "Are there any pictures of the pad and surrounding area yet?",
+  "http://i.imgur.com/MQjvQoL.jpg?1","http://www.imgur.com/9aUcOIL.jpg","http://www.theguardian.com/science/2014/oct/29/"]
+t.each_with_index do |title, i|
+  next unless Post.create({title: title, url: u[i] , author_id: rand(40)+1});
+end
 
 Post.create({title: "BMO does weird junk when no one is around", url: "http://adventuretime.wikia.com/wiki/BMO" , body: "" , author_id: 1})
 Post.create({title: "Banana Man", url: "http://adventuretime.wikia.com/wiki/Banana_Man" , body: "To the final froniter" , author_id: 2})
@@ -45,7 +122,6 @@ Post.create({title: "one thousand years", body: "any one remember that good old 
 Post.create({title: "I remember you", body: "Simon and Marcy" , author_id: 2})
 Post.create({title: "Family axe", body: "some kind of lute" , author_id: 3})
 Post.create({title: "Nightosphere", body: "Spooky stuff all around" , author_id: 1})
-
 
 Posting.create({post_id: 1, sub_id: 1});
 
@@ -96,12 +172,39 @@ Modding.create({moderator_id: 2, sub_id: 5});
 Modding.create({moderator_id: 3, sub_id: 3});
 Modding.create({moderator_id: 3, sub_id: 4});
 Modding.create({moderator_id: 3, sub_id: 5});
+allusers = User.all
+allsubs = Sub.all
+allposts = Post.all
 
-Sub.all.each do |sub|
-  User.all.each do |user|
-    Subscription.create({subscriber_id: user.id, sub_id: sub.id})
-  end
+#xposting
+200.times do 
+  sub, post = allsubs.sample, allposts.sample
+  next if Posting.create({post_id: post.id, sub_id: sub.id })
 end
 
+100.times do 
+  sub, user = allsubs.sample, allusers.sample
+  next if Modding.create({moderator_id: user.id, sub_id: sub.id })
+end
 
+100.times do
+  sub, user = allsubs.sample, allusers.sample
+  next if Subscription.create({subscriber_id: user.id, sub_id: sub.id })
+end
 
+alltext = subnames + des + t + u
+
+#seed comments
+100.times do
+  text = alltext.sample
+  user, post = allusers.sample,  allposts.sample
+  next if Comment.create({author_id: user.id, body: text, post_id: post.id})
+end
+
+300.times do
+  text = alltext.sample
+  c_id = Comment.all.sample.id
+  u_id = User.all.sample.id
+  p_id = Post.all.sample.id
+  next if Comment.create({author_id: u_id, body: text, post_id: p_id, parent_comment_id: c_id})
+end
