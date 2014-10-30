@@ -27,8 +27,10 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 
 # Use ActiveModel has_secure_password
+gem "omniauth-facebook"
 gem 'ejs'
 gem 'concern'
+gem 'figaro'
 gem 'bcrypt', '~> 3.1.7'
 group :development do
   gem 'better_errors'

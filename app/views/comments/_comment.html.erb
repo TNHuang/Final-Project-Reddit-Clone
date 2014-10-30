@@ -3,16 +3,19 @@
 </div>
 
 <a href="#<%= comment.id %>" name="<%= comment.id %>"><%= comment.body %></a> by <a href="<%= user_url(comment.author) %>"><%= comment.author.name %></a><br>
+
+<% if comment.author == current_user %>
+  <div class="edit-comment">edit</div>
+  <%= button_to "delete comment", comment_url(comment) ,method: :delete %>
+  <ul class="hidden"><%= render "comments/new", comment: Comment.find(comment.id) %></ul>
+<% end %>
+
 <div class="reply-comment">reply</div>
-<div class="edit-comment">edit</div>
-<ul class="hidden"><%= render "comments/new", comment: Comment.find(comment.id) %></ul>
 <ul class="hidden"><%= render "comments/new", comment: current_user.comments.new({post_id: @post.id, parent_comment_id: comment.id}) %></ul>
 
 <% children = comments_by_parent[comment.id] %>
 
 <% if children.length > 0 %>
-
-  <p>comment_id: <%= comment.id %></p>
   <ul>
     <% children.each do |child_comment| %>
       <li>

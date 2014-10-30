@@ -22,18 +22,12 @@ class CommentsController < ApplicationController
     redirect_to post_url(@comment.post_id)
   end
 
-  def show
-    @comment = Comment.find(params[:id]);
-    @new_comment = Comment.new( { post_id: @comment.post_id, parent_comment_id: @comment.id })
-    render :show
-  end
-
 
   def destroy
     @comment = Comment.find(params[:id])
     post_id = @comment.post_id
     @comment.destroy
-    redirect_to new_post_comment_url(post_id)
+    redirect_to post_url(post_id)
   end
   
   def downvote
@@ -53,7 +47,7 @@ class CommentsController < ApplicationController
     else
       @comment.user_votes.create!(user_id: current_user.id, value: dir)  
     end
-    redirect_to post_url(@comment.post)
+    redirect_to post_url(@comment.post)+"##{@comment.id}"
   end
   
   private
