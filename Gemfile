@@ -27,7 +27,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 
 # Use ActiveModel has_secure_password
-gem "omniauth-facebook"
+gem 'omniauth-facebook'
 gem 'ejs'
 gem 'concern'
 gem 'figaro'

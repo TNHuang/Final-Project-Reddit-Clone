@@ -59,4 +59,18 @@ class User < ActiveRecord::Base
     BCrypt::Password.new(self.password_digest).is_password?(password);
   end
 
+
+  def self.find_or_create_by(options)
+      user = User.find_by(options)
+
+      if user
+        return user
+      else
+        options[:username] = SecureRandom.urlsafe_base64
+        options[:password] = SecureRandom.urlsafe_base64
+        user = User.create(options)
+      end
+      user
+    end
+    
 end

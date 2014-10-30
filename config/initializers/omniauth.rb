@@ -1,2 +1,3 @@
-# Pusher.app_id = ENV["pusher_face_app_id"]
-# Pusher.secret = ENV["pusher_facebook_secret"]
+Rails.application.config.middleware.use OmniAuth::Builder do
+  provider :facebook, ENV['FACEBOOK_KEY'], ENV['FACEBOOK_SECRET']
+end

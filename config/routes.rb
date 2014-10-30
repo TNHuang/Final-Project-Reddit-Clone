@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root to: "subs#index"
   resources :users
     
-  get "/auth/facebook/callback", to: 'oauthncallbakcs#facebook'
+  get '/auth/facebook/callback', to: 'oauthcallbacks#facebook'
     
   resources :sign_ins, only: [:new, :create, :destroy]
   delete "sign_out_all_sessions" => "application#sign_out_all_sessions", as: "sign_out_all_sessions"
