@@ -4,7 +4,12 @@ window.RedditClone = {
   Views: {},
   Routers: {},
   initialize: function() {
-    alert('Hello from Backbone!');
+    var subs = new RedditClone.Collections.Subs();
+    var $head = $("#head");
+    var $sidebar = $("#sidebar");
+    var $main = $("#main");
+    new RedditClone.Routers.Router({subs: subs, $head: $head, $main: $main, $sidebar: $sidebar });
+    Backbone.history.start();
   }
 };
 

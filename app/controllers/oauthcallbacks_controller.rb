@@ -5,6 +5,7 @@ class OauthcallbacksController < ApplicationController
         uid:      request.env['omniauth.auth'][:uid]
       })
       sign_in(@user)
-      redirect_to user_url(@user)
+      redirect_to "root#root"
+      # redirect_to user_url(@user)
   end
 end

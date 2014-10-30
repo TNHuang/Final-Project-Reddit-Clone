@@ -3,7 +3,7 @@
 <% @subs.each do |sub| %>
   <div class="vote-wrapper"><%= button_to "Upvote", upvote_sub_url(sub) %><span><%= sub.votes %></span>
   <%= button_to "Downvote", downvote_sub_url(sub) %>
-  </div> 
+  </div>
   <li><a href="<%= sub_url(sub) %>"><%= sub.name %></a>: <%= sub.subscribers.count %> subscribers
   <% if sub.moderators.include?(current_user) %>
     <%= button_to "delete sub", sub_url(sub) ,method: :delete %>

@@ -4,8 +4,6 @@
   <title>RedditClone</title>
 
 
-
-
 </head>
 <body>
 <!-- <div class="post-wrapper clearfix">
@@ -18,16 +16,7 @@
     <div class="comment-link"><a href="#">testcomment</a></div>
   </div>
 </div> -->
-<!-- <div class="post-wrapper clearfix">
-  <div class="vote-wrapper">
-    <div class="arrow-up" >upvote</div><div class="vote-count">d
-    </div><div class="arrow-down">downvote</div>
-  </div>
-  <div class="post">
-    <div><a href="#">test message</a> by <a href="#">test_author</a></div>
-    <div class="comment-link"><a href="#">testcomment</a></div>
-  </div>
-</div> -->
+
 
 
 
@@ -51,12 +40,20 @@
 <% end %>
 
 <br>
+
+
 <% if flash[:errors] %>
 <%= flash[:errors] %>
 <% end %>
 
 
-<%= yield %>
+<div id="header"></div>
+<div id="main">
+  <%= yield %>
+</div>
+
+<div id="sidebar"></div>
+
 
 
 

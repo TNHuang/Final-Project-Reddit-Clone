@@ -9,14 +9,14 @@ class SignInsController < ApplicationController
   def create
     @user = User.find_by_credentials(
             params[:user][:name],
-            params[:user][:password])     
+            params[:user][:password])
     if @user
       sign_in(@user)
-      redirect_to subs_url
+      redirect_to "/api/subs"
     else
       flash.now[:errors] = "Invalid username or password"
       render :new
-    end            
+    end
 
   end
 
