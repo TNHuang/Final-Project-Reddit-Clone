@@ -19,6 +19,9 @@ ul, ol, li{
   margin-bottom: 10px;
 }
 
+.hidden {
+  display: none;
+}
 li {
   border: 1px solid block;
   display: block;
@@ -30,9 +33,52 @@ li {
   width: 70px;
 }
 .vote-wrapper > * {
-  display:block; 
+  display:block;
+
   margin: 0 auto;
 }
 
 
+
+
+.arrow-up, .arrow-down {
+  text-align: center;
+}
+
+.arrow-up:hover{
+  background: yellow;
+}
+
+.arrow-down:hover{
+  background: yellow;
+}
+.vote-count{
+  text-align:center;
+}
+.clearfix:after {
+  content: "";
+  display:block;
+  clear:both;
+}
+
+.vote-wrapper {
+  border-right: 1px solid gray;
+}
+.vote-wrapper, .post{
+  display: block;
+  float: left;
+}
+.post {
+  position: relative;
+  border: 1px solid red;
+  height:50px;
+}
+
+.post-wrapper {
+  border: 1px solid blue;
+}
+.comment-link {
+  position: absolute;
+  bottom: 0px;
+}
 

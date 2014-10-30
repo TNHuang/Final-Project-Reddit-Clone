@@ -46,7 +46,7 @@ class PostsController < ApplicationController
 
   def destroy
     #dont destroy the actual post destroy the posting only instead
-    @posting = Posting.find({post_id: params[:id], sub_id: params[:sub_id]});
+    @posting = Posting.find_by({post_id: params[:id], sub_id: params[:sub_id]});
     @posting.destroy
     redirect_to sub_url(params[:sub_id])
   end
@@ -54,11 +54,11 @@ class PostsController < ApplicationController
   def downvote
     vote(-1);
   end
-  
+
   def upvote
     vote(1);
   end
-  
+
   def vote(dir)
     @post = Post.find(params[:id])
     @user_vote = UserVote.find_by( {votable_id: @post.id, votable_type: "Post", user_id: current_user.id})
@@ -66,7 +66,7 @@ class PostsController < ApplicationController
     if @user_vote
       @user_vote.update(value: dir)
     else
-      @post.user_votes.create!(user_id: current_user.id, value: dir)  
+      @post.user_votes.create!(user_id: current_user.id, value: dir)
     end
     redirect_to :back
   end
@@ -75,6 +75,6 @@ class PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:title, :url, :body, :user_id, sub_id: []);
   end
-  
-  
+
+
 end

@@ -26,11 +26,11 @@ class User < ActiveRecord::Base
   foreign_key: :author_id
 
   has_many :sign_ins, inverse_of: :user
-  
+
   has_many :user_votes,
   class_name: "UserVote",
   foreign_key: :user_id
-  
+
   #perfect pig
   def get_karma
     post_karma, comment_karma= 0, 0
@@ -66,11 +66,11 @@ class User < ActiveRecord::Base
       if user
         return user
       else
-        options[:username] = SecureRandom.urlsafe_base64
+        options[:name] = SecureRandom.urlsafe_base64
         options[:password] = SecureRandom.urlsafe_base64
         user = User.create(options)
       end
       user
     end
-    
+
 end
