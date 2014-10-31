@@ -42,6 +42,7 @@ class UsersController < ApplicationController
 
   def destroy
     @user = User.find(params[:id]);
+    SignIn.where(user_id: current_user.id).destroy_all
     @user.destroy
     redirect_to subs_url
   end
