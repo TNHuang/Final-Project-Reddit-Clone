@@ -40,7 +40,7 @@ li:hover > .hidden {
   display: block;
 }
 li:hover {
-  border: 1px dashed black;
+  border-left: 1px dashed black;
 }
 li {
   display: block;
@@ -63,12 +63,13 @@ li {
 }
 
 .login-container {
+  border-radius: 5px 5px 0 0;
   background: #F2F7FF;
   padding: 5px;
   position: absolute;
   bottom: 0;
   display: block;
-  border: 1px solid black;
+
   right: 10px;
   width: 380px;
 }
@@ -84,11 +85,15 @@ li {
 
 .header-nav {
   margin: 0;
-  background: #D5E2F8;
+  background: linear-gradient(#BC2000, #3D0E08);
+  box-shadow: 15px 0 100px 10px #3D0E08;
   position: relative;
 
   height: 80px;
 
+}
+.header-nav a{
+  color: white;
 }
 
 .subs-nav > *{
