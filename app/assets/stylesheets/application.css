@@ -92,13 +92,11 @@ li {
   height: 80px;
 
 }
-.header-nav a{
-  color: white;
-}
 
 .subs-nav > *{
   display: block;
   float: left;
+  color: white;
   padding-right: 5px;
 }
 .subs-nav > a:hover {
