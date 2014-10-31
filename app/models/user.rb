@@ -66,7 +66,7 @@ class User < ActiveRecord::Base
       if user
         return user
       else
-        options[:name] = SecureRandom.urlsafe_base64
+        options[:name] = "Facebook_login#{rand(400)}"
         options[:password] = SecureRandom.urlsafe_base64
         user = User.create(options)
       end

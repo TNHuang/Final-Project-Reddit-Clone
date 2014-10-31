@@ -3,19 +3,22 @@
 <form action="<%= sub_url(@sub) %>" method="POST">
 <%= form_auth %>
 <%= form_patch %>
+<table>
+  <tr>
+    <td><label for="name">name</label></td>
+    <td><input type="text" name="sub[name]" value="<%= @sub.name %>"></td>
+  </tr>
+  <tr>
+    <td><label for="title">title</label></td>
+    <td><input type="text" name="sub[title]" value="<%= @sub.title %>"></td>
+  </tr>
+  <tr>
+    <td><label for="description">description</label></td>
+    <td><textarea name="sub[description]" ><%= @sub.description %></textarea></td>
+  </tr>
 
-<label for="name">name</label>
-<input type="text" name="sub[name]" value="<%= @sub.name %>">
-<br>
+</table>
 
-<label for="title">title</label>
-<input type="text" name="sub[title]" value="<%= @sub.title %>">
-<br>
-
-<label for="description">description</label>
-<textarea name="sub[description]" ><%= @sub.description %></textarea>
-
-<br>
 
 <button>Update Sub!</button>
 </form>

@@ -30,11 +30,19 @@ ul, ol, li{
   margin-bottom: 10px;
 }
 
-/*.hidden {
+a:hover {
+  color: red;
+}
+.hidden {
   display: none;
-}*/
+}
+li:hover > .hidden {
+  display: block;
+}
+li:hover {
+  border: 1px dashed black;
+}
 li {
-  border: 1px solid block;
   display: block;
 }
 
@@ -62,11 +70,16 @@ li {
   display: block;
   border: 1px solid black;
   right: 10px;
-  width: 340px;
+  width: 380px;
 }
+.login-container:hover {
+    box-shadow: 0 0 5px 2px black;
+}
+
 .login-container > * {
   float: left;
   padding-left: 10px;
+
 }
 
 .header-nav {
@@ -89,9 +102,10 @@ li {
 }
 
 .sign-in-account {
+  position: absolute;
   display: block;
   width: 300px;
-  float: right;
+  right: 50px;
 
 }
 
@@ -108,6 +122,7 @@ table {
 }
 
 .sidebar {
+
   display: block;
   float: right;
   background: #F1F3F4;
@@ -119,6 +134,14 @@ table {
 .body-wrapper {
   width: 1400px;
   margin: 0 auto;
+}
+.sub-user-container{
+  display: block;
+  float: left;
+}
+
+.user-container{
+
 }
 /*
 .arrow-up, .arrow-down {

@@ -52,14 +52,16 @@
           <br>
           <% comment_count = post.comments.count %>
           <a href="<%= post_url(post) %>"><%= comment_count %> comment<% if comment_count > 1%>s<% end %>
-          </a><% if current_user == post.author %>
+          </a></td>
+          <td>
+            <% if current_user == post.author %>
 
-            <form action="<%= post_url({id: post.id, sub_id: @sub.id}) %>" method="POST"><%= form_auth %><%= form_delete %>
-              <input type="submit" value="delet post">
-            </form>
+              <form action="<%= post_url({id: post.id, sub_id: @sub.id}) %>" method="POST"><%= form_auth %><%= form_delete %>
+                <input type="submit" value="delet post">
+              </form>
 
-          <% end %></td>
-
+            <% end %>
+          </td>
       </tr>
     <% end %>
 </table>

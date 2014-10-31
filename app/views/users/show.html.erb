@@ -4,21 +4,30 @@
   <br>
   <%= link_to "back to all subs", subs_url %>
 
-  <h3>user show page</h3>
+  <div class="user-container">
+  <div class="sub-user-container">
+    <h3>user show page</h3>
 
-  <p>username: <%= @user.name %></p>
-  <p>email: <%= @user.email %></p>
-  <% karmas = @user.get_karma %>
-  post karma: <%= karmas[:post_karma] %>
-  <br>comment karma: <%= karmas[:comment_karma] %>
-
+    <p>username: <%= @user.name %></p>
+    <p>email: <%= @user.email %></p>
+    <% karmas = @user.get_karma %>
+    post karma: <%= karmas[:post_karma] %>
+    <br>comment karma: <%= karmas[:comment_karma] %><br>
+    <% if current_user == @user %>
+      <%= link_to "edit user", edit_user_url(@user) %>
+      <%= button_to "delete user", user_url(@user) ,method: :delete %>
+    <% end %>
+  </div>
+  <div class="sub-user-container">
   <h3>moderators of:</h3>
   <ul>
     <% @user.mod_subs.each do |mod_sub| %>
       <li><a href="<%= sub_url(mod_sub) %>"><%= mod_sub.title %></a></li>
     <% end %>
   </ul>
+  </div>
 
+  <div class="sub-user-container">
   <h3>subscribe to:</h3>
   <ul>
     <% @user.subs.each do |sub| %>
@@ -27,7 +36,8 @@
       </li>
     <% end %>
   </ul>
-
+  </div>
+  <div class="sub-user-container">
   <h3>All posts so far</h3>
   <ul>
     <% @user.posts.each do |post| %>
@@ -37,13 +47,8 @@
       </li>
     <% end %>
   </ul>
-
-
-  <br>
-  <% if current_user == @user %>
-    <%= link_to "edit user", edit_user_url(@user) %>
-    <%= button_to "delete user", user_url(@user) ,method: :delete %>
-  <% end %>
+  </div>
+  </div>
 
 </div>
 

@@ -11,11 +11,12 @@
         </div>
       </td>
       <td><li><a href="<%= sub_url(sub) %>"><%= sub.name %></a>
-    <% if sub.moderators.include?(current_user) %>
-      <%= button_to "delete sub", sub_url(sub) ,method: :delete %>
-    <% end %>
+
     </li></td>
     <td> <%= sub.subscribers.count %> subscribers</td>
+    <td><% if sub.moderators.include?(current_user) %>
+      <%= button_to "delete sub", sub_url(sub) ,method: :delete %>
+    <% end %></td>
     </tr>
   <% end %>
 </table>
