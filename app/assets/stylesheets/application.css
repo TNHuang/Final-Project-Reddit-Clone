@@ -21,6 +21,10 @@
   border: none;
   background: none;
 }*/
+html, body {
+  margin: 0;
+  padding: 0;
+}
 ul, ol, li{
   list-style: none;
   margin-bottom: 10px;
@@ -69,9 +73,9 @@ li {
   margin: 0;
   background: #D5E2F8;
   position: relative;
-  border: 1px solid black;
+
   height: 80px;
-  border-radius: 5px;
+
 }
 
 .subs-nav > *{
@@ -94,7 +98,28 @@ li {
 .sign-in-account  * {
   margin: 10px;
 }
+table tr, table td{
+  border: 0;
+  margin:0;
+  padding: 0;
+}
+table {
+  margin-left: 50px;
+}
 
+.sidebar {
+  display: block;
+  float: right;
+  background: #F1F3F4;
+}
+.add-padding-left {
+  margin-left: 50px;
+}
+
+.body-wrapper {
+  width: 1400px;
+  margin: 0 auto;
+}
 /*
 .arrow-up, .arrow-down {
   text-align: center;

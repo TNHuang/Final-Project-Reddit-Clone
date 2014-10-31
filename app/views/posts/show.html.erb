@@ -1,17 +1,24 @@
-<h3>Post show page</h3>
 
-
-<li>title: <a href="<%= @post.url %>"><%= @post.title %></a> by author: <a href="<%= user_url(@author) %>"><%= @author.name %></a></li>
-<p>content: <%= @post.body %></p>
-
-<br>
-
-<h3>Subs</h3>
+<div class="sidebar">
+<h3>Subs x-posted</h3>
 <ol>
   <% @post.subs.each do |sub| %>
     <li><a href="<%= sub_url(sub) %>"><%= sub.title %></a></li>
   <% end %>
 </ol>
+</div>
+
+<div class="add-padding-left">
+<h3>Post show page</h3>
+
+<li> title: <a href="<%= @post.url %>"><%= @post.title %></a> by author: <a href="<%= user_url(@author) %>"><%= @author.name %></a></li>
+<% if current_user == @post.author %>
+    <%= link_to "edit post", edit_post_url(@post) %><br>
+<% end %>
+<%= @post.votes %> votes for this post
+<p>content: <%= @post.body %></p>
+
+
 
 
 
@@ -22,7 +29,7 @@
     <% comments_by_parent[nil].each do |zenith_comment| %>
       <li>
         <%= render "comments/comment",
-                   comment: zenith_comment, 
+                   comment: zenith_comment,
                    comments_by_parent: comments_by_parent%>
       </li>
     <% end %>
@@ -30,11 +37,9 @@
 <br>
 
 <!--make comments later -->
-<% if current_user == @post.author %>
-  <br>
-    <%= link_to "edit post", edit_post_url(@post) %>
-  <br>
-<% end %>
+
+</div>
+
 
 
 

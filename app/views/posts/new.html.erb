@@ -2,21 +2,25 @@
 
 <form action="<%= posts_url({sub_id: @sub.id}) %>" method="POST">
 <%= form_auth %>
-<label for="title">Title:</label>
-<input type="text" name="post[title]" value="<%= @post.title %>">
-<br>
 
-<label for="url">URL:</label>
-<input type="text" name="post[url]" value="<%= @post.url %>">
-<br>
-
-<label for="body">body</label>
-<textarea name="post[body]" ><%= @post.body %></textarea>
-<br>
-
-<label for="sub">sub</label>
-<input type="text" name="subname" value="<%= @sub.name %>" id="sub">
-<br>
+<table>
+  <tr>
+    <td><label for="title">Title:</label></td>
+    <td><input type="text" name="post[title]" value="<%= @post.title %>"></td>
+  </tr>
+  <tr>
+    <td><label for="url">URL:</label></td>
+    <td><input type="text" name="post[url]" value="<%= @post.url %>"></td>
+  </tr>
+  <tr>
+    <td><label for="body">body</label></td>
+    <td><textarea name="post[body]" ><%= @post.body %></textarea></td>
+  </tr>
+  <tr>
+    <td><label for="sub">sub</label></td>
+    <td><input type="text" name="subname" value="<%= @sub.name %>" id="sub"></td>
+  </tr>
+</table>
 
 <button>Create Post!</button>
 </form>

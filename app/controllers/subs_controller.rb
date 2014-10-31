@@ -11,7 +11,7 @@ class SubsController < ApplicationController
 
   def create
     @sub = Sub.new(subs_params)
-  
+
     if @sub.save
       Modding.create({moderator_id: current_user.id, sub_id: @sub.id})
       redirect_to sub_url(@sub)
@@ -48,11 +48,11 @@ class SubsController < ApplicationController
   def downvote
     vote(-1);
   end
-  
+
   def upvote
     vote(1);
   end
-  
+
   def vote(dir)
     @sub = Sub.find(params[:id])
     @user_vote = UserVote.find_by( {votable_id: @sub.id, votable_type: "Sub", user_id: current_user.id})
@@ -60,11 +60,11 @@ class SubsController < ApplicationController
     if @user_vote
       @user_vote.update(value: dir)
     else
-      @sub.user_votes.create!(user_id: current_user.id, value: dir)  
+      @sub.user_votes.create!(user_id: current_user.id, value: dir)
     end
     redirect_to subs_url
   end
-  
+
   private
   def subs_params
     params.require(:sub).permit(:name, :title, :description);

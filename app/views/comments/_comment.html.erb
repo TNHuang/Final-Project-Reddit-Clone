@@ -1,22 +1,32 @@
-<div class="vote-wrapper"><%= button_to "Upvote", upvote_comment_url(comment) %><span><%= comment.votes %></span>
+<table class="comment-post" >
+  <tr>
+    <td><div class="vote-wrapper"><%= button_to "Upvote", upvote_comment_url(comment) %><span><%= comment.votes %></span>
 <%= button_to "Downvote", downvote_comment_url(comment) %>
-</div>
+</div></td>
+    <td><a href="#<%= comment.id %>" name="<%= comment.id %>"><%= comment.body %></a> <br>by <a href="<%= user_url(comment.author) %>"><%= comment.author.name %></a></td>
+    <td><% if comment.author == current_user %>
+  <%= button_to "delete comment", comment_url(comment) ,method: :delete %>
 
-<a href="#<%= comment.id %>" name="<%= comment.id %>"><%= comment.body %></a> by <a href="<%= user_url(comment.author) %>"><%= comment.author.name %></a><br>
+<% end %></td>
+  </tr>
+</table>
 
 <% if comment.author == current_user %>
-  <div class="edit-comment">edit</div>
-  <%= button_to "delete comment", comment_url(comment) ,method: :delete %>
+
+
   <ul class="hidden"><%= render "comments/new", comment: Comment.find(comment.id) %></ul>
 <% end %>
 
-<div class="reply-comment">reply</div>
+
+
+
 <ul class="hidden"><%= render "comments/new", comment: current_user.comments.new({post_id: @post.id, parent_comment_id: comment.id}) %></ul>
 
 <% children = comments_by_parent[comment.id] %>
 
 <% if children.length > 0 %>
   <ul>
+
     <% children.each do |child_comment| %>
       <li>
         <%= render "comments/comment", comment: child_comment, comments_by_parent: comments_by_parent %>

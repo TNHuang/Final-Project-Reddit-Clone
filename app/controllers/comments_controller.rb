@@ -29,27 +29,27 @@ class CommentsController < ApplicationController
     @comment.destroy
     redirect_to post_url(post_id)
   end
-  
+
   def downvote
     vote(-1);
   end
-  
+
   def upvote
     vote(1);
   end
-  
+
   def vote(dir)
     @comment = Comment.find(params[:id])
-    @user_vote = UserVote.find_by( {votable_id: @comment.id, votable_type: "Comment", user_id: current_user.id})
+    @user_vote = UserVote.find_by( {votable_id: @comment.id, votable_type: "Comment", user_id: @comment.author_id})
     #to prevent double vote, search for existing vote first
     if @user_vote
       @user_vote.update(value: dir)
     else
-      @comment.user_votes.create!(user_id: current_user.id, value: dir)  
+      @comment.user_votes.create!(user_id: @comment.author_id, value: dir)
     end
     redirect_to post_url(@comment.post)+"##{@comment.id}"
   end
-  
+
   private
   def comment_params
     params.require(:comment).permit(:post_id, :parent_comment_id, :body);
