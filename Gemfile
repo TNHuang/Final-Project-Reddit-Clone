@@ -32,6 +32,7 @@ gem 'ejs'
 gem 'concern'
 gem 'figaro'
 gem 'bcrypt', '~> 3.1.7'
+gem "underscore"
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
