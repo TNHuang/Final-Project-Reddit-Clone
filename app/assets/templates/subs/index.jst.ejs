@@ -1,10 +1,22 @@
-<p>test index</p>
-<div>
-  <%= console.log(subs) %>
 
-  <% subs.forEach( function(sub){ %>
-    <span><%= sub.escape('title') %></span>
 
+<div class="add-padding-left">
+<section class="main-body"></section>
+<h3>all subreddits</h3>
+//create new sub reddit
+<table>
+    <% subs.forEach( function(sub) { %>
+    <tr>
+      <td>
+        <%= sub.votes %>
+      </td>
+      <td><li><%= sub.escape('name') %></li></td>
+      <td><li><%= sub.escape('description') %></li></td>
+    <td>  subscribers</td>
+
+    </tr>
   <% }) %>
-</div>
+</table>
 
+
+</div>

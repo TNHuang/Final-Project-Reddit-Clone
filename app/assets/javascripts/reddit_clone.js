@@ -6,7 +6,7 @@ window.RedditClone = {
   initialize: function() {
 
     var subs = new RedditClone.Collections.Subs();
-
+    console.log("getting initialize")
     var $head = $("#head");
     var $sidebar = $("#sidebar");
     var $main = $("#main");
