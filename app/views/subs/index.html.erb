@@ -1,18 +1,27 @@
+
+<section class="main-body"></section>
 <h3>all subreddits</h3>
-<ul>
-<% @subs.each do |sub| %>
-  <div class="vote-wrapper"><%= button_to "Upvote", upvote_sub_url(sub) %><span><%= sub.votes %></span>
-  <%= button_to "Downvote", downvote_sub_url(sub) %>
-  </div>
-  <li><a href="<%= sub_url(sub) %>"><%= sub.name %></a>: <%= sub.subscribers.count %> subscribers
-  <% if sub.moderators.include?(current_user) %>
-    <%= button_to "delete sub", sub_url(sub) ,method: :delete %>
-  <% end %>
-  </li>
-<% end %>
-
-</ul>
-<!--how to modify subscribtion and modding? -->
-
 <%= link_to "create new sub", new_sub_url%>
-<br>
+<table>
+    <% @subs.each do |sub| %>
+    <tr>
+      <td>
+        <div class="vote-wrapper"><%= button_to "Upvote", upvote_sub_url(sub) %><span><%= sub.votes %></span>
+        <%= button_to "Downvote", downvote_sub_url(sub) %>
+        </div>
+      </td>
+      <td><li><a href="<%= sub_url(sub) %>"><%= sub.name %></a>
+    <% if sub.moderators.include?(current_user) %>
+      <%= button_to "delete sub", sub_url(sub) ,method: :delete %>
+    <% end %>
+    </li></td>
+    <td> <%= sub.subscribers.count %> subscribers</td>
+    </tr>
+  <% end %>
+</table>
+
+
+
+
+
+

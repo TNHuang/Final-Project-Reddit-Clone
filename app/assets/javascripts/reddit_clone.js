@@ -4,15 +4,18 @@ window.RedditClone = {
   Views: {},
   Routers: {},
   initialize: function() {
+
     var subs = new RedditClone.Collections.Subs();
+
     var $head = $("#head");
     var $sidebar = $("#sidebar");
     var $main = $("#main");
-    new RedditClone.Routers.Router({subs: subs, $head: $head, $main: $main, $sidebar: $sidebar });
+    var options = {subs: subs, $head: $head, $main: $main, $sidebar: $sidebar }
+    new RedditClone.Routers.Router(options);
     Backbone.history.start();
   }
 };
 
 $(document).ready(function(){
-  RedditClone.initialize();
+  // RedditClone.initialize();
 });

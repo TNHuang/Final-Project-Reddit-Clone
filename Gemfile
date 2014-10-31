@@ -38,6 +38,7 @@ group :development do
   gem 'pry-rails'
   gem 'quiet_assets'
   gem 'backbone-on-rails'
+
 end
 
 group :test, :development do

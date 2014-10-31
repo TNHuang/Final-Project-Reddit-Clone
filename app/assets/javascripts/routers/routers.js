@@ -2,6 +2,8 @@ RedditClone.Routers.Router = Backbone.Router.extend({
   initialize: function (options) {
     this.$main = options.$main;
     this.$head = options.$head;
+    this.$sidebar = options.$sidebar;
+    this.subs = options.subs;
     // Router({subs: subs, $head: $headnav, $main: $main });
   },
 
@@ -11,19 +13,19 @@ RedditClone.Routers.Router = Backbone.Router.extend({
   },
 
   subsIndex: function () {
-    alert("index view getting called");
-    var subs = new TrelloClone.Collections.Subs.fetch();
-    var indexView = new RedditClone.Views.BoardsIndex({
-      collection: subs
+
+    this.subs.fetch();
+    var indexView = new RedditClone.Views.SubsIndex({
+      collection: this.subs
     });
 
-    this._swapView(indexView);
+    this._swapView(indexView, this.$main);
+
   },
 
-  _swapView: function (view, $el) {
+  _swapView: function (view, $target) {
     this.currentView && this.currentView.remove();
     this.currentView = view;
-
-    this.$el.html(view.render().$el);
+    $target.html(view.render().$el);
   }
-})
+});

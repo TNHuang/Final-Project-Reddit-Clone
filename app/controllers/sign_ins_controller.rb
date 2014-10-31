@@ -1,8 +1,9 @@
 class SignInsController < ApplicationController
-  before_action :require_no_user, only: [:create, :new]
+  # before_action :require_no_user, only: [:create, :new]
   before_action :required_sign_in, only: :destroy
 
   def new
+
     render :new
   end
 
@@ -12,7 +13,8 @@ class SignInsController < ApplicationController
             params[:user][:password])
     if @user
       sign_in(@user)
-      redirect_to "/api/subs"
+      # redirect_to "/#/subs"
+      redirect_to users_url(@user)
     else
       flash.now[:errors] = "Invalid username or password"
       render :new

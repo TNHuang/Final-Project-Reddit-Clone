@@ -1,16 +1,26 @@
-<h3>Sign In</h3>
-<p>user Finn as name and "password" as password for guest account</p>
-<a href="/auth/facebook/">Login with Facebook</a>
+<section class="sign-in-account">
+<h3>Log in</h3>
+
+<table>
+
+
+
+
+
 <form action="<%= sign_ins_url %>" method="POST">
 <%= form_auth %>
-<label for="name">name</label>
-<input type="text" name="user[name]" value="Finn" id="name">
-<br>
-<label for="password">password</label>
-<input type="password" name="user[password]" value="password" id="password">
+<tr>
+  <td><label for="name">name:</label></td>
+  <td><input type="text" name="user[name]" value="Finn" id="name"></td>
+</tr>
+<tr>
+  <td><label for="password">password: </label></td>
+  <td><input type="password" name="user[password]" value="password" id="password"><br></td>
+</tr>
+<tr><td><button>login</button></td></tr>
 
-<br>
-
-<button>Sign In</button>
 </form>
 
+</table>
+<a href="/auth/facebook/">or Login with Facebook...</a>
+</section>
