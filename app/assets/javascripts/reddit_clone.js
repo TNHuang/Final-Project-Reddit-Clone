@@ -5,8 +5,10 @@ window.RedditClone = {
   Routers: {},
   initialize: function() {
 
+    RedditClone.current_user = window.current_user;
+
     var subs = new RedditClone.Collections.Subs();
-    console.log("getting initialize")
+
     var $head = $("#head");
     var $sidebar = $("#sidebar");
     var $main = $("#main");
@@ -17,5 +19,6 @@ window.RedditClone = {
 };
 
 $(document).ready(function(){
-  // RedditClone.initialize();
+
+  RedditClone.initialize();
 });
