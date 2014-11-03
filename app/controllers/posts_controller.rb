@@ -61,12 +61,12 @@ class PostsController < ApplicationController
 
   def vote(dir)
     @post = Post.find(params[:id])
-    @user_vote = UserVote.find_by( {votable_id: @post.id, votable_type: "Post", user_id: @post.author_id})
+    @user_vote = UserVote.find_by( {votable_id: @post.id, votable_type: "Post", user_id: current_user.id})
     #to prevent double vote, search for existing vote first
     if @user_vote
       @user_vote.update(value: dir)
     else
-      @post.user_votes.create!(user_id: @post.author_id, value: dir)
+      @post.user_votes.create!(user_id: current_user.id, value: dir)
     end
     redirect_to :back
   end

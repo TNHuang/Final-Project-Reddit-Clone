@@ -35,9 +35,9 @@ class User < ActiveRecord::Base
   def get_karma
     post_karma, comment_karma= 0, 0
 
-    self.user_votes.each do |user_vote|
-      user_vote.votable_type == "Post" ?  post_karma += user_vote.value : comment_karma += user_vote.value
-    end
+    self.posts.each { |post| post_karma += post.votes }
+    self.comments.each { |comment| comment_karma += comment.votes }
+
     {post_karma: post_karma, comment_karma: comment_karma }
   end
 
