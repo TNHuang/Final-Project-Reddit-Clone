@@ -20,5 +20,5 @@ window.RedditClone = {
 
 $(document).ready(function(){
 
-  // RedditClone.initialize();
+  RedditClone.initialize();
 });

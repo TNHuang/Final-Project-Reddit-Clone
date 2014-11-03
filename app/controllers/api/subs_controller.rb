@@ -9,7 +9,7 @@ class Api::SubsController < ApplicationController
 
   def new
     @sub = Sub.new
-    render :json => @sub
+    render :new
   end
 
   def create
@@ -17,7 +17,8 @@ class Api::SubsController < ApplicationController
 
     if @sub.save
       Modding.create({moderator_id: current_user.id, sub_id: @sub.id})
-      render :json => @sub
+      @subs = Sub.all
+      render :index
     else
       flash.now[:errors] = @sub.errors.full_messages
       render :new
@@ -47,7 +48,8 @@ class Api::SubsController < ApplicationController
   def destroy
     @sub = Sub.find(params[:id]);
     @sub.destroy
-    redirect_to subs_url
+
+    render :index
   end
 
   def downvote

@@ -13,8 +13,8 @@ class SignInsController < ApplicationController
             params[:user][:password])
     if @user
       sign_in(@user)
-      # redirect_to "/#/subs"
-      redirect_to users_url(@user)
+      redirect_to "/#/subs"
+      # redirect_to users_url(@user)
     else
       flash.now[:errors] = "Invalid username or password"
       render :new

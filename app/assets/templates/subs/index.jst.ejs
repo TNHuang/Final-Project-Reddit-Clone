@@ -1,38 +1,14 @@
 
-<div class="add-padding-left">
+
 <section class="main-body"></section>
 <h3>all subreddits</h3>
-<a href="#/subs/new" class="create-new-sub-link">Create new sub</a>
+<a href="#/subs/new" class="create-new-sub">Create new sub</a>
 
 <table>
-    <% subs.each( function(sub){ %>
-        <%= console.log(sub.escape('moderators')) %>
-      <tr>
-        <td>
-          <div class="vote-wrapper">
-            <button class="upvote-sub" data-sub-id="<%= sub.escape('id') %>">upvote</button>
-            <span><%= sub.escape('votes') %></span>
-            <button class="downvite-sub" data-sub-id="<%= sub.escape('id') %>">downvote</button>
-          </div>
-        </td>
-        <td>
-          <a href="#/subs/"+"<%= sub.escape('id') %>"><%= sub.escape('title') %></a>   </td>
-        <td>
-        <%= sub.escape('description') %><br><%= sub.escape('sub_count') %>  subscribers
-        </td>
-        <td>
 
-
-          <% if (sub.escape('is_moderator') === "true") { %>
-            hello
-          <% }%>
-
-        </td>
-        </tr>
-    <% }) %>
 
 </table>
 
 
-</div>
+
 

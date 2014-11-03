@@ -16,7 +16,7 @@
     </td>
     <td><%= sub.description %><br><%= sub.subscribers.count %> subscribers</td>
     <td> </td>
-    <td><% if sub.moderators.include?(current_user) %>
+    <td><% if current_user.mod_subs.include?(sub) %>
       <%= button_to "delete sub", sub_url(sub) ,method: :delete %>
     <% end %></td>
     </tr>

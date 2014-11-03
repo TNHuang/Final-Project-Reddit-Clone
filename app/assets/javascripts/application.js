@@ -9,9 +9,10 @@
 //
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
-//
+// Vendor Files
 //= require jquery
 //= require jquery_ujs
+
 //= require underscore
 //= require backbone
 //= require reddit_clone

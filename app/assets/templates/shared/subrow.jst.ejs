@@ -1,0 +1,19 @@
+<td>
+
+  <div class="vote-wrapper">
+    <button class="upvote-sub" data-sub-id="<%= sub.escape('id') %>">upvote</button>
+    <span><%= sub.escape('votes') %></span>
+    <button class="downvite-sub" data-sub-id="<%= sub.escape('id') %>">downvote</button>
+  </div>
+</td>
+<td>
+  <a href="#/subs/"+"<%= sub.escape('id') %>"><%= sub.escape('title') %></a>   </td>
+<td>
+  <%= sub.escape('description') %><br><%= sub.escape('sub_count') %>  subscribers
+</td>
+<td>
+  <% if (sub.escape('is_moderator') === "true") { %>
+    <button class="delete-sub" data-id="<%= sub.escape('id') %>">delete</button>
+  <% }%>
+
+</td>
