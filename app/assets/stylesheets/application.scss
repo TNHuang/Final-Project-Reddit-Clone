@@ -25,6 +25,7 @@ html, body {
   margin: 0;
   padding: 0;
 }
+
 ul, ol, li{
   list-style: none;
   margin-bottom: 10px;
@@ -152,41 +153,51 @@ table {
 .user-container{
 
 }
-/*
-.arrow-up, .arrow-down {
-  text-align: center;
-}
 
-.arrow-up:hover{
-  background: yellow;
-}
-
-.arrow-down:hover{
-  background: yellow;
-}
-.vote-count{
-  text-align:center;
-}
-
-
-.vote-wrapper {
-  border-right: 1px solid gray;
-}
-.vote-wrapper, .post{
+.upvote {
+  background-image: image-url('sprite-reddit.png');
+  background-position: -42px -818px;
+  background-repeat: no-repeat;
+  height: 14px;
+  width: 15px;
+  outline: none;
   display: block;
-  float: left;
-}
-.post {
-  position: relative;
-  border: 1px solid red;
-  height:50px;
+  margin: 0 auto;
 }
 
-.post-wrapper {
-  border: 1px solid blue;
+
+.downvote {
+  background-image: image-url('sprite-reddit.png');
+  background-position: 0px -818px;
+  background-repeat: no-repeat;
+  height: 14px;
+  width: 15px;
+  outline: none;
+  display: block;
+  margin: 0 auto;
 }
-.comment-link {
+
+.upvote:hover {
+  background-position: -63px -818px;
+}
+
+.downvote:hover {
+  background-position: -21px -818px;
+}
+
+.vote-score {
+  text-align: center;
+  color: #c6c6c6;
+  font-weight: bold;
+}
+
+.reddit-logo {
+  background-image: image-url('sprite-reddit.png');
+  background-position: 0px -310px;
+  background-repeat: no-repeat;
+  width: 115px;
+  height: 50px;
+  float: left;
   position: absolute;
-  bottom: 0px;
+  bottom: 0;
 }
-*/

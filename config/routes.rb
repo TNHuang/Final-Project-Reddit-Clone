@@ -37,6 +37,16 @@ Rails.application.routes.draw do
       resources :comments, only: [ :edit, :new, :create, :update]
     end
     resources :comments, only: [:show, :destroy]
+
+
+    resources :subs do
+      member do
+        post "upvote"
+        post "downvote"
+      end
+    end
+
+
   end
 
 end

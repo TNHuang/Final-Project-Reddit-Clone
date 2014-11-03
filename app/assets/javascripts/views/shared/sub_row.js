@@ -9,7 +9,8 @@ RedditClone.Views.SubRow = Backbone.View.extend({
 
   events: {
     "click button.delete-sub": "removeSub",
-
+    "click .upvote-sub": "upvoteSub",
+    "click .downvote-sub": "downvoteSub",
   },
 
   render: function () {
@@ -31,6 +32,14 @@ RedditClone.Views.SubRow = Backbone.View.extend({
         Backbone.history.navigate("subs", {trigger: true})
       }
     });
+  },
+
+  upvoteSub: function (event) {
+    alert("upvote trigger");
+  },
+
+  downvoteSub: function (event) {
+    alert("downvote trigger");
   },
 
 })

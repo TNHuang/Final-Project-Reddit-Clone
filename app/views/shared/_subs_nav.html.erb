@@ -1,11 +1,10 @@
 <header class="header-nav">
-
+<div class="reddit-logo"></div>
 <nav class="subs-nav">
-
-  </div>
   <% Sub.all.each do |sub| %>
   <a href="<%= sub_url(sub) %>"><%= sub.title %></a>
   <% end %>
+
 </nav>
 
 <div class="clearfix">

@@ -54,7 +54,7 @@ class Api::SubsController < ApplicationController
 
   def destroy
     @sub = Sub.find(params[:id]);
-    Modding.where({sub_id: @sub.id}).destroy_all
+    # Modding.where({sub_id: @sub.id}).destroy_all
     @sub.destroy
 
     @subber_count = Sub.subscribers_count_by_sub
@@ -80,7 +80,11 @@ class Api::SubsController < ApplicationController
     else
       @sub.user_votes.create!(user_id: current_user.id, value: dir)
     end
-    render :json => Sub.all
+
+    @subber_count = Sub.subscribers_count_by_sub
+    @is_mod = current_user.sub_mod_by_current_user?
+    @votes_by_sub = Sub.votes_count_by_sub
+    render :index
   end
 
   private
