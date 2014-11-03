@@ -36,7 +36,6 @@ RedditClone.Views.SubRow = Backbone.View.extend({
   },
 
   upvoteSub: function (event) {
-    console.log("upvote getting trigger")
     this.sub.upvote();
   },
 
