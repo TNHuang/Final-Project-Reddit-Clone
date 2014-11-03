@@ -36,7 +36,7 @@ class Api::SubsController < ApplicationController
 
   def edit
     @sub = Sub.find(params[:id])
-    render :json => @sub
+    render :edit
   end
 
   def update
@@ -81,9 +81,9 @@ class Api::SubsController < ApplicationController
       @sub.user_votes.create!(user_id: current_user.id, value: dir)
     end
 
-    @subber_count = Sub.subscribers_count_by_sub
-    @is_mod = current_user.sub_mod_by_current_user?
-    @votes_by_sub = Sub.votes_count_by_sub
+    # @subber_count = Sub.subscribers_count_by_sub
+    # @is_mod = current_user.sub_mod_by_current_user?
+    # @votes_by_sub = Sub.votes_count_by_sub
     render :index
   end
 

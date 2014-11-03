@@ -2,9 +2,8 @@ RedditClone.Views.SubRow = Backbone.View.extend({
   tagName: 'tr',
   template: JST['shared/subrow'],
   initialize: function (options) {
-    this.subs  = options.subs
-    this.model = options.model;
-    this.listenTo(this.model, "sync change remove add", this.render);
+    this.sub = options.sub;
+    this.listenTo(this.sub, "sync change destroy", this.render);
   },
 
   events: {
@@ -14,32 +13,43 @@ RedditClone.Views.SubRow = Backbone.View.extend({
   },
 
   render: function () {
-    var content = this.template({sub: this.model});
+    console.log("rendering subview")
+    var content = this.template({sub: this.sub});
     this.$el.html(content);
     return this;
   },
 
-  leave: function () {
-    this.remove();
+  // voteRender: function () {
+  //   console.log("trigger vote render");
+  //   console.log(this.$('.vote-score'))
+  //   console.log(this.sub.escape('votes'))
+  //   this.$('.vote-score').html(this.sub.votes)
+  // },
+
+  remove: function () {
+    Backbone.View.prototype.remove.call(this);
   },
 
   removeSub: function (event) {
     event.preventDefault();
-    var sub_id = $(event.currentTarget).data("id");
-    var model = this.subs.get(sub_id);
-    model.destroy({
-      success: function () {
-        Backbone.history.navigate("subs", {trigger: true})
-      }
-    });
+    this.sub.destroy();
   },
 
   upvoteSub: function (event) {
-    alert("upvote trigger");
+    console.log("upvote getting trigger")
+    this.sub.upvote();
   },
 
   downvoteSub: function (event) {
-    alert("downvote trigger");
+
+    $.ajax({
+      url: "api/subs/" + this.sub.id + "/downvote",
+      type: "POST",
+      success: function () {
+
+        console.log(this.sub.escape('votes'))
+      }.bind(this)
+    })
   },
 
 })

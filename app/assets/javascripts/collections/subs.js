@@ -23,4 +23,3 @@ RedditClone.Collections.Subs = Backbone.Collection.extend({
 });
 
 
-RedditClone.Collections.subs = new RedditClone.Collections.Subs();
