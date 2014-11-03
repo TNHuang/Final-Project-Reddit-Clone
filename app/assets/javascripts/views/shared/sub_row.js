@@ -1,10 +1,10 @@
-RedditClone.Views.PostRow = Backbone.View.extend({
+RedditClone.Views.SubRow = Backbone.View.extend({
   tagName: 'tr',
   template: JST['shared/subrow'],
   initialize: function (options) {
     this.subs  = options.subs
     this.model = options.model;
-    this.listenTo(this.model, "sync", this.render);
+    this.listenTo(this.model, "sync change remove add", this.render);
   },
 
   events: {

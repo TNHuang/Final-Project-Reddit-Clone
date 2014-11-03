@@ -11,7 +11,8 @@ RedditClone.Routers.Router = Backbone.Router.extend({
     "": "index",
     "subs": "subsIndex",
     "subs/new": "subNew",
-    "subs/:id/edit": "subEdit"
+    "subs/:id": "subShow",
+    "subs/:id/edit": "subEdit",
   },
 
   subsIndex: function () {
@@ -30,9 +31,16 @@ RedditClone.Routers.Router = Backbone.Router.extend({
     this._swapView(newView, this.$main);
   },
 
+  subShow: function (id) {
+    var sub = this.subs.getOrFetch(id);
+    var showView = new RedditClone.Views.SubShow({sub: sub});
+    this._swapView(showView, this.$main);
+  },
+
+
   subEdit: function (id) {
-    var model = this.subs.getOrFetch(id);
-    var editView = new RedditClone.Views.SubEdit({model: model});
+    var sub = this.subs.getOrFetch(id);
+    var editView = new RedditClone.Views.SubEdit({sub: sub, subs: this.subs});
     this._swapView(editView, this.$main);
   },
 

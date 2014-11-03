@@ -3,7 +3,9 @@ class Api::SubsController < ApplicationController
 
   def index
     @subs = Sub.all
-    @current_user = current_user
+    @subber_count = Sub.subscribers_count_by_sub
+    @is_mod = current_user.sub_mod_by_current_user?
+    @votes_by_sub = Sub.votes_count_by_sub
     render :index
   end
 
@@ -17,7 +19,9 @@ class Api::SubsController < ApplicationController
 
     if @sub.save
       Modding.create({moderator_id: current_user.id, sub_id: @sub.id})
-      @subs = Sub.all
+      @subber_count = Sub.subscribers_count_by_sub
+      @is_mod = current_user.sub_mod_by_current_user?
+      @votes_by_sub = Sub.votes_count_by_sub
       render :index
     else
       flash.now[:errors] = @sub.errors.full_messages
@@ -27,7 +31,7 @@ class Api::SubsController < ApplicationController
 
   def show
     @sub = Sub.find(params[:id]);
-    render :json => @sub
+    render :show
   end
 
   def edit
@@ -38,7 +42,10 @@ class Api::SubsController < ApplicationController
   def update
     @sub = Sub.find(params[:id])
     if @sub.update(subs_params)
-      render :json => @sub
+      @subber_count = Sub.subscribers_count_by_sub
+      @is_mod = current_user.sub_mod_by_current_user?
+      @votes_by_sub = Sub.votes_count_by_sub
+      render :index
     else
       flash[:errors] = @sub.errors.full_messages
       render :edit
@@ -47,8 +54,12 @@ class Api::SubsController < ApplicationController
 
   def destroy
     @sub = Sub.find(params[:id]);
+    Modding.where({sub_id: @sub.id}).destroy_all
     @sub.destroy
 
+    @subber_count = Sub.subscribers_count_by_sub
+    @is_mod = current_user.sub_mod_by_current_user?
+    @votes_by_sub = Sub.votes_count_by_sub
     render :index
   end
 

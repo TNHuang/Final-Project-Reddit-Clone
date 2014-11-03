@@ -5,17 +5,19 @@ RedditClone.Views.SubsIndex = Backbone.View.extend({
   initialize: function (options) {
     this.subViews = [];
     this.subs = options.collection;
-    this.listenTo(this.collection, "sync remove", this.render);
+    this.listenTo(this.collection, "sync change", this.render);
   },
 
 
   render: function () {
-
+        console.log("rendering")
     var content = this.template();
     this.$el.html(content);
     var that = this;
+
     this.subs.forEach(function (sub) {
-      var view = new RedditClone.Views.PostRow({ model: sub, subs: that.subs})
+      var view = new RedditClone.Views.SubRow({ model: sub, subs: that.subs})
+
       that.subViews.push(view);
       that.$('table').append(view.render().$el);
     });

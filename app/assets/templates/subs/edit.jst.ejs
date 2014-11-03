@@ -1,0 +1,23 @@
+<h3>Edit Sub</h3>
+
+<form >
+
+<table>
+  <tr>
+    <td><label for="name">name</label></td>
+
+
+    <td><input type="text" name="sub[name]" id="name" value='<%= sub.escape("name") %>' ></td>
+  </tr>
+  <tr>
+    <td><label for="title">title</label></td>
+    <td><input type="text" name="sub[title]" id="title" value='<%= sub.escape("title") %>'></td>
+  </tr>
+  <tr>
+    <td><label for="description">description</label></td>
+    <td><textarea name="sub[description]" id="description" ><%= sub.escape("description") %></textarea></td>
+  </tr>
+</table>
+
+<button>Update Sub!</button>
+</form>

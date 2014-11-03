@@ -1,7 +1,7 @@
 RedditClone.Models.Post= Backbone.Model.extend({
   urlRoot: "/api/posts",
 
-  posts: function () {
+  comments: function () {
       if(!this._comments) {
         this._comments = new RedditClone.Collections.Comments([], { post: this });
       }

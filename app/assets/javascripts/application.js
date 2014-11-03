@@ -12,7 +12,7 @@
 // Vendor Files
 //= require jquery
 //= require jquery_ujs
-
+//= require jquery.serializejson.js
 //= require underscore
 //= require backbone
 //= require reddit_clone

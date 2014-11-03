@@ -1,36 +1,38 @@
-RedditClone.Views.SubForm = Backbone.View.extend({
-  tagName: 'form',
-  template: _.template("<label for='title'>Title</label><br><input type='text' name='title' id='title' value='<%= post.escape('title') %>'><br><label for='body'>Body</label><br><textarea name='body' id='body'><%= post.escape('body') %></textarea><br><button>Submit</button><a href='#/'>Back</a>"),
+RedditClone.Views.SubEdit = Backbone.View.extend({
+  template: JST["subs/edit"],
 
+  initialize: function (options) {
+    this.sub = options.sub;
+    this.subs = this.subs;
+    this.listenTo(this.sub, "sync change add remove", this.render);
+  },
   events: {
-    'click button': 'submit'
+    "submit form": "submit"
   },
 
   render: function () {
-    var renderedContent = this.template({
-      post: this.model
+    var content = this.template({
+      sub: this.sub
     });
-    this.$el.html(renderedContent);
+    this.$el.html(content);
     return this;
   },
 
   submit: function (event) {
     event.preventDefault();
-    var attrs = this.$el.serializeJSON();
 
-    function success () {
-      Backbone.history.navigate("", { trigger: true });
-    }
+    // var $target = $(event.currentTarget);
+    // var sname = $('input#name').val();
+    // var title = $('input#title').val();
+    // var description = $('textarea#description').val();
 
-    this.model.set(attrs);
-    if (this.model.isNew()) {
-      this.collection.create(this.model, {
-        success: success
-      });
-    } else {
-      this.model.save({}, {
-        success: success
-      });
-    }
+    var params = $(event.currentTarget).serializeJSON();
+
+
+    this.sub.save(params["sub"],{
+      success: function () {
+       Backbone.history.navigate("subs", { trigger: true });
+      }
+    })
   }
 });

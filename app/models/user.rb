@@ -41,8 +41,12 @@ class User < ActiveRecord::Base
     {post_karma: post_karma, comment_karma: comment_karma }
   end
 
-  def votes
-    self.user_votes.sum(:value)
+  def sub_mod_by_current_user?
+    is_sub_mod_by_current_user = Hash.new(false);
+    self.mod_subs.each do |sub|
+      is_sub_mod_by_current_user[sub] = true;
+    end
+    is_sub_mod_by_current_user
   end
 
   def self.find_by_credentials(name, password)
