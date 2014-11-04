@@ -1,0 +1,13 @@
+<table>
+  <td>
+    <div class="vote-wrapper">
+      <div class="upvote-comment upvote" ></div>
+      <div class="vote-score"><%= comment.escape('votes') %></div>
+      <div class="downvote-comment downvote"></div>
+    </div>
+  </td>
+  <td>
+    <%= comment.escape('body') %> <br>
+    submitted by <a href="#/users/<%= comment.escape('author_id') %>"><%= comment.escape('author_name') %></a>
+  </td>
+</table>

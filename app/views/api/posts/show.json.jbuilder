@@ -1,18 +1,23 @@
-json.extract! @sub, :id, :name, :title, :description, :created_at, :updated_at
+json.extract! @post, :id, :title, :url, :body, :created_at, :updated_at
+json.author_name @author.name
+json.author_id @author.id
+json.votes @post.votes
 
-json.subs_count @subber_count
-
-json.posts @sub.posts do |post|
-  json.extract! post, :id, :title, :url, :created_at, :updated_at
-  json.comment_count post.comments.count
-  json.is_author @is_author[post]
-  json.votes @votes_by_post[post]
-  json.author @authors[post].name
-  json.author_id @authors[post].id
-
+json.comments @post.comments do |comment|
+  json.extract! comment, :id, :body, :author_id, :parent_comment_id
+  json.votes @votes[comment]
+  json.author_name comment.author.name
+  json.child_comments @comments_by_parent_id[comment]
 end
 
-json.mods @sub.moderators do |mod|
-  json.id mod.id
-  json.name mod.name
-end
+json.subs @post.subs
+# json.parent_comment_ids @post.comments_by_parent.each do | parent_comment_id |
+#
+#   json.comments parent_comment_id.each do |comment|
+#     json.extract! comment, :id, :body
+#     json.author_id @author_by_comment[comment].id
+#     json.author_name @author_by_comment[comment].name
+#     json.is_author @author_by_comment[comment].id == current_user.id
+#   end
+#
+# end

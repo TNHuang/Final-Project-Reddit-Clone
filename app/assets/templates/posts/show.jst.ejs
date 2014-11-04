@@ -1,0 +1,22 @@
+<h3>Post show page</h3>
+
+<div>title: <a href="<%= post.escape('url') %>"><%= post.escape('title') %></a></div>
+<div>submitted by <a href="#/users/<%= post.escape('author_id') %>"><%= post.escape('author_name') %></a></div>
+<p>body: <%= post.escape('body') %></p>
+<p><%= post.escape('votes') %> votes</p>
+
+<div class="sidebar">
+
+</div>
+
+<p>
+  make new commemt
+  <form>
+    <label for="reply">Reply</label><br>
+    <textarea placeholder="replay to this post"></textarea>
+   <button class="reply-to-post">reply</button>
+  </form>
+</p>
+<ul class="posts-wrapper">
+
+</ul>

@@ -41,7 +41,12 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :comments, only: [:show, :destroy]
+    resources :comments, only: [:show, :destroy] do
+      member do
+        post "upvote"
+        post "downvote"
+      end
+    end
 
     resources :subs do
       member do
@@ -49,7 +54,7 @@ Rails.application.routes.draw do
         post "downvote"
       end
     end
-    
+
   end
 
 end

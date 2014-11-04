@@ -43,15 +43,23 @@ class Api::PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id]);
-    @author = User.find(@post.author_id);
+    @author = @post.author;
+    @comments_by_parent_id =  @post.comments_by_parent
+    # @author_by_comment = @post.author_by_post_comment
+    @votes = @post.votes_by_comment
+    render :show
   end
 
 
   def destroy
     #dont destroy the actual post destroy the posting only instead
     @posting = Posting.find_by({post_id: params[:id], sub_id: params[:sub_id]});
-    @posting.destroy
-    render :json => {}
+    if @posting.destroy
+      render json: {}
+    else
+      render json: @posting.errors.full_messages, status: :unprocessable_entity
+    end
+
   end
 
   def downvote

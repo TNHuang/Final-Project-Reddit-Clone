@@ -20,6 +20,7 @@ RedditClone.Models.Post= Backbone.Model.extend({
 
   parse: function (response) {
     if(response.comments) {
+      console.log("inside parse", response.comments)
       this.comments().set(response.comments, { parse: true });
       delete response.comments;
     }

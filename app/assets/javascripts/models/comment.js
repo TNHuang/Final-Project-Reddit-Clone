@@ -1,5 +1,13 @@
 RedditClone.Models.Comment = Backbone.Model.extend({
   urlRoot: "/api/comments",
+  //
+  // child_comments: function () {
+  //
+  // }
+  //
+  // parse: function (response) {
+  //   //parse some other attribute
+  // },
 
   upvote: function () {
     $.ajax({
