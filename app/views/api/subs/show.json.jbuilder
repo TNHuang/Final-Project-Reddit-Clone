@@ -1,6 +1,6 @@
 json.extract! @sub, :id, :name, :title, :description, :created_at, :updated_at
 
-json.subs_count @sub.subscribers.count
+json.subs_count @subber_count
 
 json.posts @sub.posts do |post|
   json.extract! post, :id, :title, :url, :created_at, :updated_at
