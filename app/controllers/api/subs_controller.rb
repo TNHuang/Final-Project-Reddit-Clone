@@ -30,7 +30,10 @@ class Api::SubsController < ApplicationController
   end
 
   def show
-    @sub = Sub.find(params[:id]);
+    @sub = Sub.find(params[:id])
+
+    @votes_by_post = Post.votes_count_by_post(@sub)
+    @is_author = current_user.post_by_current_user?
     render :show
   end
 
@@ -84,7 +87,7 @@ class Api::SubsController < ApplicationController
     # @subber_count = Sub.subscribers_count_by_sub
     # @is_mod = current_user.sub_mod_by_current_user?
     # @votes_by_sub = Sub.votes_count_by_sub
-    render :index
+    render :json => {votes: @sub.votes}
   end
 
   private

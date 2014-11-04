@@ -1,6 +1,6 @@
 class Post < ActiveRecord::Base
   include Votable
-  
+
   validates :title, :author_id, presence: true
 
   belongs_to :author,
@@ -15,7 +15,7 @@ class Post < ActiveRecord::Base
   #cross posting only
 
   has_many :comments, inverse_of: :post
-  
+
   has_many :user_votes, as: :votable,
   class_name: "UserVote",
   dependent: :destroy
@@ -23,14 +23,27 @@ class Post < ActiveRecord::Base
   def votes
     self.user_votes.sum(:value)
   end
-  
+
+  def self.votes_count_by_post(sub)
+    votes_by_post = Hash.new { |h,k| h[k] =0 }
+
+    votes_with_post = sub.posts
+      .select("posts.*, sum(user_votes.value) AS votes_total")
+      .joins(:user_votes)
+      .group("posts.id");
+    votes_with_post.each do |post|
+      votes_by_post[post] = post.votes_total
+    end
+    votes_by_post
+  end
+
   def comments_by_parent
     comments_by_parent = Hash.new { |h,k| h[k] =[] }
-    
+
     self.comments.includes(:author).each do |comment|
       comments_by_parent[comment.parent_comment_id] << comment
     end
-    
+
     comments_by_parent
   end
 end

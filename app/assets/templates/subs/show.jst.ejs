@@ -3,17 +3,24 @@
 <h3>Subs show page</h3>
 
 
-<% console.log("why am i render so many time",typeof sub.escape('mods')) %>
+
 
 <div>name: <%= sub.escape('name') %></div>
 <div>title: <%= sub.escape('title') %></div>
 <p>description: <%= sub.escape('description') %></p>
   <%= sub.escape('subs_count') %> subscribers
 
-<br>
-<ul>
-  <% sub.posts.forEach(function(post){ %>
-    <li><%= post.escape('title') %></li>
-  <% }) %>
 
+<ul>
+  <% sub.mods().forEach(function(mod){ %>
+    <li><%= mod.escape('name') %></li>
+  <% }) %>
 </ul>
+</div>
+
+
+
+<table class="posts-wrapper">
+
+
+</table>

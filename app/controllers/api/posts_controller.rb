@@ -4,7 +4,7 @@ class Api::PostsController < ApplicationController
 
   def new
     @sub = Sub.find(params[:sub_id]);
-    @post = Post.new
+
     render :json => @post
   end
 

@@ -1,4 +1,4 @@
-RedditClone.Views.SubRow = Backbone.View.extend({
+RedditClone.Views.PostRow = Backbone.View.extend({
   tagName: 'tr',
   template: JST['shared/subrow'],
   initialize: function (options) {
@@ -19,12 +19,6 @@ RedditClone.Views.SubRow = Backbone.View.extend({
     return this;
   },
 
-  // voteRender: function () {
-  //   console.log("trigger vote render");
-  //   console.log(this.$('.vote-score'))
-  //   console.log(this.sub.escape('votes'))
-  //   this.$('.vote-score').html(this.sub.votes)
-  // },
 
   remove: function () {
     Backbone.View.prototype.remove.call(this);

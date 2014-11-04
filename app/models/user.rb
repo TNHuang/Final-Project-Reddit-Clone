@@ -49,6 +49,14 @@ class User < ActiveRecord::Base
     is_sub_mod_by_current_user
   end
 
+  def post_by_current_user?
+    post_by_current_user = Hash.new(false);
+    self.posts.each do |post|
+      post_by_current_user[post] = true;
+    end
+    post_by_current_user
+  end
+
   def self.find_by_credentials(name, password)
     user = User.find_by_name(name);
     user && user.is_password?(password) ? user : nil

@@ -9,12 +9,10 @@ RedditClone.Views.SubsIndex = Backbone.View.extend({
     this.listenTo(this.subs, "sync", this.render);
     this.listenTo(this.subs, "add", this.addRender);
   },
-  testAdd: function () {
-    console.log(arguments);
-  },
+
 
   render: function () {
-    console.log("rendering list")
+
     var content = this.template();
     this.$el.html(content);
     var that = this;
@@ -39,5 +37,3 @@ RedditClone.Views.SubsIndex = Backbone.View.extend({
   }
 
 })
-
-// _.extend(RedditClone.Utils.OrdView);

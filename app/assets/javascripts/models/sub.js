@@ -14,32 +14,8 @@ RedditClone.Models.Sub = Backbone.Model.extend({
         this._mods = new RedditClone.Collections.Users([], { sub: this });
       }
 
-      return this._posts;
+      return this._mods;
     },
-
-  upvote: function () {
-    var sub = this;
-    $.ajax({
-      url: "api/subs/" + this.id + "/upvote",
-      type: "POST",
-      success: function (response) {
-        console.log(response.json)
-        sub.set({votes: sub.get('votes') + 1 });
-        console.log("upvote success")
-      }
-    })
-  },
-
-  downvote: function () {
-
-    $.ajax({
-      url: "api/subs/" + this.id + "/downvote",
-      type: "POST",
-      success: function () {
-        sub.set({votes: sub.get('votes') -1 });
-      }
-    })
-  },
 
   parse: function (response) {
     if(response.posts) {
@@ -53,5 +29,29 @@ RedditClone.Models.Sub = Backbone.Model.extend({
 
     return response;
   },
+
+  upvote: function () {
+    var sub = this;
+    $.ajax({
+      url: "api/subs/" + this.id + "/upvote",
+      type: "POST",
+      success: function (response) {
+        this.set({votes: response.votes});
+      }.bind(this)
+    })
+  },
+
+  downvote: function () {
+
+    $.ajax({
+      url: "api/subs/" + this.id + "/downvote",
+      type: "POST",
+      success: function (response) {
+        this.set({votes: response.votes});
+      }.bind(this)
+    })
+  },
+
+
 
 })
