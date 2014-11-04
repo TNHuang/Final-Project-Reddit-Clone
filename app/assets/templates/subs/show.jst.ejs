@@ -5,7 +5,7 @@
 <div>name: <%= sub.escape('name') %></div>
 <div>title: <%= sub.escape('title') %></div>
 <p>description: <%= sub.escape('description') %></p>
-  <%= sub.escape('subs_count') %> subscribers
+<p><%= sub.escape('subs_count') %> subscribers</p>
 
 <h3>moderators</h3>
 <ul>
@@ -15,8 +15,7 @@
 </ul>
 </div>
 
-
-<a href="#/posts/new">Create new post</a><br>
+<a href="#/posts/new/<%= sub.escape('id') %>">Create new post</a><br>
 <table class="posts-wrapper">
 
 </table>

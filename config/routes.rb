@@ -35,10 +35,13 @@ Rails.application.routes.draw do
 
     resources :posts, except: [ :index ] do
       resources :comments, only: [ :edit, :new, :create, :update]
+      member do
+        post "upvote"
+        post "downvote"
+      end
     end
+
     resources :comments, only: [:show, :destroy]
-
-
 
     resources :subs do
       member do
@@ -46,15 +49,7 @@ Rails.application.routes.draw do
         post "downvote"
       end
     end
-
-    resources :posts do
-      member do
-        post "upvote"
-        post "downvote"
-      end
-    end
-
-
+    
   end
 
 end

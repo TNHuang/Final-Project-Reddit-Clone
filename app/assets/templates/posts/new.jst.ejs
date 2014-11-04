@@ -18,9 +18,11 @@
   </tr>
   <tr>
     <td><label for="sub">sub</label></td>
-    <td><input type="text" name="subname" id="sub"></td>
+    <td><input type="text" name="subname" id="sub" value="<%= sub.escape('title') %>">
+    </td>
   </tr>
 </table>
 
+<input type="hidden" name="sub_id" value="<%= sub.id %>">
 <button>Create Post!</button>
 </form>

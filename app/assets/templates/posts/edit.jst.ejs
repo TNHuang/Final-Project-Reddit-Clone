@@ -1,5 +1,4 @@
 <h3>Edit Post</h3>
-
 <form >
 
 <table>
@@ -16,6 +15,6 @@
     <td><textarea name="post[body]" id="body" ><%= post.escape("body") %></textarea></td>
   </tr>
 </table>
-
+<input type="hidden" name="sub_id" value="<%= sub.id %>">
 <button>Update post!</button>
 </form>

@@ -47,7 +47,7 @@ class Api::CommentsController < ApplicationController
     else
       @comment.user_votes.create!(user_id: current_user.id, value: dir)
     end
-    redirect_to post_url(@comment.post)+"##{@comment.id}"
+    render :json => {votes: @comment.votes}
   end
 
   private

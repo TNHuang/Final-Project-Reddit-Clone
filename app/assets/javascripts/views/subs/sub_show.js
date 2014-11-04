@@ -22,7 +22,7 @@ RedditClone.Views.SubShow = Backbone.View.extend({
   },
 
   addRender: function (post) {
-    var view = new RedditClone.Views.PostRow({ post: post})
+    var view = new RedditClone.Views.PostRow({ post: post, sub: this.sub})
     this.subViews.push(view);
     this.$('table').append(view.render().$el);
   },

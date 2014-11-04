@@ -33,6 +33,7 @@ RedditClone.Views.SubRow = Backbone.View.extend({
   removeSub: function (event) {
     event.preventDefault();
     this.sub.destroy();
+    this.remove();
   },
 
   upvoteSub: function (event) {

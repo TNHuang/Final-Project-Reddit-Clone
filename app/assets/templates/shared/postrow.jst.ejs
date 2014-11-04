@@ -13,8 +13,8 @@
 
 <td>
   <% if (post.escape('is_author') === "true") { %>
-    <button class="delete-post">delete</button>
-    <a href="#/posts/<%= post.escape('id') %>/edit">Edit</a>
+    <button class="delete-post" data-sub-id="<%= sub.id %>">delete</button>
+    <a href="#/posts/<%= post.escape('id') %>/edit/<%= sub.id %>">Edit</a>
   <% }%>
 
 </td>

@@ -6,7 +6,7 @@ RedditClone.Views.SubsIndex = Backbone.View.extend({
 
     this.subViews = [];
     this.subs = options.collection;
-    this.listenTo(this.subs, "sync remove", this.render);
+    this.listenTo(this.subs, "sync", this.render);
     this.listenTo(this.subs, "add", this.addRender);
   },
 

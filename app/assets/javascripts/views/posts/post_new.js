@@ -3,13 +3,14 @@ RedditClone.Views.PostNew = Backbone.View.extend({
   className: "sidebar",
   initialize: function (options) {
     this.posts = options.posts;
+    this.sub = options.sub;
   },
 
   events: {
     "submit form": "submit"
   },
   render: function () {
-    var content = this.template();
+    var content = this.template({sub: this.sub});
     this.$el.html(content);
     return this;
   },
@@ -20,10 +21,11 @@ RedditClone.Views.PostNew = Backbone.View.extend({
     var params = $(event.currentTarget).serializeJSON();
     var newPost = new RedditClone.Models.Post(params["post"]);
 
-    newPost.save({}, {
+
+    newPost.save({sub_id: params["sub_id"]}, {
       success: function () {
         this.posts.add(newPost);
-        window.history.back();
+        Backbone.history.navigate("subs/" + this.sub.id , {trigger: true});
       }.bind(this)
     });
   },
