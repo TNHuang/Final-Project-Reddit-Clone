@@ -39,6 +39,7 @@ Rails.application.routes.draw do
     resources :comments, only: [:show, :destroy]
 
 
+
     resources :subs do
       member do
         post "upvote"

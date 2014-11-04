@@ -3,7 +3,7 @@ class Api::PostsController < ApplicationController
   before_action :required_sign_in
 
   def new
-    @sub = Sub.find(params[:sub_id]);
+    # @sub = Sub.find(params[:sub_id]);
 
     render :new
   end
