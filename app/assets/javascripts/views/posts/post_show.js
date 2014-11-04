@@ -11,7 +11,10 @@ RedditClone.Views.PostShow = Backbone.View.extend({
   render: function () {
     var content = this.template({post: this.post});
     this.$el.html(content);
-    this.post.comments().forEach( this.addRender.bind(this) );
+
+    var top_level_comments = this.post.comments().where({parent_comment_id: null });
+    top_level_comments.forEach( this.addRender.bind(this) );
+    
     return this;
   },
 

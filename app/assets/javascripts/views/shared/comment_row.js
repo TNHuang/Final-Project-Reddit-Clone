@@ -3,9 +3,11 @@ RedditClone.Views.CommentRow = Backbone.View.extend({
   className: "nested-comments",
   template: JST['shared/commentrow'],
   initialize: function (options) {
-
+    console.log("inside initializer")
+    this.subViews = [];
     this.comment = options.comment;
-    this.listenTo(this.comment, "sync change destroy", this.render);
+    this.listenTo(this.comment, "sync change destroy remove", this.render);
+    this.listenTo(this.comment, "add", this.addRender);
   },
 
   events: { "click button.delete-comment": "removeComment",
@@ -14,13 +16,33 @@ RedditClone.Views.CommentRow = Backbone.View.extend({
   },
 
   render: function () {
+    console.log("inside render")
     var content = this.template({comment: this.comment});
     this.$el.html(content);
+    console.log("after first render")
+    var child_comments = this.comment.child_comments();
+    console.log("after child comments")
+    console.log(child_comments)
+    if (child_comments.length > 0) {
+      console.log("begin sub render")
+      child_comments.forEach( this.addRender.bind(this) );
+    }
+
     return this;
   },
 
+  addRender: function (child_comment) {
+    console.log("sub render")
+    var view = new RedditClone.Views.CommentRow({ comment: child_comment})
+    console.log("after sub view")
+    this.subViews.push(view);
+    this.$('ul').append(view.render().$el);
+  },
 
   remove: function () {
+    this.subViews.forEach(function (subView) {
+      subView.remove();
+    });
     Backbone.View.prototype.remove.call(this);
   },
 

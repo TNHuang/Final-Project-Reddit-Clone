@@ -2,15 +2,15 @@ json.extract! @post, :id, :title, :url, :body, :created_at, :updated_at
 json.author_name @author.name
 json.author_id @author.id
 json.votes @post.votes
-
+# json.kommets @comments_by_parent
 json.comments @post.comments do |comment|
   json.extract! comment, :id, :body, :author_id, :parent_comment_id
   json.votes @votes[comment]
   json.author_name comment.author.name
-  json.child_comments @comments_by_parent_id[comment]
+  json.child_comments @comments_by_parent[comment.id]
 end
 
-json.subs @post.subs
+# json.subs @post.subs
 # json.parent_comment_ids @post.comments_by_parent.each do | parent_comment_id |
 #
 #   json.comments parent_comment_id.each do |comment|

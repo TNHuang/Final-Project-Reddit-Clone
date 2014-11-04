@@ -44,7 +44,7 @@ class Api::PostsController < ApplicationController
   def show
     @post = Post.find(params[:id]);
     @author = @post.author;
-    @comments_by_parent_id =  @post.comments_by_parent
+    @comments_by_parent =  @post.comments_by_parent
     # @author_by_comment = @post.author_by_post_comment
     @votes = @post.votes_by_comment
     render :show
