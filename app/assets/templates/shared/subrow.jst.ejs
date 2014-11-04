@@ -1,9 +1,9 @@
 <td>
 
   <div class="vote-wrapper">
-    <div class="upvote-sub upvote" data-sub-id="<%= sub.escape('id') %>"></div>
+    <div class="upvote-sub upvote" ></div>
     <div class="vote-score"><%= sub.escape('votes') %></div>
-    <div class="downvote-sub downvote" data-sub-id="<%= sub.escape('id') %>"></div>
+    <div class="downvote-sub downvote" ></div>
   </div>
 </td>
 <td>
@@ -13,7 +13,7 @@
 </td>
 <td>
   <% if (sub.escape('is_moderator') === "true") { %>
-    <button class="delete-sub" data-id="<%= sub.escape('id') %>">delete</button>
+    <button class="delete-sub" >delete</button>
     <a href="#/subs/<%= sub.escape('id') %>/edit">Edit</a>
   <% }%>
 

@@ -1,20 +1,20 @@
 RedditClone.Views.PostRow = Backbone.View.extend({
   tagName: 'tr',
-  template: JST['shared/subrow'],
+  template: JST['shared/postrow'],
   initialize: function (options) {
-    this.sub = options.sub;
-    this.listenTo(this.sub, "sync change destroy", this.render);
+    this.post = options.post;
+    this.listenTo(this.post, "sync change destroy", this.render);
   },
 
   events: {
-    "click button.delete-sub": "removeSub",
-    "click .upvote-sub": "upvoteSub",
-    "click .downvote-sub": "downvoteSub",
+    "click button.delete-post": "removePost",
+    "click .upvote-post": "upvotePost",
+    "click .downvote-post": "downvotePost",
   },
 
   render: function () {
     console.log("rendering subview")
-    var content = this.template({sub: this.sub});
+    var content = this.template({post: this.post});
     this.$el.html(content);
     return this;
   },
@@ -24,17 +24,17 @@ RedditClone.Views.PostRow = Backbone.View.extend({
     Backbone.View.prototype.remove.call(this);
   },
 
-  removeSub: function (event) {
+  removePost: function (event) {
     event.preventDefault();
-    this.sub.destroy();
+    this.post.destroy();
   },
 
-  upvoteSub: function (event) {
-    this.sub.upvote();
+  upvotePost: function (event) {
+    this.post.upvote();
   },
 
-  downvoteSub: function (event) {
-    this.sub.downvote();
+  downvotePost: function (event) {
+    this.post.downvote();
   },
 
 })

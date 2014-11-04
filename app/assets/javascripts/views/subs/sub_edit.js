@@ -4,7 +4,7 @@ RedditClone.Views.SubEdit = Backbone.View.extend({
   initialize: function (options) {
     this.sub = options.sub;
     this.subs = this.subs;
-    this.listenTo(this.sub, "sync change add remove", this.render);
+    this.listenTo(this.sub, "sync change", this.render);
   },
   events: {
     "submit form": "submit"

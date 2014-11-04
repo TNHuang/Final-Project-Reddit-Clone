@@ -33,7 +33,6 @@ RedditClone.Routers.Router = Backbone.Router.extend({
 
   subShow: function (id) {
     var sub = this.subs.getOrFetch(id);
-    console.log(sub.posts())
     var showView = new RedditClone.Views.SubShow({sub: sub});
     this._swapView(showView, this.$main);
   },

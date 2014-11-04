@@ -37,6 +37,16 @@ class Post < ActiveRecord::Base
     votes_by_post
   end
 
+  def self.author_by_post_sub(sub)
+    author_by_post = Hash.new { |h,k| h[k] ="" }
+
+    sub.posts.each do |post|
+      author_by_post[post] = post.author;
+    end
+    author_by_post
+  end
+
+
   def comments_by_parent
     comments_by_parent = Hash.new { |h,k| h[k] =[] }
 

@@ -1,43 +1,22 @@
 <td>
   <div class="vote-wrapper">
-    <div class="upvote-post upvote" data-sub-id="<%= sub.escape('id') %>"></div>
-    <div class="vote-score"><%= sub.escape('votes') %></div>
-    <div class="downvote-post downvote" data-sub-id="<%= sub.escape('id') %>"></div>
+    <div class="upvote-post upvote" ></div>
+    <div class="vote-score"><%= post.escape('votes') %></div>
+    <div class="downvote-post downvote"></div>
   </div>
 </td>
 
 <td>
-  <a href="#/posts/"+"<%= post.escape('id') %>"><%= post.escape('title') %></a>   </td>
+  <a href="<%= post.escape('url') %>"><%= post.escape('title') %></a> by some guy
+</td>
 <td>
-  <%= post.escape('description') %><br><%= post.escape('comments_count') %>  comments
+  <a href="#/posts/<%= post.escape('id') %>"><%= post.escape('comments_count') %>  comments</a>
 </td>
 
 <td>
-  <% if (post.escape('is_moderator') === "true") { %>
-    <button class="delete-post" data-id="<%= post.escape('id') %>">delete</button>
+  <% if (post.escape('is_author') === "true") { %>
+    <button class="delete-post">delete</button>
     <a href="#/posts/<%= post.escape('id') %>/edit">Edit</a>
-  <% }%>
-
-</td>
-
-
-<td>
-
-  <div class="vote-wrapper">
-    <div class="upvote-sub upvote" data-sub-id="<%= sub.escape('id') %>"></div>
-    <div class="vote-score"><%= sub.escape('votes') %></div>
-    <div class="downvote-sub downvote" data-sub-id="<%= sub.escape('id') %>"></div>
-  </div>
-</td>
-<td>
-  <a href="#/subs/<%= sub.escape('id') %>"><%= sub.escape('title') %></a></td>
-<td>
-  <%= sub.escape('description') %><br><%= sub.escape('sub_count') %>  subscribers
-</td>
-<td>
-  <% if (sub.escape('is_moderator') === "true") { %>
-    <button class="delete-sub" data-id="<%= sub.escape('id') %>">delete</button>
-    <a href="#/subs/<%= sub.escape('id') %>/edit">Edit</a>
   <% }%>
 
 </td>

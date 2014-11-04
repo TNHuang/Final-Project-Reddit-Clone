@@ -2,18 +2,15 @@
 <div class="sidebar">
 <h3>Subs show page</h3>
 
-
-
-
 <div>name: <%= sub.escape('name') %></div>
 <div>title: <%= sub.escape('title') %></div>
 <p>description: <%= sub.escape('description') %></p>
   <%= sub.escape('subs_count') %> subscribers
 
-
+<h3>moderators</h3>
 <ul>
   <% sub.mods().forEach(function(mod){ %>
-    <li><%= mod.escape('name') %></li>
+    <li><a href="#/users/<%= mod.escape('id') %>"><%= mod.escape('name') %></a></li>
   <% }) %>
 </ul>
 </div>
@@ -21,6 +18,23 @@
 
 
 <table class="posts-wrapper">
+  <% sub.posts().forEach(function(post){ %>
+    <tr>
 
+      <td>
+        <div class="vote-wrapper">
+          <div class="upvote-post upvote" ></div>
+          <div class="vote-score"><%= post.escape('votes') %></div>
+          <div class="downvote-post downvote"></div>
+        </div>
+      </td>
+      <td>
+        <a href="<%= post.escape('url') %>"><%= post.escape('title') %></a><br>
+        submitted by <a href="#/users/<%= post.escape('author_id') %>"><%= post.escape('author') %></a><br>
+        <a href="#/posts/<%= post.escape('id') %>"><%= post.escape('comment_count') %>  comments</a>
+      </td>
+
+    </tr>
+  <% }) %>
 
 </table>

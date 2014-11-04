@@ -19,9 +19,9 @@ class Api::SubsController < ApplicationController
 
     if @sub.save
       Modding.create({moderator_id: current_user.id, sub_id: @sub.id})
-      @subber_count = Sub.subscribers_count_by_sub
-      @is_mod = current_user.sub_mod_by_current_user?
-      @votes_by_sub = Sub.votes_count_by_sub
+      # @subber_count = Sub.subscribers_count_by_sub
+      # @is_mod = current_user.sub_mod_by_current_user?
+      # @votes_by_sub = Sub.votes_count_by_sub
       render :index
     else
       flash.now[:errors] = @sub.errors.full_messages
@@ -32,8 +32,9 @@ class Api::SubsController < ApplicationController
   def show
     @sub = Sub.find(params[:id])
 
-    @votes_by_post = Post.votes_count_by_post(@sub)
-    @is_author = current_user.post_by_current_user?
+    # @votes_by_post = Post.votes_count_by_post(@sub)
+    # @is_author = current_user.post_by_current_user?
+    # @authors = Post.author_by_post_sub(@sub)
     render :show
   end
 
@@ -45,9 +46,9 @@ class Api::SubsController < ApplicationController
   def update
     @sub = Sub.find(params[:id])
     if @sub.update(subs_params)
-      @subber_count = Sub.subscribers_count_by_sub
-      @is_mod = current_user.sub_mod_by_current_user?
-      @votes_by_sub = Sub.votes_count_by_sub
+      # @subber_count = Sub.subscribers_count_by_sub
+      # @is_mod = current_user.sub_mod_by_current_user?
+      # @votes_by_sub = Sub.votes_count_by_sub
       render :index
     else
       flash[:errors] = @sub.errors.full_messages
@@ -60,9 +61,9 @@ class Api::SubsController < ApplicationController
     # Modding.where({sub_id: @sub.id}).destroy_all
     @sub.destroy
 
-    @subber_count = Sub.subscribers_count_by_sub
-    @is_mod = current_user.sub_mod_by_current_user?
-    @votes_by_sub = Sub.votes_count_by_sub
+    # @subber_count = Sub.subscribers_count_by_sub
+    # @is_mod = current_user.sub_mod_by_current_user?
+    # @votes_by_sub = Sub.votes_count_by_sub
     render :index
   end
 
