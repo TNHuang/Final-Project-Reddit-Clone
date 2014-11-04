@@ -32,7 +32,7 @@ Rails.application.routes.draw do
   end
 
   namespace :api, :defaults => { :format => :JSON} do
-    resources :subs
+
     resources :posts, except: [ :index ] do
       resources :comments, only: [ :edit, :new, :create, :update]
     end
@@ -40,6 +40,13 @@ Rails.application.routes.draw do
 
 
     resources :subs do
+      member do
+        post "upvote"
+        post "downvote"
+      end
+    end
+
+    resources :posts do
       member do
         post "upvote"
         post "downvote"

@@ -10,13 +10,10 @@ RedditClone.Views.SubsIndex = Backbone.View.extend({
     this.listenTo(this.subs, "add", this.addRender);
   },
 
-
   render: function () {
-
     var content = this.template();
-    this.$el.html(content);
-    var that = this;
 
+    this.$el.html(content);
     this.subs.forEach( this.addRender.bind(this));
 
     return this;
@@ -28,9 +25,6 @@ RedditClone.Views.SubsIndex = Backbone.View.extend({
     this.$('table').append(view.render().$el);
   },
 
-  removeRender: function () {
-      alert("remove subrender")
-  },
 
   remove: function () {
     this.subViews.forEach(function (subView) {

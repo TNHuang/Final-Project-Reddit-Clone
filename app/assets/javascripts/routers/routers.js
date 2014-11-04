@@ -3,8 +3,11 @@ RedditClone.Routers.Router = Backbone.Router.extend({
     this.$main = options.$main;
     this.$head = options.$head;
     this.$sidebar = options.$sidebar;
+
     this.subs = options.subs;
-    // Router({subs: subs, $head: $headnav, $main: $main });
+    this.posts = new RedditClone.Collections.Posts();
+    this.users = new RedditClone.Collections.Users();
+    this.comments = new RedditClone.Collections.Comments();
   },
 
   routes: {
@@ -13,6 +16,8 @@ RedditClone.Routers.Router = Backbone.Router.extend({
     "subs/new": "subNew",
     "subs/:id": "subShow",
     "subs/:id/edit": "subEdit",
+    "posts/new": "postNew",
+    "posts/:id/edit": "postEdit"
   },
 
   subsIndex: function () {
@@ -40,7 +45,18 @@ RedditClone.Routers.Router = Backbone.Router.extend({
 
   subEdit: function (id) {
     var sub = this.subs.getOrFetch(id);
-    var editView = new RedditClone.Views.SubEdit({sub: sub, subs: this.subs});
+    var editView = new RedditClone.Views.SubEdit({ sub: sub });
+    this._swapView(editView, this.$main);
+  },
+
+  postNew: function () {
+    var newView = new RedditClone.Views.PostNew({posts: this.posts});
+    this._swapView(newView, this.$main);
+  },
+
+  postEdit: function (id) {
+    var post = this.posts.getOrFetch(id);
+    var editView = new RedditClone.Views.PostEdit({post: post, posts: this.posts});
     this._swapView(editView, this.$main);
   },
 

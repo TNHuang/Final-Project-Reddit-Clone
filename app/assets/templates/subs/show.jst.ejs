@@ -16,25 +16,7 @@
 </div>
 
 
-
+<a href="#/posts/new">Create new post</a><br>
 <table class="posts-wrapper">
-  <% sub.posts().forEach(function(post){ %>
-    <tr>
-
-      <td>
-        <div class="vote-wrapper">
-          <div class="upvote-post upvote" ></div>
-          <div class="vote-score"><%= post.escape('votes') %></div>
-          <div class="downvote-post downvote"></div>
-        </div>
-      </td>
-      <td>
-        <a href="<%= post.escape('url') %>"><%= post.escape('title') %></a><br>
-        submitted by <a href="#/users/<%= post.escape('author_id') %>"><%= post.escape('author') %></a><br>
-        <a href="#/posts/<%= post.escape('id') %>"><%= post.escape('comment_count') %>  comments</a>
-      </td>
-
-    </tr>
-  <% }) %>
 
 </table>

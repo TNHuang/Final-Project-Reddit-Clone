@@ -13,7 +13,6 @@ RedditClone.Views.PostRow = Backbone.View.extend({
   },
 
   render: function () {
-    console.log("rendering subview")
     var content = this.template({post: this.post});
     this.$el.html(content);
     return this;

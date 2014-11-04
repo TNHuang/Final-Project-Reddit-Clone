@@ -5,7 +5,7 @@ class Api::PostsController < ApplicationController
   def new
     @sub = Sub.find(params[:sub_id]);
 
-    render :json => @post
+    render :json => @sub
   end
 
   def create
@@ -16,7 +16,7 @@ class Api::PostsController < ApplicationController
 
     if @post.save
       Posting.create({sub_id: params[:sub_id], post_id: @post.id})
-      redirect_to post_url(@post)
+      render :json => params[:sub_id]
     else
       @sub = Sub.find(params[:sub_id])
       flash.now[:errors] = @post.errors.full_messages
@@ -32,7 +32,7 @@ class Api::PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post.author_id = current_user.id
     if @post.update(post_params)
-      redirect_to post_url(@post)
+      render :json => Sub.find(params[:sub_id])
     else
       flash[:errors] = @post.errors.full_messages
       render :edit
@@ -69,7 +69,7 @@ class Api::PostsController < ApplicationController
     else
       @post.user_votes.create!(user_id: current_user.id, value: dir)
     end
-    redirect_to :back
+    render :json => {votes: @post.votes}
   end
 
   private
