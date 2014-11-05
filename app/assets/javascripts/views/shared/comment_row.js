@@ -3,7 +3,7 @@ RedditClone.Views.CommentRow = Backbone.View.extend({
   className: "nested-comments",
   template: JST['shared/commentrow'],
   initialize: function (options) {
-    console.log("inside initializer")
+
     this.subViews = [];
     this.comment = options.comment;
     this.listenTo(this.comment, "sync change destroy remove", this.render);
@@ -16,16 +16,20 @@ RedditClone.Views.CommentRow = Backbone.View.extend({
   },
 
   render: function () {
-    console.log("inside render")
+
     var content = this.template({comment: this.comment});
     this.$el.html(content);
-    console.log("after first render")
+
     var child_comments = this.comment.child_comments();
-    console.log("after child comments")
-    console.log(child_comments)
-    if (child_comments.length > 0) {
-      console.log("begin sub render")
-      child_comments.forEach( this.addRender.bind(this) );
+
+    // var child_collection = new RedditClone.Collections.Comments();
+    // if (child_comments.length !== 0) {
+    // var child_models = child_comments.forEach( function(e){
+    //   child_collection.add(new RedditClone.Models.Comment(e));
+    // })
+
+    if (child_collection.length > 0 ) {
+      child_collection.forEach( this.addRender.bind(this) );
     }
 
     return this;

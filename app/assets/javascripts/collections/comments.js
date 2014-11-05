@@ -4,7 +4,6 @@ RedditClone.Collections.Comments = Backbone.Collection.extend({
 
 
   getOrFetch: function (id) {
-    console.log('getting trigger')
     var comment = this.get(id);
     if (!comment) {
       comment = new RedditClone.Models.Comment({id: id})

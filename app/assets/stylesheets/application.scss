@@ -201,3 +201,19 @@ table {
   position: absolute;
   bottom: 0;
 }
+
+.comment-info {
+  display: block;
+  float: left;
+  width: 80%;
+}
+.comment-container {
+  border: 1px solid black;
+  padding: 0 10px 0 0px
+}
+
+
+.vote-wrapper {
+  display: block;
+  float: left;
+}
