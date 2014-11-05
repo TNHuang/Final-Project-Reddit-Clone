@@ -1,6 +1,8 @@
 class Post < ActiveRecord::Base
   include Votable
 
+  after_create :save_img_url
+
   validates :title, :author_id, presence: true
 
   belongs_to :author,
@@ -46,6 +48,16 @@ class Post < ActiveRecord::Base
     author_by_post
   end
 
+  def get_post_img_src
+    begin
+      src = Nokogiri::HTML(open(self.url)).css('img')[0].attr('src')
+      # src =~ /(^https:)|(^http:)/ ? src : "https:#{src}"
+    rescue Exception => e
+      src = ""
+    end
+
+  end
+
   def author_by_post_comment
     author_by_post_comment = Hash.new {|h, k| h[k] = ""}
     comments = self.comments
@@ -68,5 +80,11 @@ class Post < ActiveRecord::Base
     end
 
     comments_by_parent
+  end
+
+  def save_img_url
+    src = self.get_post_img_src
+    self.img_url = src
+    self.save
   end
 end

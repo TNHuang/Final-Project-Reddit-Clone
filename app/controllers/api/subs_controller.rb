@@ -31,10 +31,12 @@ class Api::SubsController < ApplicationController
 
   def show
     @sub = Sub.find(params[:id])
-    @subber_count = @sub.subscribers.count
+    @sub_count = @sub.subscribers.count
     @votes_by_post = Post.votes_count_by_post(@sub)
     @is_author = current_user.post_by_current_user?
     @authors = Post.author_by_post_sub(@sub)
+    @posts, @mods = @sub.sub_with_posts_and_moderators
+    
     render :show
   end
 

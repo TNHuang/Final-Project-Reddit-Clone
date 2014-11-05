@@ -1,6 +1,6 @@
 RedditClone.Views.PostShow = Backbone.View.extend({
   template: JST["posts/show"],
-  className: "body-wrapper",
+  className: "add-padding-left",
   initialize: function (options) {
     this.subViews = [];
     this.post = options.post;

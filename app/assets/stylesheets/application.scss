@@ -218,3 +218,17 @@ table {
   display: block;
   float: left;
 }
+
+.post-thumbnail {
+  height: 63px;
+  width: 70px;
+  display: block;
+  float: left;
+  background: transparent;
+}
+
+.img-not-found {
+  background-image: image-url('sprite-reddit.png');
+  background-position: -2px -429px;
+  background-repeat: no-repeat;
+}

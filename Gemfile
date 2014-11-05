@@ -26,6 +26,10 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring',        group: :development
 
+require 'rubygems'
+require 'nokogiri'
+require 'open-uri'
+
 # Use ActiveModel has_secure_password
 gem 'omniauth-facebook'
 gem 'ejs'
@@ -62,4 +66,3 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-

@@ -105,14 +105,13 @@ u = [
   "http://imgur.com/gallery/zvM7V/new",
   "https://www.youtube.com/watch?v=3jCystkiIBs",
   "https://www.reddit.com/r/space/comments/2km5vp/antares_launch_failed_rocket_exploded_10s_after/",
-  "Antares rocket explosion: The tale of the engines that propelled the Antares rocket, which exploded in a spectacular ball
-  unism and Sputnik.\"",
+  "http://adventuretime.wikia.com/wiki/Ice_King",
   "http://i.imgur.com/qfgoTNf.jpg",
   "http://i.imgur.com/2WnFuk9.jpg",
   "http://i.imgur.com/ZQfwU0F.png",
-  "Extraordinary shot of moon's far side and Earth, from Chang'e | Science Wire | EarthSky",
+  "http://imgur.com/",
   "http://i.imgur.com/ak3rGrx.jpg",
-  "Are there any pictures of the pad and surrounding area yet?",
+  "http://imgur.com/",
   "http://i.imgur.com/MQjvQoL.jpg?1","http://www.imgur.com/9aUcOIL.jpg","http://www.theguardian.com/science/2014/oct/29/"]
 userz = User.all
 t.each_with_index do |title, i|
@@ -191,8 +190,8 @@ allposts = Post.all
 200.times do
   sub, post = allsubs.sample, allposts.sample
   next if Posting.create({post_id: post.id, sub_id: sub.id })
-end
 
+end
 100.times do
   sub, user = allsubs.sample, allusers.sample
   next if Modding.create({moderator_id: user.id, sub_id: sub.id })
@@ -209,13 +208,17 @@ alltext = subnames + des + t + u
 200.times do
   text = alltext.sample
   user, post = allusers.sample,  allposts.sample
-  next if Comment.create({author_id: user.id, body: text, post_id: post.id})
+  next unless Comment.create({author_id: user.id, body: text, post_id: post.id})
+
 end
 
 500.times do
   text = alltext.sample
-  c_id = Comment.all.sample.id
-  u_id = User.all.sample.id
-  p_id = Post.all.sample.id
-  next if Comment.create({author_id: u_id, body: text, post_id: p_id, parent_comment_id: c_id})
+  c = Comment.all.sample
+  u_id = allusers.sample.id
+  next unless Comment.create({author_id: u_id, body: text, post_id: c.post.id, parent_comment_id: c.id})
+
 end
+# next unless UserVote.create({ user_id: u_id, votable_id: c.id, votable_type: "Comment", value: [-1, 1].sample })
+# next unless UserVote.create({ user_id: u_id, votable_id: c.id, votable_type: "Comment", value: [-1, 1].sample })
+# next unless UserVote.create({ user_id: user_id, votable_id: sub.id, votable_type: "Sub", value: [-1, 1].sample })

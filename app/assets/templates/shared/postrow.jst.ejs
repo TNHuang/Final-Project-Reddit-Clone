@@ -6,7 +6,11 @@
     <div class="downvote-post downvote"></div>
   </div>
 
-  <img class='thumbnail' style="height:60px;width:60px;float:left" src="http://b.thumbs.redditmedia.com/aQi6uH5FYM6t5YWVzq5VcJ2JQ_jwcpDNBJeMCDFSY0c.jpg">
+<% if (post.escape('img_url') === "") { %>
+  <div class='post-thumbnail img-not-found'></div>
+<% } else { %>
+  <div class='post-thumbnail' src="<%= post.escape('img_url') %>"></div>
+<% }%>
 
   <div class="post-info row-info clearfix">
     <a href="<%= post.escape('url') %>"><%= post.escape('title') %></a><br>
