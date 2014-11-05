@@ -1,0 +1,12 @@
+<button class="reply-comment-toggle">reply</button>
+
+<div class="reply-comment-wrapper hidden">
+  <form class="reply-comment-form ">
+    <textarea name="comment[body]" place></textarea>
+
+    <input type="hidden" name="comment[parent_comment_id]" value="<%= comment.escape('id') %>">
+    <input type="hidden" name="comment[post_id]" value="<%= comment.escape('post_id') %>">
+
+    <input type="submit" value="save">
+  </form>
+</div>

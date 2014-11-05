@@ -1,4 +1,4 @@
-json.extract! parent_comment, :id, :body, :author_id, :parent_comment_id
+json.extract! parent_comment, :id, :body, :author_id, :post_id, :parent_comment_id
 json.votes votes[parent_comment]
 json.author_name parent_comment.author.name
 

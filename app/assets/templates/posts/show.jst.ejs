@@ -1,9 +1,26 @@
 <h3>Post show page</h3>
 
+<div class="vote-wrapper clearfix">
+  <div class="upvote-post upvote" ></div>
+  <div class="vote-score"><%= post.escape('votes') %></div>
+  <div class="downvote-post downvote"></div>
+</div>
+
+<% if (post.escape('img_url') === "") { %>
+  <a href="<%= post.escape('url') %>"><div class='post-thumbnail img-not-found'></div></a>
+<% } else { %>
+  <a href="<%= post.escape('url') %>"><img class='post-thumbnail' src="<%= post.escape('img_url') %>"></a>
+<% }%>
+
 <div>title: <a href="<%= post.escape('url') %>"><%= post.escape('title') %></a></div>
 <div>submitted by <a href="#/users/<%= post.escape('author_id') %>"><%= post.escape('author_name') %></a></div>
 <p>body: <%= post.escape('body') %></p>
-<p><%= post.escape('votes') %> votes</p>
+
+
+
+
+
+
 
 <div class="sidebar">
 

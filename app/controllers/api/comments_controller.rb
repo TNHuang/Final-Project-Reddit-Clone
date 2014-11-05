@@ -8,18 +8,17 @@ class Api::CommentsController < ApplicationController
     unless @comment.save
       flash.now[:errors] = @comment.errors.full_messages
     end
-    redirect_to post_url(@comment.post_id)
+    render :json => {}
   end
 
 
   def update
     @comment = Comment.find(params[:id])
     @comment.author_id = current_user.id
-    if @comment.update(comment_params)
-    else
+    unless @comment.update(comment_params)
       flash[:errors] = @comment.errors.full_messages
     end
-    redirect_to post_url(@comment.post_id)
+    render :json => {}
   end
 
 
@@ -27,7 +26,7 @@ class Api::CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     post_id = @comment.post_id
     @comment.destroy
-    redirect_to post_url(post_id)
+    render :json => {}
   end
 
   def downvote

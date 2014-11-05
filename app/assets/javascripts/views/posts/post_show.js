@@ -5,21 +5,26 @@ RedditClone.Views.PostShow = Backbone.View.extend({
     this.subViews = [];
     this.post = options.post;
     this.comments = this.post.comments();
-    this.listenTo(this.post, "sync", this.render);
-    // this.listenTo(this.post, "add", this.addRender);
+    this.listenTo(this.post, "sync change", this.render);
+  },
+
+  events: {
+    "click .upvote-post": "upvotePost",
+    "click .downvote-post": "downvotePost",
   },
 
   render: function () {
     var content = this.template({post: this.post});
     this.$el.html(content);
-    var comments = this.post.comments();
-    comments.forEach( this.addRender.bind(this) );
 
+    this.comments.forEach( this.addRender.bind(this) );
     return this;
   },
 
   addRender: function (comment) {
-    var view = new RedditClone.Views.CommentRow({ comment: comment})
+    var view = new RedditClone.Views.CommentRow(
+      { comment: comment, comments: this.comments}
+    );
     this.subViews.push(view);
     this.$('> ul').append(view.render().$el);
   },
@@ -29,6 +34,17 @@ RedditClone.Views.PostShow = Backbone.View.extend({
       subView.remove();
     });
     Backbone.View.prototype.remove.call(this);
-  }
+  },
+
+
+  upvotePost: function (event) {
+    event.preventDefault();
+    this.post.upvote();
+  },
+
+  downvotePost: function (event) {
+    event.preventDefault();
+    this.post.downvote();
+  },
 
 })

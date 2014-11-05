@@ -50,12 +50,29 @@ class Post < ActiveRecord::Base
 
   def get_post_img_src
     begin
-      src = Nokogiri::HTML(open(self.url)).css('img')[0].attr('src')
-      # src =~ /(^https:)|(^http:)/ ? src : "https:#{src}"
-    rescue Exception => e
-      src = ""
-    end
+      if self.url =~ /.gif/
+        ""
+      elsif self.url =~ /(.jpg)|(.png)/
+        self.url
+      else
+        page = Nokogiri::HTML(open(self.url)).css('img').to_a.sample
+        src = page.attr('src');
+        if src =~ /^data:image/
+          src = page.attr('data-src');
+        end
 
+        if src =~ /.gif/ || src.length == 0
+            return ""
+        end
+
+
+        return (src =~ /(^https:)|(^http:)/ ? src : "https:#{src}")
+
+      end
+
+    rescue
+      ""
+    end
   end
 
   def author_by_post_comment

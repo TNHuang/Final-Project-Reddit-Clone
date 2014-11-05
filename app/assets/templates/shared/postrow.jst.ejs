@@ -7,10 +7,10 @@
   </div>
 
 <% if (post.escape('img_url') === "") { %>
-  <div class='post-thumbnail img-not-found'></div>
+  <a href="<%= post.escape('url') %>"><div class='post-thumbnail img-not-found'></div></a>
 <% } else { %>
-  <div class='post-thumbnail' src="<%= post.escape('img_url') %>"></div>
-<% }%>
+  <a href="<%= post.escape('url') %>"><img class='post-thumbnail' src="<%= post.escape('img_url') %>"></a>
+<% }%>''
 
   <div class="post-info row-info clearfix">
     <a href="<%= post.escape('url') %>"><%= post.escape('title') %></a><br>

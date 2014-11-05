@@ -6,8 +6,9 @@ RedditClone.Views.CommentRow = Backbone.View.extend({
 
     this.subViews = [];
     this.comment = options.comment;
+    this.comment = options.comments;
     this.listenTo(this.comment, "sync change destroy", this.render);
-    // this.listenTo(this.comment, "add", this.addRender);
+    this.listenTo(this.comment, "add", this.addRender);
   },
 
   events: { "click button.delete-comment": "removeComment",
@@ -20,18 +21,26 @@ RedditClone.Views.CommentRow = Backbone.View.extend({
     var content = this.template({comment: this.comment});
     this.$el.html(content);
 
+    this.addButtonRender(this.comment);
     if (this.comment.childComments().length > 0) {
-      this.comment.childComments().forEach( this.addRender.bind(this) );
+      this.comment.childComments().each( this.addRender.bind(this) );
     }
 
     return this;
   },
 
   addRender: function (comment) {
-    console.log('nested sub rendering')
+
     var view = new RedditClone.Views.CommentRow({ comment: comment})
     this.subViews.push(view);
     this.$('> ul').append(view.render().$el);
+  },
+
+  addButtonRender: function (comment) {
+
+    var view = new RedditClone.Views.CommentReply({comment: comment});
+    this.subViews.push(view);
+    this.$('.buttons-container').first().append(view.render().$el);
   },
 
   remove: function () {

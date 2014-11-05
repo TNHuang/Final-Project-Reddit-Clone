@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 20141105145711) do
     t.integer  "author_id",  null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "img_url"
+    t.text     "img_url"
   end
 
   add_index "posts", ["author_id"], name: "index_posts_on_author_id", using: :btree

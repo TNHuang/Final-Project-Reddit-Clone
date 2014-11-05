@@ -1,5 +1,16 @@
 
-<div class="sidebar" style="position: absolute; right: 0">
+
+
+<div class="add-padding-left">
+  <a href="#/posts/new/<%= sub.escape('id') %>">Create new post</a><br>
+  <ul class="posts-wrapper">
+
+  </ul>
+</div>
+
+
+
+<div class="sidebar" >
   <h3>Subs show page</h3>
 
   <div>name: <%= sub.escape('name') %></div>
@@ -12,13 +23,5 @@
     <% sub.mods().forEach(function(mod){ %>
       <li><a href="#/users/<%= mod.escape('id') %>"><%= mod.escape('name') %></a></li>
     <% }) %>
-  </ul>
-</div>
-
-
-<div class="add-padding-left">
-  <a href="#/posts/new/<%= sub.escape('id') %>">Create new post</a><br>
-  <ul class="posts-wrapper">
-
   </ul>
 </div>
