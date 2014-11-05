@@ -1,6 +1,6 @@
 RedditClone.Views.SubShow = Backbone.View.extend({
   template: JST["subs/show"],
-  className: "add-padding-left",
+
 
   initialize: function (options) {
     this.subViews = [];
@@ -24,7 +24,7 @@ RedditClone.Views.SubShow = Backbone.View.extend({
   addRender: function (post) {
     var view = new RedditClone.Views.PostRow({ post: post, sub: this.sub})
     this.subViews.push(view);
-    this.$('table').append(view.render().$el);
+    this.$('ul.posts-wrapper').append(view.render().$el);
   },
 
   remove: function () {

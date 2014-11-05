@@ -21,6 +21,15 @@ RedditClone.Views.PostNew = Backbone.View.extend({
     var params = $(event.currentTarget).serializeJSON();
     var newPost = new RedditClone.Models.Post(params["post"]);
 
+    // var imgExtract = $.ajax({
+    //   type: "GET",
+    //   url: response.url,
+    //   dataType: "xml",
+    //   success: function (xml) {
+    //     var image_url= $(html).find($('img').attr("src"));
+    //   }
+    // })
+
 
     newPost.save({sub_id: params["sub_id"]}, {
       success: function () {
@@ -31,3 +40,24 @@ RedditClone.Views.PostNew = Backbone.View.extend({
   },
 
 });
+
+//
+// $.ajax({
+// 04
+//  type: "GET",
+// 05
+//  url: "http://www.nyasatimes.com/feed/",
+// 06
+//  dataType: "xml",
+// 07
+//  success: function(xml) {
+// 08
+//  $(xml).find('item').each(function(){
+// 09
+//  var title = $(this).find('title').text();
+// 10
+//  var link = $(this).find('link').text();
+// 11
+//  });
+// 12
+//  }

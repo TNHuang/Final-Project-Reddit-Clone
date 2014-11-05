@@ -1,5 +1,6 @@
 RedditClone.Views.PostRow = Backbone.View.extend({
-  tagName: 'tr',
+  tagName: 'li',
+  className: "comment-container row-container",
   template: JST['shared/postrow'],
   initialize: function (options) {
     this.sub = options.sub;

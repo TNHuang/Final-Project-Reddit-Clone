@@ -16,6 +16,7 @@ class Api::PostsController < ApplicationController
     @post.url = "http://" + url unless (url[0..6] == "http://") || (url[0..7] == "https://")
     if @post.save
       Posting.create({sub_id: params[:sub_id], post_id: @post.id})
+      
       render :json => params[:sub_id]
     else
       @sub = Sub.find(params[:sub_id])

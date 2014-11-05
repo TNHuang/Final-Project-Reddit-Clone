@@ -21,7 +21,9 @@ RedditClone.Routers.Router = Backbone.Router.extend({
     "posts/:id": "postShow",
     "posts/:id/edit(/:sub_id)": "postEdit",
     //make user crud here
-
+    "users": "userIndex",
+    "users/new": "userNew",
+    "users/:id": "userShow",
   },
 
   subsIndex: function () {

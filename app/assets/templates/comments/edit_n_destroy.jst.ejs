@@ -1,0 +1,12 @@
+<% if(comment.get('is_author') === true) { %>
+  <button class="delete-comment">delete</button>
+
+  <div class="edit-comment-wrapper">
+    <button class="eidt-comment">edit</button>
+    <form class="eddit-comment-form hidden">
+      <textarea name="comment[body]"></textarea>
+      <input type="submit" value="update comment">
+    </form>
+  </div>
+
+<% }%>

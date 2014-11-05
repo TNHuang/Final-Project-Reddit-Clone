@@ -1,20 +1,22 @@
-<td>
-  <div class="vote-wrapper">
+
+<div class="post-wrapper clearfix">
+  <div class="vote-wrapper clearfix">
     <div class="upvote-post upvote" ></div>
     <div class="vote-score"><%= post.escape('votes') %></div>
     <div class="downvote-post downvote"></div>
   </div>
-</td>
-<td>
-  <a href="<%= post.escape('url') %>"><%= post.escape('title') %></a><br>
-  submitted by <a href="#/users/<%= post.escape('author_id') %>"><%= post.escape('author') %></a><br>
-  <a href="#/posts/<%= post.escape('id') %>"><%= post.escape('comment_count') %>  comments</a>
-</td>
 
-<td>
-  <% if (post.escape('is_author') === "true") { %>
-    <button class="delete-post" data-sub-id="<%= sub.id %>">delete</button>
-    <a href="#/posts/<%= post.escape('id') %>/edit/<%= sub.id %>">Edit</a>
-  <% }%>
+  <img class='thumbnail' style="height:60px;width:60px;float:left" src="http://b.thumbs.redditmedia.com/aQi6uH5FYM6t5YWVzq5VcJ2JQ_jwcpDNBJeMCDFSY0c.jpg">
 
-</td>
+  <div class="post-info row-info clearfix">
+    <a href="<%= post.escape('url') %>"><%= post.escape('title') %></a><br>
+    submitted by <a href="#/users/<%= post.escape('author_id') %>"><%= post.escape('author') %></a><br>
+    <a href="#/posts/<%= post.escape('id') %>"><%= post.escape('comment_count') %>  comments</a>
+
+    <% if (post.escape('is_author') === "true") { %>
+      <button class="delete-post" data-sub-id="<%= sub.id %>">delete</button>
+      <a href="#/posts/<%= post.escape('id') %>/edit/<%= sub.id %>">Edit</a>
+    <% }%>
+
+  </div>
+</div>
