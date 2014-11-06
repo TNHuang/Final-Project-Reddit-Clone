@@ -50,23 +50,23 @@ class Post < ActiveRecord::Base
 
   def get_post_img_src
     begin
+
       if self.url =~ /.gif/
-        ""
+        return ""
       elsif self.url =~ /(.jpg)|(.png)/
-        self.url
+        return self.url
       else
+
+        main_url =  self.url.match(/(http:\/\/www.*.org)|(https:\/\/www.*.org)|(http:\/\/www.*.com)|(https:\/\/www.*.com)/).to_a[0]
         page = Nokogiri::HTML(open(self.url)).css('img').to_a.sample
         src = page.attr('src');
-        if src =~ /^data:image/
-          src = page.attr('data-src');
+        src = page.attr('data-src') if src =~ /^data:image/
+
+        if src =~ /(static\/archives)|(public\/archives)/
+          src = main_url + src
         end
-
-        if src =~ /.gif/ || src.length == 0
-            return ""
-        end
-
-        return (src =~ /(^https:)|(^http:)/ ? src : "https:#{src}")
-
+        return "" if src =~ /.gif/ || src.length == 0
+        (src =~ /(^https:\/\/)|(^http:\/\/)/ ? src : "https://#{src}")
       end
 
     rescue

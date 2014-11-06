@@ -274,3 +274,29 @@ comment_urls.each_with_index do |url, index|
   end
 
 end
+
+
+
+
+# comment_urls.each_with_index do |url, index|
+#   post_id = post_ids[index]
+#   comment_seeder(url, user_ids, post_id)
+# end
+#
+# def comment_seeder(url, user_ids, post_id)
+#   page = Nokogiri::HTML(open(url))
+#   all_comments = page.css('.md > p').map {|comment| comment.text }
+#   posted_comments_id = [nil]
+#
+#   until all_comments.size == 0
+#     author_id = user_ids.sample
+#     sample_comment = all_comments.shift
+#     parent_id = posted_comments_id.sample
+#
+#     c = Comment.create({author_id: author_id,
+#                     body: sample_comment,
+#                     post_id: post_id ,
+#                     parent_comment_id: parent_id});
+#     posted_comments_id << c.id
+#   end
+# end
