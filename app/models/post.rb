@@ -65,7 +65,6 @@ class Post < ActiveRecord::Base
             return ""
         end
 
-
         return (src =~ /(^https:)|(^http:)/ ? src : "https:#{src}")
 
       end

@@ -32,6 +32,8 @@ RedditClone.Views.SubShow = Backbone.View.extend({
       subView.remove();
     });
     Backbone.View.prototype.remove.call(this);
-  }
+  },
+
+  
 
 });

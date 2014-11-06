@@ -48,7 +48,7 @@ class Api::PostsController < ApplicationController
     @comments_by_parent =  @post.comments_by_parent
     @author_by_comment = @post.author_by_post_comment
     @votes = @post.votes_by_comment
-  
+
 
     render :show
   end
@@ -63,6 +63,12 @@ class Api::PostsController < ApplicationController
       render json: @posting.errors.full_messages, status: :unprocessable_entity
     end
 
+  end
+
+  def change_img_url
+    @post = Post.find(params[:id]);
+    @post.save_img_url;
+    render :json => {img_url: @post.img_url}
   end
 
   def downvote

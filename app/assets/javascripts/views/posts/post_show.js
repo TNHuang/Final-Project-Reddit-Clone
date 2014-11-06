@@ -53,14 +53,16 @@ RedditClone.Views.PostShow = Backbone.View.extend({
       dataType: 'json',
       success: function (response) {
         newComment.set({
-          votes: response.votes,
-          author_id: response.author_id,
-          author_name: response.author_name,
-          parent_comment_id: response.parent_comment_id
+            is_author: response.is_author,
+            votes: response.votes,
+            author_id: response.author_id,
+            author_name: response.author_name,
+            parent_comment_id: response.parent_comment_id,
+            id: response.id
           });
         this.comments.add(newComment);
-        $('body, html').scrollTop(5000);
-        Backbone.history.navigate("posts/" + this.post.id, {trigger: true});
+        var height = $('#'+response.id).offset().top;
+        $('body, html').scrollTop(height);
       }.bind(this)
     })
 

@@ -12,6 +12,7 @@ RedditClone.Views.PostRow = Backbone.View.extend({
     "click button.delete-post": "removePost",
     "click .upvote-post": "upvotePost",
     "click .downvote-post": "downvotePost",
+    "click .change-img-url": "changeImgURL",
   },
 
   render: function () {
@@ -36,10 +37,8 @@ RedditClone.Views.PostRow = Backbone.View.extend({
       success: function () {
         this.remove();
       }.bind(this)
-
     })
 
-    // this.post.destroy({ sub_id: sub_id });
   },
 
   upvotePost: function (event) {
@@ -48,6 +47,16 @@ RedditClone.Views.PostRow = Backbone.View.extend({
 
   downvotePost: function (event) {
     this.post.downvote();
+  },
+
+  changeImgURL: function (event) {
+    $.ajax({
+      url: "api/posts/" + this.post.escape('id') + "/change_img_url",
+      type: "POST",
+      success: function (response) {
+        this.post.set({ img_url: response.img_url })
+      }.bind(this)
+    })
   },
 
 })

@@ -31,6 +31,11 @@ Rails.application.routes.draw do
     end
   end
 
+
+
+
+
+
   namespace :api, :defaults => { :format => :JSON} do
 
     resources :posts, except: [ :index ] do
@@ -54,6 +59,8 @@ Rails.application.routes.draw do
         post "downvote"
       end
     end
+
+    post "/posts/:id/change_img_url", to: "posts#change_img_url", as: "change_img_url"
 
   end
 
