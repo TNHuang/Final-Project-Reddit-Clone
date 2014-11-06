@@ -1,12 +1,35 @@
 <button class="reply-comment-toggle">reply</button>
 
+<% if (comment.escape('is_author') === "true") { %>
+    <button class="edit-comment-toggle">edit</button>
+    <button class="delete-comment">delete</button>
+<% } %>
+
+
 <div class="reply-comment-wrapper hidden">
   <form class="reply-comment-form ">
-    <textarea name="comment[body]" place></textarea>
+    <textarea name="comment[body]" placeholder="reply to comment"></textarea>
 
     <input type="hidden" name="comment[parent_comment_id]" value="<%= comment.escape('id') %>">
-    <input type="hidden" name="comment[post_id]" value="<%= comment.escape('post_id') %>">
+    <input type="hidden" name="comment[post_id]" value="<%= comment.escape('post_id')  %>">
 
     <input type="submit" value="save">
   </form>
 </div>
+
+<% if (comment.escape('is_author') === "true") { %>
+
+  <div class="edit-comment-wrapper hidden">
+    <form class="edit-comment-form ">
+      <textarea name="comment[body]" placeholder="edit your comment"></textarea>
+
+      <input type="hidden" name="comment[parent_comment_id]" value="<%= comment.escape('parent_comment_id') %>">
+      <input type="hidden" name="comment[post_id]" value="<%= comment.escape('post_id')  %>">
+
+      <input type="submit" value="update">
+    </form>
+  </div>
+<% } %>
+
+
+<button class="cancel-button hidden">cancel</button>

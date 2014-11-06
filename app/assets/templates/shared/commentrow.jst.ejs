@@ -1,8 +1,9 @@
-<div class="comment-wrapper clearfix">
+
+<div class="comment-wrapper clearfix" id="<%= comment.escape('id') %>">
   <div class="vote-wrapper">
-    <div class="upvote-comment upvote" ></div>
+    <div class="upvote-comment upvote" data-id="<%= comment.escape('id') %>"></div>
     <div class="vote-score"><%= comment.escape('votes') %></div>
-    <div class="downvote-comment downvote"></div>
+    <div class="downvote-comment downvote" data-id="<%= comment.escape('id') %>"></div>
   </div>
   <div class="comment-info row-info">
     <%= comment.escape('body') %> <br>

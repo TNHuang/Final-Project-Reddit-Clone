@@ -20,7 +20,7 @@ RedditClone.Views.SubEdit = Backbone.View.extend({
     var params = $(event.currentTarget).serializeJSON();
 
 
-    this.sub.save(params["sub"],{
+    this.sub.update(params["sub"],{
       success: function () {
        Backbone.history.navigate("subs", { trigger: true });
       }

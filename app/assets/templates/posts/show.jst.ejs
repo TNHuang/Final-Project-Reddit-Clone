@@ -27,11 +27,12 @@
 </div>
 
 <p>
-  make new commemt
-  <form>
-    <label for="reply">Reply</label><br>
-    <textarea placeholder="replay to this post"></textarea>
-   <button class="reply-to-post">reply</button>
+  Reply to this post
+  <form class="reply-post-form">
+    <textarea name="comment[body]" placeholder="replay to this post"></textarea>
+    <input type="hidden" name="comment[parent_comment_id]" value=null>
+    <input type="hidden" name="comment[post_id]" value="<%= post.escape('id') %>">
+    <button class="reply-to-post">reply</button>
   </form>
 </p>
 <ul class="posts-wrapper">
