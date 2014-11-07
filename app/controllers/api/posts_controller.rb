@@ -17,7 +17,7 @@ class Api::PostsController < ApplicationController
     if @post.save
       Posting.create({sub_id: params[:sub_id], post_id: @post.id})
 
-      render :json => params[:sub_id]
+      render :json => {post_id: @post.id}
     else
       @sub = Sub.find(params[:sub_id])
       flash.now[:errors] = @post.errors.full_messages
@@ -48,7 +48,7 @@ class Api::PostsController < ApplicationController
     @comments_by_parent =  @post.comments_by_parent
     @author_by_comment = @post.author_by_post_comment
     @votes = @post.votes_by_comment
-
+    @subs = @post.subs;
 
     render :show
   end

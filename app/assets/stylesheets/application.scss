@@ -202,9 +202,15 @@ table {
   padding-left: 10px;
 }
 .row-container {
+
+}
+
+post-container.row-container {
+  border-bottom: 1px dotted #ccc;
+}
+.comment-container.row-container {
   border: 1px dotted #ccc;
-
-
+  padding: 0 10px 10px 0;
 }
 
 .vote-wrapper {
@@ -414,9 +420,9 @@ table {
   transition: margin 0.5s;
 }
 
-.sub-title:hover {
-  margin-left: 20px;
-}
+// .sub-title:hover {
+//   margin-left: 20px;
+// }
 
 .sub-count {
   display: block;
@@ -461,4 +467,8 @@ table {
   padding: 2px 5px;
   width: 80%;
   font-size: 12px;
+}
+
+.delete-sub, .cancel-button {
+  cursor: pointer;
 }

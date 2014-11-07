@@ -79,6 +79,6 @@ RedditClone.Views.PostShow = Backbone.View.extend({
     this.post.downvote();
   },
 
-  
+
 
 })

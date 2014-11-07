@@ -3,7 +3,11 @@ json.author_name @author.name
 json.author_id @author.id
 json.votes @post.votes
 json.img_url @post.img_url
-# json.kommets @comments_by_parent
+
+json.subs @subs do |sub|
+  json.title sub.title
+  json.sub_id sub.id
+end
 
 json.comments @post.comments.where({parent_comment_id: nil}) do |comment|
   json.extract! comment, :id, :body, :author_id, :post_id, :parent_comment_id
