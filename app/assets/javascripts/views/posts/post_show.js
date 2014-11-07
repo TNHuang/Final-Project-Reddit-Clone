@@ -30,7 +30,7 @@ RedditClone.Views.PostShow = Backbone.View.extend({
       { comment: comment}
     );
     this.subViews.push(view);
-    this.$('> ul').append(view.render().$el);
+    this.$('> ol').append(view.render().$el);
   },
 
   remove: function () {

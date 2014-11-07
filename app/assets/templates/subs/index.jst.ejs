@@ -1,10 +1,39 @@
 
 
-<section class="main-body"></section>
-<h3>all subreddits</h3>
-<a href="#/subs/new" class="create-new-sub">Create new sub</a>
-
-<table>
 
 
-</table>
+<ol class="subs-wrapper">
+
+</ol>
+<div class="sidebar">
+  <section class="main-body"></section>
+  <h3>all subreddits</h3>
+
+  <div class='search-form-container'>
+    <form class="search-form">
+      <input type="text" name="search" value="" class="search-bar" placeholder='search here'>
+    </form>
+  </div>
+
+  <br>
+  <a href="#/subs/new" class="create-new-sub create-button">Create new sub</a>
+
+  <br>
+  <h3>subscribed sub</h3>
+  <% subs.forEach ( function(sub) { %>
+
+    <% if (sub.escape("is_subscribe") === "true") { %>
+      <div>
+        <div class='subscribe-container'>
+          <% if (sub.escape("is_subscribe") === "true") { %>
+            <div class="unsub sub-toggle ">unsubscribe</div>
+          <% } else { %>
+            <div class="sub sub-toggle ">subscribe</div>
+          <% } %>
+        </div>
+        <a href="#/subs/<%= sub.escape('id') %>"><%= sub.escape('title') %></a>
+      </div>
+    <% } %>
+
+  <% }) %>
+</div>

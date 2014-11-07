@@ -3,7 +3,7 @@ RedditClone.Views.CommentReply = Backbone.View.extend({
   className: "comment-reply-container",
   initialize: function (options) {
     this.comment = options.comment;
-    this.children = options.children;
+    this.children = this.comment.childComments();
     this.parentView = options.parentView;
   },
 

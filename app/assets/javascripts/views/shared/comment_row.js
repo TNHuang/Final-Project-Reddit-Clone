@@ -12,9 +12,10 @@ RedditClone.Views.CommentRow = Backbone.View.extend({
     this.listenTo(this.children, "add", this.addRender);
   },
 
-  events: { "click button.delete-comment": "removeComment",
+  events: { "click .delete-comment": "removeComment",
     "click .upvote-comment": "upvoteComment",
     "click .downvote-comment": "downvoteComment",
+
   },
 
   render: function () {
@@ -40,7 +41,7 @@ RedditClone.Views.CommentRow = Backbone.View.extend({
   addButtonRender: function (comment) {
 
     var view = new RedditClone.Views.CommentReply({
-      comment: comment, children: this.children, parentView: this
+      comment: comment, parentView: this
       });
     this.subViews.push(view);
     this.$('.buttons-container').first().append(view.render().$el);

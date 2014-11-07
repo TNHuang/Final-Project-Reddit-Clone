@@ -1,0 +1,27 @@
+<div class='subs-toggle-wrapper'>
+<a class="toggle-subreddits">
+MY SUBREDDITS &#x25bc |
+</a>
+<div class="subreddits-dropdown hidden">
+  <% subs.forEach ( function(sub) { %>
+
+    <% if (sub.escape("is_subscribe") === "true") { %>
+      <div>
+        <a href="#/subs/<%= sub.escape('id') %>"><%= sub.escape('title') %></a>
+      </div>
+    <% } %>
+
+  <% }) %>
+  <div class="edit-subscribe"><a href="#/subs">edit subscribtions</a></div>
+</div>
+</div>
+
+
+<div class="subs-lists-nav">
+<% subs.forEach ( function(sub) { %>
+  - <a href="#/subs/<%= sub.escape('id') %>"><%= sub.escape('title') %></a>
+<% }) %>
+</div>
+
+
+<div class="link-to-subs-index"><a href="#/subs">more >></a></div>

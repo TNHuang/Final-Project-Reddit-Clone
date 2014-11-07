@@ -6,6 +6,8 @@ class Api::SubsController < ApplicationController
     @subber_count = Sub.subscribers_count_by_sub
     @is_mod = current_user.sub_mod_by_current_user?
     @votes_by_sub = Sub.votes_count_by_sub
+    @is_subscribe = current_user.subscribed_sub_by_user
+    
     render :index
   end
 
@@ -22,7 +24,7 @@ class Api::SubsController < ApplicationController
       # @subber_count = Sub.subscribers_count_by_sub
       # @is_mod = current_user.sub_mod_by_current_user?
       # @votes_by_sub = Sub.votes_count_by_sub
-      render :index
+      render :show
     else
       flash.now[:errors] = @sub.errors.full_messages
       render :new
@@ -36,7 +38,6 @@ class Api::SubsController < ApplicationController
     @is_author = current_user.post_by_current_user?
     @authors = Post.author_by_post_sub(@sub)
     @posts, @mods = @sub.sub_with_posts_and_moderators
-    
     render :show
   end
 

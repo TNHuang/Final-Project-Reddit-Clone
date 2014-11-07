@@ -28,12 +28,14 @@ RedditClone.Routers.Router = Backbone.Router.extend({
 
   subsIndex: function () {
 
-    this.subs.fetch();
-    var indexView = new RedditClone.Views.SubsIndex({
-      collection: this.subs
+    this.subs.fetch({
+      success: function () {
+        var indexView = new RedditClone.Views.SubsIndex({
+          collection: this.subs
+        });
+        this._swapView(indexView, this.$main);
+      }.bind(this)
     });
-
-    this._swapView(indexView, this.$main);
 
   },
 

@@ -1,6 +1,6 @@
 RedditClone.Views.SubsIndex = Backbone.View.extend({
   template: JST["subs/index"],
-  className: "add-padding-left",
+  className: "subs-index-container",
 
   initialize: function (options) {
 
@@ -11,7 +11,7 @@ RedditClone.Views.SubsIndex = Backbone.View.extend({
   },
 
   render: function () {
-    var content = this.template();
+    var content = this.template({subs: this.subs});
 
     this.$el.html(content);
     this.subs.forEach( this.addRender.bind(this));
@@ -22,7 +22,7 @@ RedditClone.Views.SubsIndex = Backbone.View.extend({
   addRender: function (sub) {
     var view = new RedditClone.Views.SubRow({ sub: sub})
     this.subViews.push(view);
-    this.$('table').append(view.render().$el);
+    this.$('ol').append(view.render().$el);
   },
 
 

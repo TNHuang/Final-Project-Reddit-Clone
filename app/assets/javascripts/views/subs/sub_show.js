@@ -24,7 +24,7 @@ RedditClone.Views.SubShow = Backbone.View.extend({
   addRender: function (post) {
     var view = new RedditClone.Views.PostRow({ post: post, sub: this.sub})
     this.subViews.push(view);
-    this.$('ul.posts-wrapper').append(view.render().$el);
+    this.$('ol.posts-wrapper').append(view.render().$el);
   },
 
   remove: function () {
@@ -34,6 +34,6 @@ RedditClone.Views.SubShow = Backbone.View.extend({
     Backbone.View.prototype.remove.call(this);
   },
 
-  
+
 
 });

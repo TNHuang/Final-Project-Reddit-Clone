@@ -49,6 +49,16 @@ class User < ActiveRecord::Base
     is_sub_mod_by_current_user
   end
 
+  def subscribed_sub_by_user
+    subscribed_by_sub = Hash.new { |h,k| h[k] = false }
+
+    self.subs.each do |sub|
+      subscribed_by_sub[sub] = true;
+    end
+    subscribed_by_sub
+  end
+
+
   def post_by_current_user?
     post_by_current_user = Hash.new(false);
     self.posts.each do |post|

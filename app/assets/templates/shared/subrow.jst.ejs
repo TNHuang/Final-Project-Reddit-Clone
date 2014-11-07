@@ -1,20 +1,37 @@
-<td>
+<div class="sub-wrapper clearfix">
+  <div class='subscribe-container'>
+    <% if (sub.escape("is_subscribe") === "true") { %>
+      <div class="unsub sub-toggle ">unsubscribe</div>
+    <% } else { %>
+      <div class="sub sub-toggle ">subscribe</div>
+    <% } %>
 
-  <div class="vote-wrapper">
+  </div>
+
+  <div class="vote-wrapper clearfix">
     <div class="upvote-sub upvote" ></div>
     <div class="vote-score"><%= sub.escape('votes') %></div>
-    <div class="downvote-sub downvote" ></div>
+    <div class="downvote-sub downvote"></div>
   </div>
-</td>
-<td>
-  <a href="#/subs/<%= sub.escape('id') %>"><%= sub.escape('title') %></a></td>
-<td>
-  <%= sub.escape('description') %><br><%= sub.escape('sub_count') %>  subscribers
-</td>
-<td>
-  <% if (sub.escape('is_moderator') === "true") { %>
-    <button class="delete-sub" >delete</button>
-    <a href="#/subs/<%= sub.escape('id') %>/edit">Edit</a>
-  <% }%>
 
-</td>
+
+  <div class="sub-info row-info clearfix">
+    <div class="sub-title"><a href="#/subs/<%= sub.escape('id') %>">/r/<%= sub.escape('title') %></a></div>
+    <div class="sub-description"><%= sub.escape('description') %></div>
+
+    <div class="sub-footer-info clearfix">
+    <div class="sub-count "><%= sub.escape('sub_count') %>  subscribers</div>
+
+     <% if (sub.escape('is_moderator') === "true") { %>
+       <div class="mod-options">
+         <a class="delete-sub" >delete</a>
+         <a href="#/subs/<%= sub.escape('id') %>/edit">edit</a>
+       </div>
+       <% }%>
+    </div>
+
+
+
+
+  </div>
+</div>

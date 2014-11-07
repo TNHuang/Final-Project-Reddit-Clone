@@ -1,5 +1,6 @@
 RedditClone.Views.SubRow = Backbone.View.extend({
-  tagName: 'tr',
+  tagName: 'li',
+  className: "sub-container row-container",
   template: JST['shared/subrow'],
   initialize: function (options) {
     this.sub = options.sub;
@@ -7,9 +8,10 @@ RedditClone.Views.SubRow = Backbone.View.extend({
   },
 
   events: {
-    "click button.delete-sub": "removeSub",
+    "click .delete-sub": "removeSub",
     "click .upvote-sub": "upvoteSub",
     "click .downvote-sub": "downvoteSub",
+
   },
 
   render: function () {
@@ -19,12 +21,6 @@ RedditClone.Views.SubRow = Backbone.View.extend({
     return this;
   },
 
-  // voteRender: function () {
-  //   console.log("trigger vote render");
-  //   console.log(this.$('.vote-score'))
-  //   console.log(this.sub.escape('votes'))
-  //   this.$('.vote-score').html(this.sub.votes)
-  // },
 
   remove: function () {
     Backbone.View.prototype.remove.call(this);

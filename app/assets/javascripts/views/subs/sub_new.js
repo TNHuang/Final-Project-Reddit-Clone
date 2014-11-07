@@ -1,6 +1,5 @@
 RedditClone.Views.SubNew = Backbone.View.extend({
   template: JST["subs/new"],
-  className: "sidebar",
   initialize: function (options) {
     this.subs = options.subs;
   },

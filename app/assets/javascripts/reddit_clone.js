@@ -9,6 +9,10 @@ window.RedditClone = {
 
     var subs = new RedditClone.Collections.Subs();
 
+    var subnavView = new RedditClone.Views.SubNav({ subs: subs });
+    var $subnav = $(".subs-nav");
+    $subnav.html(subnavView.render().$el);
+
     var $head = $("#head");
     var $sidebar = $("#sidebar");
     var $main = $("#main");
