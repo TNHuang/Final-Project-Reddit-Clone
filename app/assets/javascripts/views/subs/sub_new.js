@@ -19,7 +19,7 @@ RedditClone.Views.SubNew = Backbone.View.extend({
     var params = $(event.currentTarget).serializeJSON();
     var newSub = new RedditClone.Models.Sub(params["sub"]);
 
-    newSub.save({}, {
+    newSub.save({sort: false}, {
       success: function () {
         this.subs.add(newSub);
         Backbone.history.navigate("subs", {trigger: true});

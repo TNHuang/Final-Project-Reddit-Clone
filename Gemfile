@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'pg_search'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.6'
 # Use sqlite3 as the database for Active Record
@@ -27,8 +27,10 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 
 require 'rubygems'
-require 'nokogiri'
+gem 'nokogiri'
 require 'open-uri'
+gem 'pg_search'
+gem 'kaminari'
 
 # Use ActiveModel has_secure_password
 gem 'omniauth-facebook'

@@ -104,7 +104,7 @@ t = [ "Rosetta just sent new images taken from about 7.8 km from the surface of 
 u = [
   "http://imgur.com/gallery/zvM7V/new",
   "https://www.youtube.com/watch?v=3jCystkiIBs",
-  "https://www.reddit.com/r/space/comments/2km5vp/antares_launch_failed_rocket_exploded_10s_after/",
+
   "http://adventuretime.wikia.com/wiki/Ice_King",
   "http://i.imgur.com/qfgoTNf.jpg",
   "http://i.imgur.com/2WnFuk9.jpg",
@@ -112,7 +112,9 @@ u = [
   "http://imgur.com/",
   "http://i.imgur.com/ak3rGrx.jpg",
   "http://imgur.com/",
-  "http://i.imgur.com/MQjvQoL.jpg?1","http://www.imgur.com/9aUcOIL.jpg","http://www.theguardian.com/science/2014/oct/29/"]
+  "http://i.imgur.com/MQjvQoL.jpg?1",
+  "http://www.imgur.com/9aUcOIL.jpg",
+  "http://www.theguardian.com/science/2014/oct/29/"]
 userz = User.all
 t.each_with_index do |title, i|
   next unless Post.create({title: title, url: u[i] , author_id: userz.sample.id});

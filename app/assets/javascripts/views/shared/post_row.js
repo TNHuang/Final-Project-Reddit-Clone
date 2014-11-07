@@ -9,7 +9,7 @@ RedditClone.Views.PostRow = Backbone.View.extend({
   },
 
   events: {
-    "click button.delete-post": "removePost",
+    "click .delete-post": "removePost",
     "click .upvote-post": "upvotePost",
     "click .downvote-post": "downvotePost",
     "click .change-img-url": "changeImgURL",

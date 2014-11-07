@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141105145711) do
+ActiveRecord::Schema.define(version: 20141107063058) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,14 @@ ActiveRecord::Schema.define(version: 20141105145711) do
 
   add_index "moddings", ["moderator_id", "sub_id"], name: "index_moddings_on_moderator_id_and_sub_id", unique: true, using: :btree
 
+  create_table "pg_search_documents", force: true do |t|
+    t.text     "content"
+    t.integer  "searchable_id"
+    t.string   "searchable_type"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
   create_table "postings", force: true do |t|
     t.integer  "sub_id",     null: false
     t.integer  "post_id",    null: false
@@ -48,13 +56,13 @@ ActiveRecord::Schema.define(version: 20141105145711) do
   add_index "postings", ["post_id", "sub_id"], name: "index_postings_on_post_id_and_sub_id", unique: true, using: :btree
 
   create_table "posts", force: true do |t|
-    t.string   "title",      null: false
     t.string   "url"
-    t.string   "body"
     t.integer  "author_id",  null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "img_url"
+    t.text     "body"
+    t.text     "title"
   end
 
   add_index "posts", ["author_id"], name: "index_posts_on_author_id", using: :btree

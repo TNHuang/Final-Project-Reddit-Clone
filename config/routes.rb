@@ -67,6 +67,8 @@ Rails.application.routes.draw do
 
     post "posts/:id/xpost", to: "posts#xpost", as: "post_xpost"
 
+    get "subs/multisearch", to: "subs#multisearch", as: "multi_search"
+
   end
 
 end

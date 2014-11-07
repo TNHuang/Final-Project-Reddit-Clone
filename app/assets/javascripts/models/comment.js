@@ -57,6 +57,10 @@ RedditClone.Models.Comment = Backbone.Model.extend({
         children.add(newComment);
 
         var height = $('#'+response.id).offset().top-$(window).height()/2;
+        var maxheight = $(document).height()-$(window).height()/2;
+        if (height > maxheight) {
+          height = maxheight/2;
+        }
         $('body, html').animate( { scrollTop: height}, 1000);
       }.bind(this)
     })

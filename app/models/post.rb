@@ -1,9 +1,11 @@
 class Post < ActiveRecord::Base
   include Votable
-
+  include PgSearch
   after_create :save_img_url
 
   validates :title, :author_id, presence: true
+  
+  multisearchable :against => [:body, :title]
 
   belongs_to :author,
   class_name: "User",

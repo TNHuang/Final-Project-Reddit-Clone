@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  include PgSearch
   attr_reader :password
 
   validates :name, :password_digest, presence: true
@@ -41,6 +42,7 @@ class User < ActiveRecord::Base
     {post_karma: post_karma, comment_karma: comment_karma }
   end
 
+
   def sub_mod_by_current_user?
     is_sub_mod_by_current_user = Hash.new(false);
     self.mod_subs.each do |sub|
@@ -66,6 +68,26 @@ class User < ActiveRecord::Base
     end
     post_by_current_user
   end
+
+  def multi_search_by(arg, num = 25)
+      sub_ids, post_ids = [], []
+      arg = arg.to_s
+      results = PgSearch.multisearch(arg).limit(num)
+
+      results.each do |search_result|
+        case search_result.searchable_type
+        when "Sub"
+          sub_ids << search_result.searchable_id
+        when "Post"
+          post_ids << search_result.searchable_id
+        end
+      end
+    subs = Sub.find(sub_ids)
+    posts = Post.find(post_ids)
+    [subs, posts]
+  end
+
+
 
   def self.find_by_credentials(name, password)
     user = User.find_by_name(name);

@@ -1,8 +1,11 @@
 class Sub < ActiveRecord::Base
   include Votable
+  include PgSearch
 
   validates :name, :title, :description, presence: true
   validates :name, :title, uniqueness: true
+
+  multisearchable :against => [:title, :description]
 
   has_many :moddings,
   class_name: "Modding",
@@ -28,6 +31,7 @@ class Sub < ActiveRecord::Base
   has_many :user_votes, as: :votable,
   class_name: "UserVote",
   dependent: :destroy
+
 
   def votes
     self.user_votes.sum(:value)

@@ -1,7 +1,10 @@
 class Comment < ActiveRecord::Base
   include Votable
+  include PgSearch
 
   validates :author_id, :post ,:body, presence: true
+
+
 
   belongs_to :author,
   class_name: "User",

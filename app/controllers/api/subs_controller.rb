@@ -115,6 +115,12 @@ class Api::SubsController < ApplicationController
     render :json => {is_subscribe: false}
   end
 
+  def multisearch
+    args = params[:search_term]
+    @found_subs, @found_posts = current_user.multi_search_by(args)
+    render :search
+  end
+
   private
   def subs_params
     params.require(:sub).permit(:name, :title, :description);
