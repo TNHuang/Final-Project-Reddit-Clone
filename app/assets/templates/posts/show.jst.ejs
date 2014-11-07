@@ -1,45 +1,42 @@
-<h3>Post show page</h3>
-<div class="row-container">
-  <div class="vote-wrapper clearfix">
-    <div class="upvote-post upvote" ></div>
-    <div class="vote-score"><%= post.escape('votes') %></div>
-    <div class="downvote-post downvote"></div>
+
+
+
+<ol class="subs-wrapper">
+  <h3>Post show page</h3>
+  <div class="row-container">
+    <div class="vote-wrapper clearfix">
+      <div class="upvote-post upvote" ></div>
+      <div class="vote-score"><%= post.escape('votes') %></div>
+      <div class="downvote-post downvote"></div>
+    </div>
+
+    <% if (post.escape('img_url') === "") { %>
+      <a href="<%= post.escape('url') %>"><div class='post-thumbnail img-not-found'></div></a>
+    <% } else { %>
+      <a href="<%= post.escape('url') %>"><img class='post-thumbnail' src="<%= post.escape('img_url') %>"></a>
+    <% }%>
+
+    <div>title: <a href="<%= post.escape('url') %>"><%= post.escape('title') %></a></div>
+    <div>submitted by <a href="#/users/<%= post.escape('author_id') %>"><%= post.escape('author_name') %></a></div>
+    <p>body: <%= post.escape('body') %></p>
+
   </div>
 
-  <% if (post.escape('img_url') === "") { %>
-    <a href="<%= post.escape('url') %>"><div class='post-thumbnail img-not-found'></div></a>
-  <% } else { %>
-    <a href="<%= post.escape('url') %>"><img class='post-thumbnail' src="<%= post.escape('img_url') %>"></a>
-  <% }%>
 
-  <div>title: <a href="<%= post.escape('url') %>"><%= post.escape('title') %></a></div>
-  <div>submitted by <a href="#/users/<%= post.escape('author_id') %>"><%= post.escape('author_name') %></a></div>
-  <p>body: <%= post.escape('body') %></p>
-
-</div>
-
+  <p>
+    Reply to this post
+    <form class="reply-post-form">
+      <textarea name="comment[body]" placeholder="replay to this post"></textarea>
+      <input type="hidden" name="comment[parent_comment_id]" value=null>
+      <input type="hidden" name="comment[post_id]" value="<%= post.escape('id') %>">
+      <button class="reply-to-post create-button">reply</button>
+    </form>
+  </p>
 
 
-
-
-
-
-<div class="sidebar">
-
-</div>
-
-<p>
-  Reply to this post
-  <form class="reply-post-form">
-    <textarea name="comment[body]" placeholder="replay to this post"></textarea>
-    <input type="hidden" name="comment[parent_comment_id]" value=null>
-    <input type="hidden" name="comment[post_id]" value="<%= post.escape('id') %>">
-    <button class="reply-to-post create-button">reply</button>
-  </form>
-</p>
-
-
-
-<ol class="posts-wrapper">
 
 </ol>
+
+<div class="sidebar">
+sfsadfasdf
+</div>

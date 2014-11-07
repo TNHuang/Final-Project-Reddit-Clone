@@ -4,16 +4,18 @@
     <button class="edit-comment-toggle">edit</button>
     <button class="delete-comment">delete</button>
 <% } %>
+<a class="cancel-button hidden">&times</a>
 
 
 <div class="reply-comment-wrapper hidden">
   <form class="reply-comment-form ">
+
     <textarea name="comment[body]" placeholder="reply to comment"></textarea>
 
     <input type="hidden" name="comment[parent_comment_id]" value="<%= comment.escape('id') %>">
     <input type="hidden" name="comment[post_id]" value="<%= comment.escape('post_id')  %>">
-
     <input type="submit" value="save">
+
   </form>
 </div>
 
@@ -21,15 +23,13 @@
 
   <div class="edit-comment-wrapper hidden">
     <form class="edit-comment-form ">
+
       <textarea name="comment[body]" placeholder="edit your comment"></textarea>
 
       <input type="hidden" name="comment[parent_comment_id]" value="<%= comment.escape('parent_comment_id') %>">
       <input type="hidden" name="comment[post_id]" value="<%= comment.escape('post_id')  %>">
-
       <input type="submit" value="update">
+
     </form>
   </div>
 <% } %>
-
-
-<a class="cancel-button hidden">&times</a>
