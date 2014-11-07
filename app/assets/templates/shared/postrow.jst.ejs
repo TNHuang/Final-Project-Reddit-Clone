@@ -1,5 +1,5 @@
 
-<div class="post-wrapper clearfix">
+<div class="post-wrapper clearfix" id="">
   <div class="vote-wrapper clearfix" id="<%= post.escape('id') %>">
     <div class="upvote-post upvote" ></div>
     <div class="vote-score"><%= post.escape('votes') %></div>
@@ -24,8 +24,9 @@
     <br>
 
 
-      <a href="#/posts/<%= post.escape('id') %>" class="comments-count-container"><%= post.escape('comment_count') %>  comments</a>
-
+  <div>
+    <a href="#/posts/<%= post.escape('id') %>" class="comments-count-container"><%= post.escape('comment_count') %>  comments</a>
+  </div>
   <span class="mod-options">
     <% if (post.escape('is_author') === "true") { %>
       <a class="delete-post" data-sub-id="<%= sub.id %>">delete</a>

@@ -65,9 +65,9 @@ Rails.application.routes.draw do
     post "/subs/:id/subscribe", to: "subs#subscribe", as: "sub_subscribe"
     delete "/subs/:id/unsubscribe", to: "subs#unsubscribe", as: "sub_unsubscribe"
 
-    post "posts/:id/xpost", to: "posts#xpost", as: "post_xpost"
+    post "/posts/:id/xpost", to: "posts#xpost", as: "post_xpost"
 
-    get "subs/multisearch", to: "subs#multisearch", as: "multi_search"
+    get "/multisearch", to: "subs#multisearch", as: "multi_search"
 
   end
 

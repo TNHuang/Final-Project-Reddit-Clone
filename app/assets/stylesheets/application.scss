@@ -249,20 +249,13 @@ post-container.row-container {
   display: block;
   float:right;
   width: 350px;
-  margin-right: 10px;
+  margin-right: 9px;
   border-bottom: 1px solid black;
   border-left: 1px solid black;
   border-right: 1px solid black;
-  border-radius: 5px;
-}
-// .sidebar {
-//   border: 1px solid black;
-//   width: 400px;
-//   display: block;
-//   float: right;
-//   background: #F1F3F4;
-// }
 
+  background: white;
+}
 
 
 .create-button {
@@ -471,4 +464,31 @@ post-container.row-container {
 
 .delete-sub, .cancel-button, .delete-post {
   cursor: pointer;
+}
+
+.no-match-img {
+
+  background-image: image-url('sprite-reddit.png');
+  background-position: 0px -362px;
+  background-repeat: no-repeat;
+  content: "";
+  float:left;
+  display: block;
+  width: 70px;
+  height: 70px;
+}
+
+.no-matches {
+  position: absolute;
+  top: 50%;
+  transform: translateY( -50%);
+  left: 100px;
+  padding: 0 20px;
+
+}
+
+.no-match-container {
+  background: white;
+  position: relative;
+  border: 1px dotted #ccc;
 }

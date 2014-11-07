@@ -22,12 +22,11 @@ RedditClone.Views.PostNew = Backbone.View.extend({
     var newPost = new RedditClone.Models.Post(params["post"]);
 
     newPost.save({sub_id: params["sub_id"]}, {
-      success: function () {
+      success: function (response) {
         this.posts.add(newPost);
         Backbone.history.navigate("subs/" + this.sub.id , {trigger: true});
 
-        var height = $('#'+response.id).offset().top;
-        $('body, html').animate({ scrollTop: height});
+
       }.bind(this)
     });
   },

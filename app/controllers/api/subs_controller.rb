@@ -116,8 +116,10 @@ class Api::SubsController < ApplicationController
   end
 
   def multisearch
-    args = params[:search_term]
+    args = params[:search_val]
+    # args = "space"
     @found_subs, @found_posts = current_user.multi_search_by(args)
+
     render :search
   end
 

@@ -20,6 +20,34 @@ RedditClone.Collections.Subs = Backbone.Collection.extend({
     return sub;
   },
 
+
+
+  foundSubs: function () {
+    if(!this._foundSubs) {
+      this._foundSubs = new RedditClone.Collections.Subs([], { subs: this });
+    }
+    return this._foundSubs;
+  },
+
+  foundPosts: function () {
+    if(!this._foundPosts) {
+      this._foundPosts = new RedditClone.Collections.Posts([], { subs: this });
+    }
+    return this._foundPosts;
+  },
+
+  parse: function (response) {
+    if (response.foundSubs) {
+      this.foundSubs().set(response.foundSubs, { parse: true });
+      delete response.foundSubs;
+    }
+
+    if (response.foundPosts) {
+      this.foundPosts().set(response.foundPosts, { parse: true });
+      delete response.foundPosts;
+    }
+    return response;
+  },
+
+
 });
-
-

@@ -99,7 +99,8 @@ t = [ "Rosetta just sent new images taken from about 7.8 km from the surface of 
   "Gemini 8 Astronauts David B. Scott and Neil A. Armstrong Water Egress Training",
   "Are there any pictures of the pad and surrounding area yet?",
   "The ISS tracing a line above the Antares rocket",
-  "Vortex Star Trail Polar Panorama","Russian rocket manufacturer insists it is not to blame for Antares crash"
+  "Vortex Star Trail Polar Panorama",
+  "Russian rocket manufacturer insists it is not to blame for Antares crash"
 ]
 u = [
   "http://imgur.com/gallery/zvM7V/new",
@@ -117,7 +118,7 @@ u = [
   "http://www.theguardian.com/science/2014/oct/29/"]
 userz = User.all
 t.each_with_index do |title, i|
-  next unless Post.create({title: title, url: u[i] , author_id: userz.sample.id});
+  next unless Post.create({title: title, url: u.sample , author_id: userz.sample.id});
 end
 
 Post.create({title: "BMO does weird junk when no one is around", url: "http://adventuretime.wikia.com/wiki/BMO" , body: "" , author_id: 1})
