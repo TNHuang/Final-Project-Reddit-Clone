@@ -52,6 +52,28 @@ RedditClone.Models.Sub = Backbone.Model.extend({
     })
   },
 
+  subscribe: function () {
+
+    $.ajax({
+      url: "api/subs/" + this.id + "/subscribe",
+      type: "POST",
+      data: {id: this.id},
+      success: function (response) {
+        this.set({is_subscribe: response.is_subscribe});
+      }.bind(this)
+    })
+  },
+
+  unsubscribe: function () {
+    $.ajax({
+      url: "api/subs/" + this.id + "/unsubscribe",
+      type: "DELETE",
+      data: {id: this.id},
+      success: function (response) {
+        this.set({is_subscribe: response.is_subscribe});
+      }.bind(this)
+    })
+  },
 
 
 })

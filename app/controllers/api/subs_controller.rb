@@ -7,7 +7,7 @@ class Api::SubsController < ApplicationController
     @is_mod = current_user.sub_mod_by_current_user?
     @votes_by_sub = Sub.votes_count_by_sub
     @is_subscribe = current_user.subscribed_sub_by_user
-    
+
     render :index
   end
 
@@ -92,6 +92,27 @@ class Api::SubsController < ApplicationController
     # @is_mod = current_user.sub_mod_by_current_user?
     # @votes_by_sub = Sub.votes_count_by_sub
     render :json => {votes: @sub.votes}
+  end
+
+  def subscribe
+    @sub = Sub.find(params[:id])
+    @subscription = Subscription.find_by({ subscriber_id: current_user.id,
+                                            sub_id: @sub.id });
+    unless @subscription
+      Subscription.create({ subscriber_id: current_user.id, sub_id: @sub.id})
+    end
+
+    render :json => {is_subscribe: true}
+  end
+
+  def unsubscribe
+    @sub = Sub.find(params[:id])
+    @subscription = Subscription.find_by({ subscriber_id: current_user.id,
+                                            sub_id: @sub.id });
+    if @subscription
+      @subscription.destroy;
+    end
+    render :json => {is_subscribe: false}
   end
 
   private

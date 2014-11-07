@@ -11,7 +11,8 @@ RedditClone.Views.SubRow = Backbone.View.extend({
     "click .delete-sub": "removeSub",
     "click .upvote-sub": "upvoteSub",
     "click .downvote-sub": "downvoteSub",
-
+    "click .sub": "subscribe",
+    "click .unsub": "unsubscribe"
   },
 
   render: function () {
@@ -39,5 +40,15 @@ RedditClone.Views.SubRow = Backbone.View.extend({
   downvoteSub: function (event) {
     this.sub.downvote();
   },
+
+  subscribe: function (event) {
+    event.stopPropagation();
+    this.sub.subscribe();
+  },
+
+  unsubscribe: function (event) {
+    event.stopPropagation();
+    this.sub.unsubscribe();
+  }
 
 })

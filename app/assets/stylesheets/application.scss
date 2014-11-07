@@ -110,10 +110,13 @@ li {
 .sign-in-account  * {
   margin: 10px;
 }
-// .comments-wrapper li{
-//   border-right: 1px solid black;
-//   padding-right: 20px;
-// }
+.comments-count-container {
+  font: verdana;
+  font-weight: bold;
+  font-size: 10px;
+  line-height: 16px;
+  color: #888;
+}
 
 table tr, table td{
   border: 0;
@@ -137,9 +140,11 @@ table {
   display: block;
   float: left;
 }
-
-.user-container{
-
+.user-name {
+  color: #888;
+  display: block;
+  float: left;
+  font-size: 10px;
 }
 
 .upvote {
@@ -194,11 +199,12 @@ table {
   display: block;
   float: left;
   width: 80%;
+  padding-left: 10px;
 }
 .row-container {
-  // border-left: 1px dotted #ccc;
+  border: 1px dotted #ccc;
 
-  margin: 20px 0 ;
+
 }
 
 .vote-wrapper {
@@ -254,6 +260,7 @@ table {
 
 
 .create-button {
+  position:relative;
   border: none;
   text-transform: uppercase;
   text-decoration: none;
@@ -264,7 +271,14 @@ table {
   font-weight: bold;
   font-size: 12px;
   border-radius: 5px;
+  transition: all 0.5s;
 }
+.create-button:hover{
+  color: #0c6;
+  background: white;
+  border: 1px solid #0c6;
+}
+
 .test-toggle {
   background: red;
   text-align: center;
@@ -311,6 +325,7 @@ table {
   border-right: 1px solid black;
   background: #FFFFFF;
   margin-left: 10px;
+  z-index: 100;
 }
 
 .subreddits-dropdown a{
@@ -360,6 +375,9 @@ table {
 .subscribe-container {
   display: block;
   float: left;
+  width: 100px;
+  text-align: center;
+
 }
 
 .sub {
@@ -380,10 +398,11 @@ table {
   font-size: 10px;
   border-radius: 5px;
   border: 1px solid black;
+  transition: all 0.5s;
 }
 
 .sub-toggle:hover {
-  box-shadow: 0 0 2px 2px black;
+  margin-left: 10px;
 }
 
 
@@ -392,6 +411,11 @@ table {
   font-size: 16px;
   line-height: normal;
   font: verdana;
+  transition: margin 0.5s;
+}
+
+.sub-title:hover {
+  margin-left: 20px;
 }
 
 .sub-count {
@@ -408,6 +432,7 @@ table {
   font-size: 10px;
   line-height: 16px;
   color: #888888;
+  margin: 0 5px;
 }
 
 .sub-description {
@@ -420,8 +445,6 @@ table {
   font: verdana;
 }
 
-
-
 .facebook-login {
   display: block;
   background-image: image-url('login_1.png');
@@ -432,4 +455,10 @@ table {
   background-size: cover;
   width: 240px;
   height: 80px;
+}
+
+.search-bar {
+  padding: 2px 5px;
+  width: 80%;
+  font-size: 12px;
 }

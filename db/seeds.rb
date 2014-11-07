@@ -277,7 +277,6 @@ end
 
 
 
-
 # comment_urls.each_with_index do |url, index|
 #   post_id = post_ids[index]
 #   comment_seeder(url, user_ids, post_id)

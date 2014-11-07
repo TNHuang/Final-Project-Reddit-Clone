@@ -6,8 +6,13 @@ RedditClone.Views.SubsIndex = Backbone.View.extend({
 
     this.subViews = [];
     this.subs = options.collection;
-    this.listenTo(this.subs, "sync", this.render);
-    this.listenTo(this.subs, "add", this.addRender);
+    this.listenTo(this.subs, "sync change", this.render);
+    this.listenTo(this.subs, "change", this.addRender);
+  },
+
+  events: {
+    "click .sub": "subscribe",
+    "click .unsub": "unsubscribe"
   },
 
   render: function () {
@@ -31,6 +36,19 @@ RedditClone.Views.SubsIndex = Backbone.View.extend({
       subView.remove();
     });
     Backbone.View.prototype.remove.call(this);
+  },
+
+  subscribe: function (event) {
+    event.stopPropagation();
+    var sub_id = $(event.currentTarget).data('id');
+    this.subs.getOrFetch(sub_id).subscribe();
+  },
+
+  unsubscribe: function (event) {
+    event.stopPropagation();
+    var sub_id = $(event.currentTarget).data('id');
+    this.subs.getOrFetch(sub_id).unsubscribe();
   }
+
 
 })

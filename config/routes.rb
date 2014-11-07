@@ -62,6 +62,11 @@ Rails.application.routes.draw do
 
     post "/posts/:id/change_img_url", to: "posts#change_img_url", as: "change_img_url"
 
+    post "/subs/:id/subscribe", to: "subs#subscribe", as: "sub_subscribe"
+    delete "/subs/:id/unsubscribe", to: "subs#unsubscribe", as: "sub_unsubscribe"
+
+    post "posts/:id/xpost", to: "posts#xpost", as: "post_xpost"
+
   end
 
 end

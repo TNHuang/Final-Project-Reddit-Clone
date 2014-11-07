@@ -1,7 +1,3 @@
-
-
-
-
 <ol class="subs-wrapper">
 
 </ol>
@@ -11,7 +7,8 @@
 
   <div class='search-form-container'>
     <form class="search-form">
-      <input type="text" name="search" value="" class="search-bar" placeholder='search here'>
+      <textarea name="search" class="search-bar" placeholder="search"></textarea>
+
     </form>
   </div>
 
@@ -26,12 +23,12 @@
       <div>
         <div class='subscribe-container'>
           <% if (sub.escape("is_subscribe") === "true") { %>
-            <div class="unsub sub-toggle ">unsubscribe</div>
+            <div class="unsub sub-toggle" data-id="<%= sub.escape('id') %>">unsubscribe</div>
           <% } else { %>
-            <div class="sub sub-toggle ">subscribe</div>
+            <div class="sub sub-toggle" data-id="<%= sub.escape('id') %>">subscribe</div>
           <% } %>
         </div>
-        <a href="#/subs/<%= sub.escape('id') %>"><%= sub.escape('title') %></a>
+        <div class="sub-title"><a href="#/subs/<%= sub.escape('id') %>">/r/<%= sub.escape('title') %></a></div>
       </div>
     <% } %>
 

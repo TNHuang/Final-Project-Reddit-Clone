@@ -25,5 +25,5 @@ class Comment < ActiveRecord::Base
     self.user_votes.sum(:value)
   end
 
-  
+
 end

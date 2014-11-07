@@ -4,7 +4,7 @@ RedditClone.Views.SubNav = Backbone.View.extend({
 
   initialize: function (options) {
     this.subs = options.subs;
-    this.listenTo(this.subs, 'sync add remove', this.render)
+    this.listenTo(this.subs, 'sync add remove change', this.render)
   },
 
   events: {

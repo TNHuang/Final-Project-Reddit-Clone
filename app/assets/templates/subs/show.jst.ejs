@@ -9,6 +9,12 @@
 
 
 <div class="sidebar" >
+
+  <div class='search-form-container'>
+    <form class="search-form">
+      <textarea name="search" class="search-bar" placeholder="search"></textarea>
+    </form>
+  </div>
   <h3>Subs show page</h3>
 
   <div>name: <%= sub.escape('name') %></div>
@@ -20,7 +26,10 @@
   <h3>moderators</h3>
   <ol>
     <% sub.mods().forEach(function(mod){ %>
-      <li><a href="#/users/<%= mod.escape('id') %>"><%= mod.escape('name') %></a></li>
+      <li>
+          <div class="unsub sub-toggle" style="float:left">unmod</div>
+        <a href="#/users/<%= mod.escape('id') %>"><%= mod.escape('name') %></a>
+        </li>
     <% }) %>
   </ol>
 </div>

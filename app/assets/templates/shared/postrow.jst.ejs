@@ -12,15 +12,28 @@
   <a href="<%= post.escape('url') %>"><img class='post-thumbnail' src="<%= post.escape('img_url') %>"></a>
 <% }%>
 
-  <div class="post-info row-info clearfix">
-    <a href="<%= post.escape('url') %>"><%= post.escape('title') %></a><br>
-    submitted by <a href="#/users/<%= post.escape('author_id') %>"><%= post.escape('author') %></a><br>
-    <a href="#/posts/<%= post.escape('id') %>"><%= post.escape('comment_count') %>  comments</a>
+<% post_url = post.escape('url') === "" ? "#/posts/"+post.escape('id') : post.escape('url') %>
 
+  <div class="post-info row-info clearfix">
+
+    <div class="sub-title"><a href="<%= post_url  %>"><%= post.escape('title') %></a><div>
+
+     <div class='user-name'>submitted by
+      <a href="#/users/<%= post.escape('author_id') %>"><%= post.escape('author') %></a>
+    </div>
+    <br>
+
+
+      <a href="#/posts/<%= post.escape('id') %>" class="comments-count-container"><%= post.escape('comment_count') %>  comments</a>
+
+  <span class="mod-options">
     <% if (post.escape('is_author') === "true") { %>
-      <button class="delete-post" data-sub-id="<%= sub.id %>">delete</button>
+      <a class="delete-post" data-sub-id="<%= sub.id %>">delete</a>
       <a href="#/posts/<%= post.escape('id') %>/edit/<%= sub.id %>">Edit</a>
     <% }%>
-    <button class="change-img-url">change img</button>
+
+  </span>
+  <button class="change-img-url">change img</button>
+
   </div>
 </div>

@@ -91,6 +91,18 @@ class Api::PostsController < ApplicationController
     render :json => {votes: @post.votes}
   end
 
+  def xpost
+    @post = Post.find(params[:id])
+    @sub = Sub.find_by({title: params[:title] });
+    @posting = Posting.find_by( {sub_id: @sub.id, post_id: @post.id})
+
+    unless @posting
+      Posting.create({sub_id: @sub.id, post_id: @post.id });
+    end
+
+    render :json => {}
+  end
+
   private
   def post_params
     params.require(:post).permit(:title, :url, :body, :user_id, sub_id: []);
