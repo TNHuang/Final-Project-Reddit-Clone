@@ -228,21 +228,21 @@ user_ids = userz.map {|user| user.id}
 #
 # space_sub_id = space_sub.id
 
-urls = [ "http://www.reddit.com/r/InternetIsBeautiful/",
-"http://www.reddit.com/r/funny",
-"http://www.reddit.com/r/pics",
-"http://www.reddit.com/r/science",
-"http://www.reddit.com/r/music",
-"http://www.reddit.com/r/documentaries",
-"http://www.reddit.com/r/todayilearned",
-"http://www.reddit.com/r/sports",
-"http://www.reddit.com/r/iama",
-"http://www.reddit.com/r/explainlikeimfive",
-"http://www.reddit.com/r/worldnews",
-"http://www.reddit.com/r/videos",
-"http://www.reddit.com/r/space"]
-
-def seeds_data(main_url,  user_ids, sub_id)
+# urls = [ "http://www.reddit.com/r/InternetIsBeautiful/",
+# "http://www.reddit.com/r/funny",
+# "http://www.reddit.com/r/pics",
+# "http://www.reddit.com/r/science",
+# "http://www.reddit.com/r/music",
+# "http://www.reddit.com/r/documentaries",
+# "http://www.reddit.com/r/todayilearned",
+# "http://www.reddit.com/r/sports",
+# "http://www.reddit.com/r/iama",
+# "http://www.reddit.com/r/explainlikeimfive",
+# "http://www.reddit.com/r/worldnews",
+# "http://www.reddit.com/r/videos",
+main_url = "http://www.reddit.com/r/space"
+sub_id = 13
+# def seeds_data(main_url,  user_ids, sub_id)
 
   page = Nokogiri::HTML(open(main_url))
 
@@ -292,13 +292,13 @@ def seeds_data(main_url,  user_ids, sub_id)
 
   end
 
-end
-
-13.times do |i|
-  next if i == 0
-  seeds_data(urls[i],  user_ids, i+1)
-  sleep(30)
-end
+# end
+#
+# 13.times do |i|
+#   next if i == 0
+#   seeds_data(urls[i],  user_ids, i+1)
+#   sleep(15)
+# end
 
 # comment_urls.each_with_index do |url, index|
 #   post_id = post_ids[index]
