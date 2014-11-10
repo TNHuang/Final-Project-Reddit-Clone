@@ -82,6 +82,7 @@ GEM
     figaro (1.0.0)
       thor (~> 0.14)
     formatador (0.2.5)
+    geocoder (1.2.6)
     guard (2.6.1)
       formatador (>= 0.2.4)
       listen (~> 2.7)
@@ -114,6 +115,7 @@ GEM
     lumberjack (1.0.9)
     mail (2.6.1)
       mime-types (>= 1.16, < 3)
+    mapbox-rails (1.6.1.1)
     method_source (0.8.2)
     mime-types (2.4.3)
     mini_portile (0.6.0)
@@ -257,10 +259,12 @@ DEPENDENCIES
   concern
   ejs
   figaro
+  geocoder
   guard-rspec
   jbuilder (~> 2.0)
   jquery-rails
   kaminari
+  mapbox-rails
   nokogiri
   omniauth-facebook
   pg

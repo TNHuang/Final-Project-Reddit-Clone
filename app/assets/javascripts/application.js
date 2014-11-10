@@ -15,6 +15,7 @@
 //= require jquery.serializejson.js
 //= require underscore
 //= require backbone
+//= require mapbox.js
 //= require reddit_clone
 //= require_tree ../templates
 //= require_tree ./models

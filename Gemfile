@@ -41,6 +41,9 @@ gem 'bcrypt', '~> 3.1.7'
 gem "underscore-rails"
 gem 'backbone-on-rails'
 gem 'pusher'
+gem 'mapbox-rails'
+gem 'geocoder'
+
 
 group :development do
   gem 'better_errors'

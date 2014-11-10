@@ -1,10 +1,17 @@
 class Post < ActiveRecord::Base
   include Votable
   include PgSearch
+
+
+  geocoded_by :address
+
+  after_validation :geocode, :if => :address_changed?
+
+
   after_create :save_img_url
 
   validates :title, :author_id, presence: true
-  
+
   multisearchable :against => [:body, :title]
 
   belongs_to :author,
@@ -23,6 +30,8 @@ class Post < ActiveRecord::Base
   has_many :user_votes, as: :votable,
   class_name: "UserVote",
   dependent: :destroy
+
+
 
   def votes
     self.user_votes.sum(:value)

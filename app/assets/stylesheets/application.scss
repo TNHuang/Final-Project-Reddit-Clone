@@ -12,6 +12,7 @@
  *
  *= require_tree .
  *= require_self
+
  */
 /*html, body, div, section, nav, li, ul, ol, p{
   margin: 0;
@@ -21,6 +22,8 @@
   border: none;
   background: none;
 }*/
+
+
 html, body {
   margin: 0;
   padding: 0;
@@ -526,7 +529,7 @@ post-container.row-container {
   display: block;
   right: 9px;
   top: 384px;
-  transition: right 1s;
+  transition: right 0.5s;
   width: 390px;
   height: 400px;
   z-index: 20;
@@ -557,6 +560,7 @@ post-container.row-container {
 }
 
 .chat-room-toggle {
+  cursor: pointer;
   position: absolute;
   padding: 10px 20px;
   height: 20px;
@@ -568,8 +572,16 @@ post-container.row-container {
   background: #0c6;
   color: white;
   font: inherit;
+  transition: all 0.5s;
 }
 
+.chat-room-toggle:hover {
+  background: #fff;
+  color: #0c6;
+  border-top: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+}
 .chat-input .chat {
   position: absolute;
   width: 344px;
@@ -580,4 +592,25 @@ post-container.row-container {
   padding-left: 10px;
   font-size: 12px;
   border-radius: 5px;
+}
+
+.map-container {
+  position: absolute;
+  left: 310px;
+  margin-top: -50px;
+  height: 160px;
+  width: 160px;
+  overflow: hidden;
+  // border: 1px solid blue;
+}
+
+.post-map-img {
+  position: absolute;
+  display: block;
+  bottom: 200px;
+  transition: bottom 1s;
+}
+
+.post-wrapper:hover .post-map-img {
+  bottom: 0px;
 }

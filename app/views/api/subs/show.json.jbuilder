@@ -11,6 +11,9 @@ json.posts @posts do |post|
   json.author_id @authors[post].id
   json.votes @votes_by_post[post]
 
+  json.latitude post.latitude
+  json.longitude post.longitude
+
   json.is_author @is_author[post]
   json.comment_count post.comments.count
 

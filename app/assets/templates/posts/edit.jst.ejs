@@ -16,6 +16,10 @@
       <td><label for="body">body</label></td>
       <td><textarea name="post[body]" id="body" ><%= post.escape("body") %></textarea></td>
     </tr>
+    <tr>
+      <td><label for="address">address</label></td>
+      <td><textarea name="post[address]" ></textarea></td>
+    </tr>
   </table>
   <input type="hidden" name="sub_id" value="<%= sub.id %>">
   <button class='create-button'>Update post!</button>

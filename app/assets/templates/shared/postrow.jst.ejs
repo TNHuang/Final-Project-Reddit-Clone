@@ -1,5 +1,7 @@
 
 <div class="post-wrapper clearfix" id="">
+
+
   <div class="vote-wrapper clearfix" id="<%= post.escape('id') %>">
     <div class="upvote-post upvote" ></div>
     <div class="vote-score"><%= post.escape('votes') %></div>
@@ -35,6 +37,17 @@
 
   </span>
   <button class="change-img-url">change img</button>
+
+  <% if (post.escape('latitude') !== "" ) { %>
+    <div class='map-container'>
+        <% var src="https://maps.googleapis.com/maps/api/staticmap?&zoom=13&size=165x165&sensor=false&markers="
+        + post.escape('latitude')
+        + "%2C"
+        + post.escape('longitude')
+        + "&key=AIzaSyDtlCO4voB02BO4bKGZgy2hXj2iXUhb5uM" %>
+        <img src=<%= src %> class="post-map-img">
+    </div>
+  <% }%>
 
   </div>
 </div>
