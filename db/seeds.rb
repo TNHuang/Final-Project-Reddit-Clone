@@ -229,7 +229,7 @@ user_ids = userz.map {|user| user.id}
 # space_sub_id = space_sub.id
 
 # urls = [ "http://www.reddit.com/r/InternetIsBeautiful/",
-# "http://www.reddit.com/r/funny",
+# "http://www.reddit.com/r/funny/",
 # "http://www.reddit.com/r/pics",
 # "http://www.reddit.com/r/science",
 # "http://www.reddit.com/r/music",
@@ -240,7 +240,7 @@ user_ids = userz.map {|user| user.id}
 # "http://www.reddit.com/r/explainlikeimfive",
 # "http://www.reddit.com/r/worldnews",
 # "http://www.reddit.com/r/videos",
-main_url = "http://www.reddit.com/r/space"
+main_url = "http://www.reddit.com/r/space/"
 sub_id = 13
 # def seeds_data(main_url,  user_ids, sub_id)
 
