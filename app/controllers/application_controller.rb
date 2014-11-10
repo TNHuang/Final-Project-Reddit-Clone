@@ -30,7 +30,7 @@ class ApplicationController < ActionController::Base
     session_token = nil if sign_in == current_sign_in
     current_sign_in.destroy!
   end
- 
+
   def required_sign_in
     redirect_to new_sign_in_url unless sign_in?
   end
@@ -38,7 +38,7 @@ class ApplicationController < ActionController::Base
   def require_no_user
     redirect_to user_url(current_user) if sign_in?
   end
-  
+
   def sign_out_all_sessions
     SignIn.where(user_id: current_user.id).destroy_all
     redirect_to new_sign_in_url

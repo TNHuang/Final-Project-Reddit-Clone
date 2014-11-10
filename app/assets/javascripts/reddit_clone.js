@@ -4,7 +4,7 @@ window.RedditClone = {
   Views: {},
   Routers: {},
   initialize: function() {
-
+    pusher = new Pusher("970a77788f6f31997f46");
     RedditClone.current_user = window.current_user;
 
     var subs = new RedditClone.Collections.Subs();

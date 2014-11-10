@@ -127,12 +127,11 @@ class Api::SubsController < ApplicationController
   end
 
   def chat
-
     message = params[:message]
-
-    Pusher['reddit_channel'].trigger('my_event', {
+    author = params[:author]
+    Pusher['reddit_channel'].trigger('chat_event', {
       message: message,
-      author: current_user.name
+      author: author
     })
     render :json => {answer: "message recieved"}
   end

@@ -28,12 +28,12 @@ RedditClone.Views.SubShow = Backbone.View.extend({
   addRender: function (post) {
     var view = new RedditClone.Views.PostRow({ post: post, sub: this.sub})
     this.subViews.push(view);
-    this.$('> ol').append(view.render().$el);
+    this.$('> ol.posts-wrapper').append(view.render().$el);
   },
   addRenderForSubs: function (sub) {
     var view = new RedditClone.Views.SubRow({ sub: sub})
     this.subViews.push(view);
-    this.$('> ol').append(view.render().$el);
+    this.$('> ol.posts-wrapper').append(view.render().$el);
   },
   //
   searchRender: function (fsubs, fposts, keyval) {

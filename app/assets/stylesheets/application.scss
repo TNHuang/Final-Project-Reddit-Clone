@@ -26,6 +26,7 @@ html, body {
   padding: 0;
   font: inherit;
   font-family: sans-serif;
+  overflow-x: hidden;
 }
 
 ul, ol, li{
@@ -176,6 +177,31 @@ table {
 
 .downvote:hover {
   background-position: -21px -818px;
+}
+
+
+.chat-img-reddit {
+  background-image: image-url('sprite-reddit.png');
+  background-position: -74px -435px;
+  background-repeat: no-repeat;
+  height: 40px;
+  width: 44px;
+  outline: none;
+  display: inline-block;
+
+}
+
+.chat-img-kappa{
+  background-image: image-url('kappa.png');
+  // background-position: -74px -435px;
+  background-repeat: no-repeat;
+  background-size: 40px auto;
+
+  width: 44px;
+  height: 44px;
+  outline: none;
+  display: inline-block;
+
 }
 
 .vote-score {
@@ -491,4 +517,67 @@ post-container.row-container {
   background: white;
   position: relative;
   border: 1px dotted #ccc;
+
+}
+
+.chat-room-container {
+  position: absolute;
+  border: 1px solid #ccc;
+  display: block;
+  right: 9px;
+  top: 384px;
+  transition: right 1s;
+  width: 390px;
+  height: 400px;
+  z-index: 20;
+  background: white;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.chat-room {
+  overflow-y: auto;
+  padding: 10px;
+  border: 1px solid #ccc;
+  height: 80%;
+  margin: 10px 20px;
+  background: #f4f4f4;
+  border-radius: 5px;
+}
+.untoggle {
+  right: -392px;
+}
+.chat-button {
+  position: absolute;
+  background: inherit;
+  border: none;
+  right: 28px;
+  bottom: 18px;
+  color: #ccc;
+}
+
+.chat-room-toggle {
+  position: absolute;
+  padding: 10px 20px;
+  height: 20px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  transform: rotate(-90deg);
+  left: -84px;
+  top: 43px;
+  background: #0c6;
+  color: white;
+  font: inherit;
+}
+
+.chat-input .chat {
+  position: absolute;
+  width: 344px;
+  background: #f4f4f4;
+  height: 20px;
+  bottom: 14px;
+  left: 20px;
+  padding-left: 10px;
+  font-size: 12px;
+  border-radius: 5px;
 }

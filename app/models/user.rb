@@ -121,15 +121,5 @@ class User < ActiveRecord::Base
   end
 
 
-  # def test_message(message)
-  #
-  #   Pusher.url = "http://970a77788f6f31997f46:6ac8066efbc5e2f4b3ea@api.pusherapp.com/apps/95929"
-  #
-  #   Pusher['reddit_channel'].trigger('my_event', {
-  #
-  #     message: message
-  #   })
-  #
-  # end
 
 end
