@@ -1,5 +1,8 @@
+# require 'pusher'
 class User < ActiveRecord::Base
   include PgSearch
+  # include Pusher
+
   attr_reader :password
 
   validates :name, :password_digest, presence: true
@@ -115,6 +118,18 @@ class User < ActiveRecord::Base
         user = User.create(options)
       end
       user
-    end
+  end
+
+
+  # def test_message(message)
+  #
+  #   Pusher.url = "http://970a77788f6f31997f46:6ac8066efbc5e2f4b3ea@api.pusherapp.com/apps/95929"
+  #
+  #   Pusher['reddit_channel'].trigger('my_event', {
+  #
+  #     message: message
+  #   })
+  #
+  # end
 
 end

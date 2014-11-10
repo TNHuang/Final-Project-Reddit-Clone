@@ -26,9 +26,9 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring',        group: :development
 
-require 'rubygems'
+# require 'rubygems'
 gem 'nokogiri'
-require 'open-uri'
+# require 'open-uri'
 gem 'pg_search'
 gem 'kaminari'
 
@@ -39,12 +39,15 @@ gem 'concern'
 gem 'figaro'
 gem 'bcrypt', '~> 3.1.7'
 gem "underscore-rails"
+gem 'backbone-on-rails'
+gem 'pusher'
+
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'pry-rails'
   gem 'quiet_assets'
-  gem 'backbone-on-rails'
+
 
 end
 

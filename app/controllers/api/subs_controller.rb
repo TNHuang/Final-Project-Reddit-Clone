@@ -1,7 +1,10 @@
 class Api::SubsController < ApplicationController
   before_action :required_sign_in
+  require 'pusher'
+  Pusher.url = "http://970a77788f6f31997f46:6ac8066efbc5e2f4b3ea@api.pusherapp.com/apps/95929"
 
   def index
+
     @subs = Sub.all
     @subber_count = Sub.subscribers_count_by_sub
     @is_mod = current_user.sub_mod_by_current_user?
@@ -123,9 +126,22 @@ class Api::SubsController < ApplicationController
     render :search
   end
 
+  def chat
+
+    message = params[:message]
+
+    Pusher['reddit_channel'].trigger('my_event', {
+      message: message,
+      author: current_user.name
+    })
+    render :json => {answer: "message recieved"}
+  end
+
   private
   def subs_params
     params.require(:sub).permit(:name, :title, :description);
   end
+
+
 
 end

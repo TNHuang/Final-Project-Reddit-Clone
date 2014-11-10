@@ -8,12 +8,22 @@ RedditClone.Views.SubsIndex = Backbone.View.extend({
     this.subs = options.collection;
     this.listenTo(this.subs, "sync change", this.render);
     this.listenTo(this.subs, "change", this.addRender);
+
+    var pusher = new Pusher("970a77788f6f31997f46");
+    var channel = pusher.subscribe('reddit_channel');
+    channel.bind('my_event', function(data) {
+      var msg = "<li>" + data.author +": " +data.message +"</li>"
+      console.log(msg);
+      this.$('.chat-room').append(msg)
+
+    }.bind(this));
   },
 
   events: {
     "click .sub": "subscribe",
     "click .unsub": "unsubscribe",
-    "submit form": "search"
+    "submit form.search-form": "search",
+    "submit .chat-input": "appendChat",
   },
 
   render: function () {
@@ -98,6 +108,26 @@ RedditClone.Views.SubsIndex = Backbone.View.extend({
     })
 
   },
+
+
+  bindChat: function (event) {
+
+  },
+  appendChat: function (event) {
+    event.preventDefault();
+    event.stopPropagation();
+
+    var msg = $('.chat').val();
+    $.ajax({
+      url: "api/chat",
+      type: "POST",
+      data: {message: msg},
+      dataType: 'json',
+      success: function (response) {
+      }.bind(this)
+
+    })
+  }
 
 
 

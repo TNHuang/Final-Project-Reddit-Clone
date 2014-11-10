@@ -69,6 +69,7 @@ Rails.application.routes.draw do
 
     get "/multisearch", to: "subs#multisearch", as: "multi_search"
 
+    post "/chat", to: "subs#chat", as: "chat_room"
   end
 
 end

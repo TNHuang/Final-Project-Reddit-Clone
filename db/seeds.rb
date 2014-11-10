@@ -224,61 +224,81 @@ end
 end
 
 user_ids = userz.map {|user| user.id}
-space_sub = Sub.find_by({title: "space"})
+# space_sub = Sub.find_by({title: "space"})
+#
+# space_sub_id = space_sub.id
 
-space_sub_id = space_sub.id
+urls = [ "http://www.reddit.com/r/InternetIsBeautiful/",
+"http://www.reddit.com/r/funny",
+"http://www.reddit.com/r/pics",
+"http://www.reddit.com/r/science",
+"http://www.reddit.com/r/music",
+"http://www.reddit.com/r/documentaries",
+"http://www.reddit.com/r/todayilearned",
+"http://www.reddit.com/r/sports",
+"http://www.reddit.com/r/iama",
+"http://www.reddit.com/r/explainlikeimfive",
+"http://www.reddit.com/r/worldnews",
+"http://www.reddit.com/r/videos",
+"http://www.reddit.com/r/space"]
 
-main_url = "http://www.reddit.com/r/space"
+def seeds_data(main_url,  user_ids, sub_id)
 
-page = Nokogiri::HTML(open(main_url))
+  page = Nokogiri::HTML(open(main_url))
 
-things= page.css('.thing')
+  things= page.css('.thing')
 
-posts = things.css('a.title')
+  posts = things.css('a.title')
 
-titles, urls, comment_urls =  [],[], []
-post_ids = []
+  titles, urls, comment_urls =  [],[], []
+  post_ids = []
 
-posts.each do |post|
-  titles << post.text
-  urls << post.attr('href')
+  posts.each do |post|
+    titles << post.text
+    urls << post.attr('href')
 
-  a = Post.create({title: titles.last,
-     body: "test reddit parse",
-     url: urls.last,
-     author_id: user_ids.sample})
-  Posting.create({post_id: a.id, sub_id: 13});
-  post_ids << a.id
-end
+    a = Post.create({title: titles.last,
+       body: "test reddit parse",
+       url: urls.last,
+       author_id: user_ids.sample})
+    Posting.create({post_id: a.id, sub_id: sub_id});
+    post_ids << a.id
+  end
 
 
 
-things.css('a.comments').each do |comment|
-   comment_urls << comment.attr('href')
-end
+  things.css('a.comments').each do |comment|
+     comment_urls << comment.attr('href')
+  end
 
-pages = []
+  pages = []
 
-comment_urls.each_with_index do |url, index|
-  page = Nokogiri::HTML(open(url))
-  all_comments = page.css('.md > p').map {|comment| comment.text }
-  posted_comments_id = [nil]
+  comment_urls.each_with_index do |url, index|
+    page = Nokogiri::HTML(open(url))
+    all_comments = page.css('.md > p').map {|comment| comment.text }
+    posted_comments_id = [nil]
 
-  until all_comments.size == 0
-    author_id = user_ids.sample
-    sample_comment = all_comments.shift
-    parent_id = posted_comments_id.sample
+    until all_comments.size == 0
+      author_id = user_ids.sample
+      sample_comment = all_comments.shift
+      parent_id = posted_comments_id.sample
 
-    c = Comment.create({author_id: author_id,
-                    body: sample_comment,
-                    post_id: post_ids[index],
-                    parent_comment_id: parent_id});
-    posted_comments_id << c.id
+      c = Comment.create({author_id: author_id,
+                      body: sample_comment,
+                      post_id: post_ids[index],
+                      parent_comment_id: parent_id});
+      posted_comments_id << c.id
+    end
+
   end
 
 end
 
-
+13.times do |i|
+  next if i == 0
+  seeds_data(urls[i],  user_ids, i+1)
+  sleep(30)
+end
 
 # comment_urls.each_with_index do |url, index|
 #   post_id = post_ids[index]
