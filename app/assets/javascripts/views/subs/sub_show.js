@@ -41,7 +41,7 @@ RedditClone.Views.SubShow = Backbone.View.extend({
     this.$el.html(content);
 
     if ( fposts.length === 0 && fsubs.length === 0) {
-      this.$('ol').append('<li class="clearfix no-match-container"><div class="no-match-img"></div><div class="no-matches">No Matches Found for \'' + keyval +'\'</div></li>');
+      this.$('ol.posts-wrapper').append('<li class="clearfix no-match-container"><div class="no-match-img"></div><div class="no-matches">No Matches Found for \'' + keyval +'\'</div></li>');
       return this;
     }
 
