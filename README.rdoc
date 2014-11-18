@@ -1,28 +1,25 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+It's Reddit! but clone with rails and backbone
 
-Things you may want to cover:
+Reddit is a social news aggregator website that allow user to create subreddit community, create post with link, and comment on post.
+Also the most important part, user can vote on a sub, post and comment to determine the quality of those item. Got to chase these sweet, sweet karma.
 
-* Ruby version
+I pre-fill the field for you, just press sign then you can go right in.
 
-* System dependencies
+Features includes:
+  -integrate facebook sign-in
+  -standard crud operation with subreddit
+    -live reddit chat room in the subreddit index page, current limit only allow 20 people in the chat room at once.
+    -user can subscribe or unsubscribe a particular sub
+    -user can vote on the sub.
+    -search bar that allow you to search any post of subs related to query word
+  -standard crud operation with posts
+    -user can also input address to geo-tag the post. once geo-tagged, a small map showing where the post is authored will appear
+    -when you submit a link, a image will be extract from the link to act as a thumbnail image for the post.
+  -standard crud operation with comments
+    -nested comments structure, just like the real reddit.
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Upcoming features:
+  -cross-posting: allow the same post to exist in multiple sub reddit
+  

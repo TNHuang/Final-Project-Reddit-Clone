@@ -15,7 +15,6 @@ RedditClone.Views.PostShow = Backbone.View.extend({
     "submit .reply-post-form": "replyPost",
   },
 
-
   render: function () {
 
     var content = this.template({post: this.post});
