@@ -32,11 +32,9 @@ Rails.application.routes.draw do
   end
 
 
-
-
-
-
   namespace :api, :defaults => { :format => :JSON} do
+
+    resources :users
 
     resources :posts, except: [ :index ] do
       resources :comments, only: [ :edit, :new, :create, :update]
