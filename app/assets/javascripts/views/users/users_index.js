@@ -7,9 +7,6 @@ RedditClone.Views.UserIndex = Backbone.View.extend({
     this.listenTo(this.users, "add", this.addRender);
   },
 
-  events: function () {
-
-  },
 
   render: function () {
     var content = this.template();
