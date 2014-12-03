@@ -6,7 +6,7 @@ RedditClone.Routers.Router = Backbone.Router.extend({
 
     this.subs = options.subs;
     this.posts = new RedditClone.Collections.Posts();
-    this.users = new RedditClone.Collections.Users();
+
     this.comments = new RedditClone.Collections.Comments();
   },
 
