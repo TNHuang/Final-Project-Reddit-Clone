@@ -21,7 +21,7 @@ RedditClone.Models.User = Backbone.Model.extend({
       this._subs = new RedditClone.Collection.Subs([], { user: this})
     }
     return this._mods;
-  }
+  },
 
   parse: function (response) {
     if(response.posts) {
@@ -38,6 +38,6 @@ RedditClone.Models.User = Backbone.Model.extend({
       delete response.subs;
     }
     return response;
-  },
+  }
 
 })
