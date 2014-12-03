@@ -1,0 +1,11 @@
+json.extract! @user, :id, :name, :created_at, :updated_at
+
+json.post_karma @user.get_karma["post_karma"]
+json.comment_karma @user.get_karma["comment_karma"]
+
+json.mod_sub @user.mod_subs
+json.subs @user.subs
+
+json.posts @user.posts do |post|
+  json.extract! post, :id, :title
+end
