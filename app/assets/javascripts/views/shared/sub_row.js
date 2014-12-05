@@ -16,7 +16,7 @@ RedditClone.Views.SubRow = Backbone.View.extend({
   },
 
   render: function () {
-    console.log("rendering subview")
+    // console.log("rendering subview")
     var content = this.template({sub: this.sub});
     this.$el.html(content);
     return this;

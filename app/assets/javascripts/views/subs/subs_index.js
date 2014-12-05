@@ -17,8 +17,12 @@ RedditClone.Views.SubsIndex = Backbone.View.extend({
 
       var msg = data.message.replace('reddit', reddit_gold);
       var msg = msg.replace('kappa', kappa);
+
       var appended_message = "<li>" + data.author +": " + msg +"</li>"
-      this.$('.chat-room').append(appended_message)
+      var chat_room = this.$(".chat-room");
+
+      chat_room.append(appended_message);
+      chat_room.animate({ scrollTop: chat_room.height()}, 1000);
     }.bind(this));
   },
 
@@ -117,7 +121,7 @@ RedditClone.Views.SubsIndex = Backbone.View.extend({
     event.preventDefault();
 
     var msg = $('.chat').val();
-    $('.chat').empty();
+    $('.chat').val("");
 
     $.ajax({
       url: "api/chat",
