@@ -23,6 +23,8 @@ RedditClone.Views.SubNew = Backbone.View.extend({
       success: function () {
         this.subs.add(newSub);
         Backbone.history.navigate("subs", {trigger: true});
+
+
       }.bind(this)
     });
   },
